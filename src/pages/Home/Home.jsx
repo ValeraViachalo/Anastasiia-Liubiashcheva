@@ -1,5 +1,6 @@
 import { Header } from "../../components/Header/Header";
 import Hero from "./Hero/Hero";
+import ImportantThing from "./ImportantThing/ImportantThing";
 import Universe from "./Universe/Universe";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
   <main className="home">
     <Hero />
     <Universe />
+    <ImportantThing />
   </main>
   );
 }

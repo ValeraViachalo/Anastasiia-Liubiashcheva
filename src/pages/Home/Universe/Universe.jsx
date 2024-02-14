@@ -146,16 +146,16 @@ export default function Universe() {
           <p>
             Impact based projects:
           </p>
-          <h1>
+          <h1 className="nums__item">
             <h1 className="nums__wrapper">
-              <span>1</span>
+              {/* <span>1</span> */}
               <span>2</span>
             </h1>
             <h1 className="nums__wrapper">
-              <span>1</span>
+              {/* <span>1</span>
               <span>2</span>
               <span>3</span>
-              <span>4</span>
+              <span>4</span> */}
               <span>5</span>
             </h1>
             +

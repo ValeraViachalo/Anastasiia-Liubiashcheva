@@ -59,3 +59,21 @@ export const Header = {
     }
   }
 };
+
+export const CounterAnim = {
+    initial: {
+      
+      opacity: 0,
+      transition,
+    },
+    animate: {
+     
+      opacity: 1,
+      transition,
+    },
+    exit: {
+      
+      opacity: 0,
+      transition,
+    }
+};

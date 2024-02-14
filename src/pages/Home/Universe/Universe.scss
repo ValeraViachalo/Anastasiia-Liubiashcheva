@@ -38,10 +38,6 @@
         width: 1.5vw;
         margin-bottom: 3vw;
       }
-
-      .qoute {
-        margin-right: 5vw;
-      }
     }
 
     .right {
@@ -138,6 +134,20 @@
     margin-top: 13vw;
 
     .nums {
+      &__item {
+        margin-top: 3vw;
+        display: flex;
+        overflow: hidden;
+        height: 14vw;
+        position: relative;
+      }
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+      }
+
       &-1 {
         grid-column: 1/5;
       }
@@ -147,10 +157,6 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-      }
-
-      h1 {
-        margin-top: 3vw;
       }
     }
   }
