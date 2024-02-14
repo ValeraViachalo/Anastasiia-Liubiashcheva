@@ -46,6 +46,7 @@ function App() {
     <QueryClientProvider client={queryC}>
       <ReactLenis root options={{ duration: 1.5 }}>
         <main style={{ marginBottom: "250lvh" }}>
+          <Header />
             <AnimatePresence mode="wait" initial={false}>
               {React.cloneElement(element, { key: location.pathname })}
             </AnimatePresence>

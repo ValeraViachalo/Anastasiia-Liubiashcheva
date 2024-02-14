@@ -22,7 +22,7 @@ export default function Hero() {
   })
 
   return (
-    <section className="hero" style={{ backgroundImage: 'url(/images/Home/hero.webp)' }}>
+    <section className="hero">
       <div className="top container">
         <div className="top__left">
           <p className="body-text-4 medium">

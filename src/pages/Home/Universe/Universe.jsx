@@ -1,13 +1,62 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import "./Universe.scss";
 import { Heart } from "../../../components/Heart/Heart";
 import { Button } from "../../../components/Button/Button";
+import gsap from "gsap";
 
 export default function Universe() {
+  const plane1 = useRef(null);
+  let requestAnimationFrameId = null;
+  let xForce = 0;
+  let yForce = 0;
+  const easing = 0.08;
+  const speed = 0.01;
+
+  const manageMouseMove = (e) => {
+    const { movementX, movementY } = e;
+    xForce += movementX * speed;
+    yForce += movementY * speed;
+
+    if (requestAnimationFrameId == null) {
+      requestAnimationFrameId = requestAnimationFrame(animate);
+    }
+  };
+
+  const lerp = (start, target, amount) => {
+    return start * (1 - amount) + target * amount;
+  };
+
+  const animate = () => {
+    xForce = lerp(xForce, 0, easing);
+    yForce = lerp(yForce, 0, easing);
+    if (plane1.current) {
+      gsap.set(plane1.current, {
+        backgroundPositionX: `+=${xForce * 100}%`,
+        backgroundPositionY: `+=${xForce}%`,
+      });
+    }
+
+    if (Math.abs(xForce) < 0.01) xForce = 0;
+    if (Math.abs(yForce) < 0.01) yForce = 0;
+
+    if (xForce != 0 || yForce != 0) {
+      requestAnimationFrame(animate);
+    } else {
+      cancelAnimationFrame(requestAnimationFrameId);
+      requestAnimationFrameId = null;
+    }
+  };
+
   return (
     <section className="universe container">
-      <div className="top-title">
+      <div
+        className="top-title"
+        ref={plane1}
+        onMouseMove={(e) => {
+          manageMouseMove(e);
+        }}
+      >
         <h3>
           <span className="first-line">
             I’m here to help you see and build your own
@@ -16,7 +65,9 @@ export default function Universe() {
           Universe - an ecosystem of products on the basis{" "}
           <span className="figure">of</span> your
           <br />
-          mission, vision and existing.
+          <span style={{ lineHeight: '107%' }}>
+            mission, vision and existing.
+          </span>
         </h3>
       </div>
 
@@ -89,6 +140,8 @@ export default function Universe() {
           </div>
         </div>
       </div>
+
+      
     </section>
   );
 }

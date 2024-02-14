@@ -17,8 +17,6 @@
   left: 0;
   right: 0;
 
-                                      display: none;
-
   @include mq() {
     height: 14vw;
     justify-content: space-between;

@@ -1,3 +1,4 @@
+import { Header } from "../../components/Header/Header";
 import Hero from "./Hero/Hero";
 import Universe from "./Universe/Universe";
 

@@ -1,3 +1,8 @@
+const transition = {
+  duration: 1,
+  ease: [0.76, 0, 0.24, 1],
+};
+
 export const Menu = {
   menuOpen: {
     initial: {
@@ -7,10 +12,7 @@ export const Menu = {
     },
     enter: {
       height: "max(75lvh, 507px)",
-      transition: {
-        duration: 1.5,
-        ease: [0.76, 0, 0.24, 1],
-      },
+      transition,
     },
     exit: {
       height: 0,
@@ -38,19 +40,22 @@ export const Menu = {
   }
 };
 
-export const blogAnim = {
-  Presence: {
+export const Header = {
+  HomePresence: {
     initial: {
+      clipPath: 'inset(0 0 100% 0)',
       opacity: 0,
-      filter: "blur(1vw)",
+      transition,
     },
     animate: {
+      clipPath: 'inset(0 0 0% 0)',
       opacity: 1,
-      filter: "blur(0vw)",
+      transition,
     },
     exit: {
+      clipPath: 'inset(0 0 100% 0)',
       opacity: 0,
-      filter: "blur(1vw)",
-    },
+      transition,
+    }
   }
 };

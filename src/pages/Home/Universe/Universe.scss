@@ -4,6 +4,17 @@
   overflow: hidden;
 
   .top-title {
+    cursor: default;
+    position: relative;
+    width: 100%;
+
+    -webkit-text-fill-color: #0000003a;
+    background: url("../../../../public/images/Home/Light\ 1.jpg") center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-position-x: 0%;
+    background-size: contain;
+    
     .first-line {
       display: inline-block;
       width: 90%;
