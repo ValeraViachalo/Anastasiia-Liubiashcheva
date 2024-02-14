@@ -1,0 +1,26 @@
+@import "./variables";
+
+@mixin mq($size: $tablet, $type: '<', $size-next: null) {
+  @if ($type == '<') {
+    @media (max-width: #{$size}px) {
+      @content;
+    }
+  }
+
+  @if ($type == '>') {
+    @media (min-width: #{$size}px) {
+      @content;
+    }
+  }
+
+  @if ($type == '<>') {
+    @media screen and (min-width: #{$size}px) and (max-width: #{$size-next}px) {
+      @content;
+    }
+  }
+}
+
+@mixin grid() {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}

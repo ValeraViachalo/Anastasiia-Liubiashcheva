@@ -1,0 +1,70 @@
+@import "/src/styles/global.scss";
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+
+  &:hover {
+    .arrow {
+      &:nth-of-type(1) {
+        left: 100%;
+      }
+      &:nth-of-type(2) {
+        left: 0;
+      }
+    }
+
+    .text {
+      &::after {
+        left: 100%;
+        transform: translateX(10%);
+      }
+    }
+    }
+
+    .arrow {
+      width: 1.6vw;
+      height: 1.6vw;
+      transition: $transition;
+
+
+      &:nth-of-type(2) {
+        position: absolute;
+        left: -100%;
+      }
+      &:nth-of-type(1) {
+        position: absolute;
+        left: 0;
+      }
+
+      &-wrapper {
+        display: flex;
+        gap: 1vw;
+        overflow: hidden;
+        width: 1.6vw;
+        height: 1.6vw;
+
+        position: relative;
+      }
+    }
+
+    .text {
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        background: $c-white;
+        width: 30%;
+        height: 0.2vw;
+        position: absolute;
+        bottom: 0.01vw;
+        left: 0;
+        transform: translateX(-110%);
+        transition: $transition;
+      }
+    }
+  }
+

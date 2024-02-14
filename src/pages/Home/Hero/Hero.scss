@@ -1,0 +1,48 @@
+@import "/src/styles/global.scss";
+
+.hero {
+  height: 110lvh;
+  width: 100vw;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position-x: 0%;
+
+  color: $c-white;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    mix-blend-mode: difference;
+    padding-top: 1vw;
+
+    &__left {
+      display: flex;
+      gap: 5vw;
+    }
+    
+    &__right {
+      display: flex;
+      gap: 10vw;
+      text-align: end;
+
+      .growth {
+        text-align: start;
+        margin-right: 2.5vw;
+      }
+    }
+  }
+
+  &__main {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+  }
+
+  &__title {
+    margin-top: 3vw;
+  }
+}

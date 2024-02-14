@@ -1,0 +1,51 @@
+.navigation {
+  position: relative;
+  left: 6vw;
+
+  &__button {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    z-index: 21;
+    height: 12vw;
+    font-weight: bold;
+    font-size: 7vw;
+
+    &_slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .el {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .perspectiveText {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: auto;
+          width: 100%;
+          transform-style: preserve-3d;
+          transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+
+          p {
+            transition: all 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+            pointer-events: none;
+            text-transform: uppercase;
+
+            &:nth-of-type(2) {
+              position: absolute;
+              transform-origin: bottom center;
+              transform: rotateX(-90deg) translateY(9px);
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

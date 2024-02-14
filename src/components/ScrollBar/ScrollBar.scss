@@ -1,0 +1,27 @@
+@import "/src/styles/global.scss";
+
+.scrollBar {
+  position: fixed;
+  width: 1vw;
+  z-index: 20;
+  top: 0%;
+  bottom: 0%;
+  right: 0;
+  margin: auto;
+  mix-blend-mode: difference;
+
+  @include mq() {
+    display: none;
+  }
+
+  .circle {
+    position: absolute;
+    bottom: 100%;
+    width: 0.5vw;
+    height: 70lvh;
+    border-radius: 5vw;
+    background-color: $c-black;
+    border: 0.1vw solid $c-white;
+    transform: translate(0, 100%);
+  }
+}

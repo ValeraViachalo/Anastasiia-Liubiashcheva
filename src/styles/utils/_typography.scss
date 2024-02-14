@@ -1,0 +1,173 @@
+@import "./mixins";
+
+%h1 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-weight: 300;
+  font-size: 18.2vw;
+  line-height: 120%;
+  letter-spacing: -1.4vw;
+}
+
+%h2 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-size: 7.3vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5vw;
+}
+
+%h3 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-size: 4.3vw;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 88%;
+  letter-spacing: -0.2vw;
+}
+
+%h4 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-size: 3.7vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.1vw;
+}
+
+%h5 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-size: 3.3vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.1vw;
+}
+
+%h6 {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-size: 2.9vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.1vw;
+}
+
+%body-text {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-size: 1.7vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+%figure {
+  font-family: "Ekaterina Velikaya One", serif;
+  font-weight: normal;
+  line-height: 30%;
+}
+
+%link {
+  @extend %body-text;
+  letter-spacing: normal;
+  font-size: 1.5vw;
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+body {
+  @extend %body-text;
+}
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+h4 {
+  @extend %h4;
+}
+
+h5 {
+  @extend %h5;
+}
+
+h6 {
+  @extend %h6;
+}
+
+.first-line-book {
+  font-weight: 500;
+}
+
+.figure {
+  @extend %figure;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.book {
+  font-weight: 600;
+}
+
+.semiBold {
+  font-weight: 500;
+}
+
+.body-text {
+  @extend %body-text;
+
+  &-2 {
+    font-size: 1.3vw;
+  }
+
+  &-3 {
+    font-size: 1vw;
+  }
+
+  &-4 {
+    font-size: 0.9vw;
+    letter-spacing: -0.02vw;
+  }
+
+  &-5 {
+    font-size: 0.8vw;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+a {
+  @extend %link;
+}
+
+.link {
+  &-ul {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  &-medium {
+    font-weight: 400;
+    line-height: 120%;
+  }
+}

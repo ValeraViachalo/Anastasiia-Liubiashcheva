@@ -1,0 +1,50 @@
+@import "/src/styles/global.scss";
+
+.nav {
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: purple;
+  color: $c-black;
+  z-index: 9;
+
+  &__content {
+    margin: 4vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include mq() {
+      height: 95%;
+      justify-content: center;
+    }
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    max-height: 92svh;
+    transition: all 0.3s ease;
+
+    @include mq() {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 10;
+      gap: 8vw;
+      margin-top: 10vw;
+    }
+  }
+  &__link {
+    transition: all 0.5s ease;
+    font-size: 6.3vw;
+    font-weight: normal;
+  }
+
+  &__button {
+    background-color: orange;
+    width: 71.2%;
+    height: 15vw;
+    margin-top: 7vw;
+  }
+}

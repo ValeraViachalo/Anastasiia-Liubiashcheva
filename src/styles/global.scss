@@ -1,0 +1,26 @@
+@import "./utils/typography";
+@import "./utils/fonts";
+@import "./utils/mixins";
+@import "./utils/variables";
+
+body {
+  @extend %body-text;
+  color: $g-100;
+  overflow-x: hidden;
+  opacity: 1;
+  position: relative;
+}
+
+::selection {
+  background-color: $g-30;
+  color: $c-black;
+  mix-blend-mode: difference;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  padding: 0 1.6vw;
+}

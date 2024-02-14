@@ -1,0 +1,12 @@
+@import "/src/styles/global.scss";
+
+.slide-in {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0%;
+  z-index: 100;
+  background-color: $c-black;
+  cursor: wait;
+}

@@ -1,0 +1,124 @@
+@import "/src/styles/global.scss";
+
+.universe {
+  overflow: hidden;
+
+  .top-title {
+    .first-line {
+      display: inline-block;
+      width: 90%;
+      text-align: end;
+    }
+  }
+
+  &-video {
+    width: 100%;
+    margin-top: 5vw;
+
+    @include grid();
+
+    .left {
+      grid-column: 3/5;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5vw;
+
+      .heart {
+        width: 1.5vw;
+        margin-bottom: 3vw;
+      }
+
+      .qoute {
+        margin-right: 5vw;
+      }
+    }
+
+    .right {
+      grid-column: 7/13;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(2, auto);
+      row-gap: 3vw;
+
+      position: relative;
+
+      .subtitles {
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        gap: 2vw;
+        background-color: $c-white;
+        grid-column: 1/8;
+
+        .paragraph {
+          display: flex;
+          flex-direction: column;
+          gap: 1vw;
+          color: $c-white;
+          mix-blend-mode: difference;
+          font-weight: 100;
+          letter-spacing: 0.02vw;
+          width: 50%;
+
+          &:first-of-type {
+            p {
+              &:first-of-type {
+                position: relative;
+
+                &::after {
+                  mix-blend-mode: difference;
+                  display: block;
+                  content: "";
+                  width: 4.6vw;
+                  height: 1.2vw;
+                  background-color: #fff2f2;
+                  position: absolute;
+                  top: -0.3vw;
+                  left: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .video {
+        grid-column: 1/4;
+        position: relative;
+
+        &__wrapper {
+          position: relative;
+
+          .play-btn {
+            position: absolute;
+            width: 20%;
+            height: 18%;
+            background-color: $g-50;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            clip-path: polygon(0 0, 0 100%, 100% 50%);
+          }
+        }
+
+        &__item {
+          width: 100%;
+        }
+
+        &__subscription {
+          margin-top: 1.5vw;
+          .concept {
+            width: 40%;
+            margin-bottom: 1.5vw;
+          }
+        }
+
+        &__contact-button {
+          position: absolute;
+          right: 0;
+          bottom: 40%;
+        }
+      }
+    }
+  }
+}
