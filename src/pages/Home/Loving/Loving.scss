@@ -1,0 +1,38 @@
+@import "../../../styles/global.scss";
+
+.loving {
+  margin-top: 10vw;
+  width: 100vw;
+  height: 216lvh;
+  background: url("../../../../public/images/Home/loving.webp") no-repeat;
+  background-size: cover;
+  background-position: 50% 0;
+  position: relative;
+
+  &__wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    bottom: 10%;
+    left: 50%;
+    text-align: center;
+    mix-blend-mode: exclusion;
+    color: $c-white;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 1vw; 
+    }
+
+    .logo {
+      width: 30vw;
+      height: 20vw;
+    }
+
+    .heart {
+      height: 2vw;
+      width: 2vw;
+      margin: 6vw auto 0;
+    }
+  }
+}

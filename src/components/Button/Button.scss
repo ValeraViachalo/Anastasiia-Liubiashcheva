@@ -2,7 +2,7 @@
 
 .button {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5vw;
 
@@ -47,6 +47,10 @@
         height: 1.6vw;
 
         position: relative;
+
+        &:nth-of-type(2) {
+          transform: rotate(-180deg);
+        }
       }
     }
 

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
 import "./ImportantThing.scss";
+import { Button } from "../../../components/Button/Button";
 
 const animation = (y) => {
   return {
@@ -149,6 +150,46 @@ export default function ImportantThing() {
             <br />
             business vision ツ
           </h3>
+
+          <div className="steps">
+            <img
+              src="/images/Home/Important-thing.webp"
+              alt="anastasiia"
+              className="steps__image"
+            />
+
+            <p className="body-text-3 semiBold steps__title">Your way with me →</p>
+            <div className="steps__list">
+              <ul>
+                <li className="body-text-4 steps__item">
+                  <p>Finding a spark</p>
+                  <span>01</span>
+                </li>
+                <li className="body-text-4 steps__item">
+                  <p>Analyzing existing resources & journey</p>
+                  <span>02</span>
+                </li>
+                <li className="body-text-4 steps__item">
+                  <p>Building business foundation</p>
+                  <span>03</span>
+                </li>
+                <li className="body-text-4 steps__item">
+                  <p>Creating an ecosystem of products & services</p>
+                  <span>04</span>
+                </li>
+                <li className="body-text-4 steps__item">
+                  <p>Turning vision into real-world results</p>
+                  <span>05</span>
+                </li>
+              </ul>
+
+              <div className="steps__button">
+                <Button state="primary" href="/">
+                  Work with me
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
