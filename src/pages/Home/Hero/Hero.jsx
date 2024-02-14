@@ -3,59 +3,63 @@ import "./Hero.scss";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import i18n from "../../../i18n";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
 
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    gsap.to('.hero', {
-      backgroundPositionY: '50lvh',
-      clipPath: 'inset(0 0 10% 0)',
+    gsap.to(".hero", {
+      backgroundPositionY: "50lvh",
+      clipPath: "inset(0 0 10% 0)",
       // ease: 'none',
       scrollTrigger: {
-        start: 'top top',
-        end: 'bottom top',
+        start: "top top",
+        end: "bottom top",
         scrub: true,
-      }
-    }) 
-  })
+      },
+    });
+  });
 
   return (
     <section className="hero">
       <div className="top container">
         <div className="top__left">
           <p className="body-text-4 medium">
-            For
+            {t("For")}
             <br />
-            creators
+            {t("creators")}
           </p>
           <p className="body-text-4 medium">
-            By
+            {t("By")}
             <br />
-            Anastasiia Liubiashcheva
+            {t("Anastasiia Liubiashcheva")}
           </p>
         </div>
         <div className="top__right">
           <p className="body-text-4 medium">
-            <span className="growth">
-              Business growth since
-            </span>
+            <span className="growth">{t("Business growth since")}</span>
             <br />
-              → 2019
+            {t("→ 2019")}
           </p>
           <p className="body-text-4 medium">
-            United by
+            {t("United by")}
             <br />
-            love
+            {t("love")}
           </p>
         </div>
       </div>
       <div className="hero__main">
-        <p className="body-text-4 medium">Hi love!</p>
-        <p className="body-text-4 medium">It`s — <span className="body-text-4 bold">Anastasiia</span> here with you</p>
-        <h4 className="hero__title">Your vision partner.</h4>
-
+        <p className="body-text-4 medium">{t("Hi love!")}</p>
+        <p className="body-text-4 medium">
+          {t("It`s — ")}
+          <span className="body-text-4 bold">{t("Anastasiia")}</span>
+          {t("here with you")}
+        </p>
+        <h4 className="hero__title">{t("Your vision partner")}.</h4>
       </div>
     </section>
   );
