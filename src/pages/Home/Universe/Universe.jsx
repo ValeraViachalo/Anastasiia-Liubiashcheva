@@ -141,7 +141,40 @@ export default function Universe() {
         </div>
       </div>
 
-      
+      <div className="statics">
+        <div className="nums nums-1">
+          <p>
+            Impact based projects:
+          </p>
+          <h1>
+            <h1 className="nums__wrapper">
+              <span>1</span>
+              <span>2</span>
+            </h1>
+            <h1 className="nums__wrapper">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+            </h1>
+            +
+          </h1>
+        </div>
+        <div className="nums nums-2">
+          <div>
+            <p>
+              Pitching on:
+            </p>
+            <h1>
+              500+
+            </h1>
+          </div>
+          <p>
+            ppl audience
+          </p>
+        </div>
+      </div>
     </section>
   );
 }

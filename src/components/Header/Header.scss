@@ -29,7 +29,7 @@
     align-items: center;
     gap: 1.8vw;
     height: 100%;
-    grid-column: 5/8;
+    grid-column: 5/9;
 
 
     @include mq() {
@@ -53,6 +53,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
+    padding: 0 5vw;
 
     & > li {
       display: flex;
@@ -89,7 +90,7 @@
   }
 
   .right {
-    grid-column: 10/12;
+    grid-column: 10/13;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -100,8 +101,4 @@
     display: flex;
     gap: 1.5vw;
   }
-  
-  // &__contact {
-  //   grid-column: 12;
-  // }
 }
