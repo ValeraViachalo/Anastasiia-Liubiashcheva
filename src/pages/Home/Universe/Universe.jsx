@@ -136,7 +136,7 @@ export default function Universe() {
             </div>
           </div>
           <div className="video__contact-button">
-            <Button>Contact Me.</Button>
+            <Button state="secondary">Contact Me.</Button>
           </div>
         </div>
       </div>

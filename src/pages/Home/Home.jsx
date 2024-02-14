@@ -1,6 +1,7 @@
 import { Header } from "../../components/Header/Header";
 import Hero from "./Hero/Hero";
 import ImportantThing from "./ImportantThing/ImportantThing";
+import Loving from "./Loving/Loving";
 import Universe from "./Universe/Universe";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     <Hero />
     <Universe />
     <ImportantThing />
+    <Loving />
   </main>
   );
 }

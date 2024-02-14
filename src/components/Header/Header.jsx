@@ -37,7 +37,7 @@ export const Header = () => {
       animate={isShown ? "animate" : "exit"}
     >
       <div className="left">
-        <Logo className="header__logo" />
+        <Logo className="header__logo" color="#212529"/>
         <Link to="/" className="body-text-5 link-medium uppercase">
           Work With Me
         </Link>
