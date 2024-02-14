@@ -7,7 +7,6 @@ export default function Home() {
     <main className="home">
       <Hero />
       <Universe />
-      <FormSent />
     </main>
   );
 }
