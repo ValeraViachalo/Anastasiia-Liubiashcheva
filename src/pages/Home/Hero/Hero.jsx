@@ -28,11 +28,7 @@ export default function Hero() {
     <section className="hero">
       <div className="top container">
         <div className="top__left">
-          <p className="body-text-4 medium">
-            {t("For")}
-            <br />
-            {t("creators")}
-          </p>
+          <p className="body-text-4 medium" dangerouslySetInnerHTML={{ __html:  t("For")}} />
           <p className="body-text-4 medium">
             {t("By")}
             <br />
