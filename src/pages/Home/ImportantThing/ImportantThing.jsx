@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/all";
 
 import "./ImportantThing.scss";
 import { Button } from "../../../components/Button/Button";
+import { useTranslation } from "react-i18next";
 
 const animation = (y) => {
   return {
@@ -29,12 +30,9 @@ const animation = (y) => {
 };
 
 export default function ImportantThing() {
-  const [isFliped, setFlip] = useState(false);
+  const { t } = useTranslation();
 
-  const phase = [
-    "<span class='semiBold'>You`re okay!</span> It`s not an illusion, let me hear you,",
-    "I`ll show you your scale and how you can get there",
-  ];
+  const [isFliped, setFlip] = useState(false);
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -80,7 +78,7 @@ export default function ImportantThing() {
               initial="initial"
               animate={!isFliped ? "enter" : "initial"}
             >
-              but...
+              {t("but...")}
             </motion.p>
           </h3>
           <div className="slider__text">
@@ -90,65 +88,76 @@ export default function ImportantThing() {
               animate={!isFliped ? "enter" : "initial"}
               className="light"
             >
-              the most important thing
+              {t("the most important thing")}
               <br />
-              you need to <span className="book">know</span>
+              {t("you need to")} <span className="book">{t("know")}</span>
             </motion.p>
           </div>
 
           <h3 className="slider__title-2">
             <div>
-              {phase.map((p, index) => {
-                return (
-                  <div key={index} className="mask-text__line">
-                    <motion.p
-                      custom={index}
-                      variants={animation(100)}
-                      initial="initial"
-                      animate={isFliped ? "enter" : "initial"}
-                      dangerouslySetInnerHTML={{ __html: p }}
-                    ></motion.p>
-                  </div>
-                );
-              })}
+              <div className="mask-text__line">
+                <motion.p
+                  variants={animation(100)}
+                  initial="initial"
+                  animate={isFliped ? "enter" : "initial"}
+                >
+                  <span class="semiBold">{t("You`re okay!")}</span>
+                  {t("It`s not an illusion, let me hear you,")}
+                </motion.p>
+              </div>
+              <div className="mask-text__line">
+                <motion.p
+                  variants={animation(100)}
+                  initial="initial"
+                  animate={isFliped ? "enter" : "initial"}
+                >
+                  {t("I`ll show you your scale and how you can get there")}t
+                </motion.p>
+              </div>
             </div>
           </h3>
         </div>
       </div>
       <div className="important-thing__wrapper container">
         <div className="left">
-          <p className="body-text-3 semiBold left-title">Feedbacks →</p>
+          <p className="body-text-3 semiBold left-title">{t("Feedbacks →")}</p>
 
           <div className="feedbacks">
             <div className="feedbacks__item">
               <p className="body-text-3">
-                <span className="body-text qoute">“</span>I have talked to many
-                people about this but in 1.5 hours with you, I have drafted
-                three pages with ideas and concepts.
+                <span className="body-text qoute">“</span>
+                {t(
+                  "I have talked to many people about this but in 1.5 hours with you, I have drafted three pages with ideas and concepts."
+                )}
               </p>
-              <p className="feedbacks__name body-text-3 semiBold">Sasha, NYC</p>
+              <p className="feedbacks__name body-text-3 semiBold">
+                {t("Sasha, NYC")}
+              </p>
             </div>
             <div className="feedbacks__item">
               <p className="body-text-3">
                 <span className="body-text qoute">“</span>
-                you’re the first person to unpack my potential through my
-                mission into business processes
+                {t(
+                  "you’re the first person to unpack my potential through my mission into business processes"
+                )}
               </p>
               <p className="feedbacks__name body-text-3 semiBold">
-                Ksenia, Tenerife
+                {t("Ksenia, Tenerife")}
               </p>
             </div>
           </div>
         </div>
         <div className="right">
           <h3 className="title">
-            Let me be a safe
+            {t("Let me be a safe")}
             <br />
             <span className="title__to-left">
-              space <span className="figure">for</span> your
+              {t("space")}
+              <span className="figure">{t("for")}</span> {t("your")}
             </span>
             <br />
-            business vision ツ
+            {t("business vision ツ")}
           </h3>
 
           <div className="steps">
@@ -158,34 +167,36 @@ export default function ImportantThing() {
               className="steps__image"
             />
 
-            <p className="body-text-3 semiBold steps__title">Your way with me →</p>
+            <p className="body-text-3 semiBold steps__title">
+              {t("Your way with me →")}
+            </p>
             <div className="steps__list">
               <ul>
                 <li className="body-text-4 steps__item">
-                  <p>Finding a spark</p>
+                  <p>{t("Finding a spark")}</p>
                   <span>01</span>
                 </li>
                 <li className="body-text-4 steps__item">
-                  <p>Analyzing existing resources & journey</p>
+                  <p>{t("Analyzing existing resources & journey")}</p>
                   <span>02</span>
                 </li>
                 <li className="body-text-4 steps__item">
-                  <p>Building business foundation</p>
+                  <p>{t("Building business foundation")}</p>
                   <span>03</span>
                 </li>
                 <li className="body-text-4 steps__item">
-                  <p>Creating an ecosystem of products & services</p>
+                  <p>{t("Creating an ecosystem of products & services")}</p>
                   <span>04</span>
                 </li>
                 <li className="body-text-4 steps__item">
-                  <p>Turning vision into real-world results</p>
+                  <p>{t("Turning vision into real-world results")}</p>
                   <span>05</span>
                 </li>
               </ul>
 
               <div className="steps__button">
                 <Button state="primary" href="/">
-                  Work with me
+                  {t("Work with me")}
                 </Button>
               </div>
             </div>

@@ -52,7 +52,7 @@ export const Header = () => {
         <div className="left">
           <Logo className="header__logo" color="#212529" />
           <Link to="/" className="body-text-5 link-medium uppercase">
-            Work With Me
+            {t("Work With Me")}
           </Link>
         </div>
 
@@ -64,13 +64,12 @@ export const Header = () => {
                   className="body-text-5 link-medium uppercase"
                   to={currLink.link}
                 >
-                  <span>{currLink.name}</span>
+                  {t(currLink.name)}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
-
         <div className="right">
           <div className="header__locale">
             <button
@@ -95,7 +94,9 @@ export const Header = () => {
             </button>
           </div>
 
-          <Link className="body-text-5 link-medium uppercase">Contact</Link>
+          <Link className="body-text-5 link-medium uppercase">
+            {t("Contact")}
+          </Link>
         </div>
 
         <div className="header__nav">
