@@ -11,13 +11,11 @@
   padding: 0.3vw 1.6vw;
 
   justify-content: space-between;
-  z-index: 10;
+  z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-
-                                      display: none;
 
   @include mq() {
     height: 14vw;
@@ -31,7 +29,7 @@
     align-items: center;
     gap: 1.8vw;
     height: 100%;
-    grid-column: 5/8;
+    grid-column: 5/9;
 
 
     @include mq() {
@@ -41,6 +39,7 @@
 
   &__logo {
     width: 22%;
+    height: 1.6vw;
     position: relative;
     z-index: 100;
 
@@ -55,10 +54,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-
-    & > li {
-      display: flex;
-    }
+    padding: 0 5vw;
 
     @include mq() {
       display: none;
@@ -66,14 +62,19 @@
   }
 
   &__link {
-    font-size: 1.2vw;
-    padding: 0.5vw 0.7vw;
-    position: relative;
-    z-index: 1;
-    
-    & > span {
-      position: relative;
-      z-index: 1;  
+    &-wrapper {
+      // @include hoverForLinks();
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 1vw;
+
+      &:hover {
+        .header__link {
+          transform: translateY(-100%);
+          transition: all 0.4s ease;
+        }
+      }
     }
   }
 
@@ -91,7 +92,7 @@
   }
 
   .right {
-    grid-column: 10/12;
+    grid-column: 10/13;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,9 +102,28 @@
   &__locale {
     display: flex;
     gap: 1.5vw;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 1vw;
+
+      &:hover {
+        .header__locale-button {
+          transform: translateY(-100%);
+          transition: all 0.4s ease;
+        }
+      }
+    }
+
+    &-button {
+      opacity: 0.7;
+      transition: $transition;
+
+      &--active {
+        opacity: 1;
+      }
+    }
   }
-  
-  // &__contact {
-  //   grid-column: 12;
-  // }
 }

@@ -2,7 +2,7 @@
 
 .button {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5vw;
 
@@ -47,6 +47,10 @@
         height: 1.6vw;
 
         position: relative;
+
+        &:nth-of-type(2) {
+          transform: rotate(-180deg);
+        }
       }
     }
 
@@ -64,6 +68,16 @@
         left: 0;
         transform: translateX(-110%);
         transition: $transition;
+      }
+    }
+
+    &--seconadry {
+      background-color: $c-white;
+      padding: 1vw 1.8vw;
+      border-radius: 0.4vw;
+
+      .arrow-wrapper {
+        line-height: 95%;
       }
     }
   }

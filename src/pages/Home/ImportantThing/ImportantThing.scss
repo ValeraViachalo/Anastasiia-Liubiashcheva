@@ -1,0 +1,134 @@
+@import "../../../styles/global.scss";
+
+.important-thing {
+  margin-top: 10vw;
+
+  .slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 30vw;
+
+    &-wrapper {
+      height: 150lvh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      text-align: center;
+      position: relative;
+    }
+
+    &__text {
+      overflow: hidden;
+    }
+
+    &__title-2 {
+      transform: translateY(-110%);
+      width: 96vw;
+
+      .mask-text__line {
+        overflow: hidden;
+        
+        &:nth-of-type(1) {
+          line-height: 100%;
+          text-align: end;
+        }
+        
+        &:nth-of-type(2) {
+          line-height: 120%;
+          text-align: start;
+        }
+      }
+    }
+    h3 {
+      overflow: hidden;
+      position: relative;
+    }
+  }
+
+  &__wrapper {
+    @include grid();
+    margin-top: 3vw;
+
+    .left {
+      grid-column: 1/5;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 13vw;
+
+      &-title {
+        text-wrap: nowrap;
+      }
+
+      .feedbacks {
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
+        
+        &__name {
+          margin-top: 1vw;
+        }
+      }
+    }
+
+    .right {
+      grid-column: 7/12;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      .title {
+        grid-column: 1/4;
+        text-align: end;
+
+        &__to-left {
+          text-align: start;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+
+      .steps {
+        grid-column: 1/4;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 2vw;
+        position: relative;
+        margin-top: 2vw;
+
+        &__image {
+          width: 100%;
+          grid-column: 2/4;
+        }
+        
+        &__title {
+            margin-top: 0.6vw;
+        }
+
+        &__list {
+          grid-column: 2/4;
+        }
+
+        &__item {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.6vw 0;
+          border-top: 0.1vw solid;
+
+          &:last-of-type {
+            border-bottom: 0.1vw solid;
+          }
+        }
+
+        &__button {
+          margin-top: 3vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

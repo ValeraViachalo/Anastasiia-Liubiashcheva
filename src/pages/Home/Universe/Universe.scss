@@ -4,6 +4,17 @@
   overflow: hidden;
 
   .top-title {
+    cursor: default;
+    position: relative;
+    width: 100%;
+
+    -webkit-text-fill-color: #0000003a;
+    background: url("../../../../public/images/Home/Light\ 1.jpg") center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-position-x: 0%;
+    background-size: contain;
+    
     .first-line {
       display: inline-block;
       width: 90%;
@@ -26,10 +37,6 @@
       .heart {
         width: 1.5vw;
         margin-bottom: 3vw;
-      }
-
-      .qoute {
-        margin-right: 5vw;
       }
     }
 
@@ -118,6 +125,38 @@
           right: 0;
           bottom: 40%;
         }
+      }
+    }
+  }
+
+  .statics {
+    @include grid();
+    margin-top: 13vw;
+
+    .nums {
+      &__item {
+        margin-top: 3vw;
+        display: flex;
+        overflow: hidden;
+        height: 14vw;
+        position: relative;
+      }
+
+      &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1vw;
+      }
+
+      &-1 {
+        grid-column: 1/5;
+      }
+
+      &-2 {
+        grid-column: 7/13;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
       }
     }
   }
