@@ -1,0 +1,102 @@
+@import "/src//styles/global.scss";
+
+.cta {
+  background: linear-gradient(
+      rgb(255, 255, 255) -5%,
+      rgba(255, 255, 255, 0) 12%
+    ),
+    url("../../../../public/images/Home/CTA-bg.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 180lvh;
+  margin-top: 1vw;
+  position: relative;
+  color: $c-white;
+
+  &__line {
+    position: absolute;
+
+    transform: translateY(-50%);
+    height: 160lvh;
+    width: 0.1vw;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0) 9%,
+      rgb(255, 255, 255) 33%,
+      rgb(235, 235, 235) 79%,
+      rgb(49, 49, 49) 100%
+    );
+
+    left: 50%;
+    z-index: -1;
+
+    &:nth-of-type(2) {
+      top: -100%;
+      bottom: -100%;
+      height: 220lvh;
+
+      transform: translateY(-45%) rotate(-135deg);
+
+      background: linear-gradient(0deg,
+      rgba(255, 255, 255, 0) 9%,
+      rgb(255, 255, 255) 20%,
+      rgb(235, 235, 235) 79%,
+      rgb(49, 49, 49) 100%
+    );
+
+    }
+  }
+
+  &__wrapper {
+    padding: 22vw 1.6vw 0;
+    @include grid();
+    row-gap: 35lvh;
+  }
+
+  .top {
+    grid-column: 1/3;
+    padding-right: 0.6vw;
+
+    .qoute {
+      margin-right: 2vw;
+    }
+  }
+
+  .center {
+    grid-column: 1/13;
+
+    @include grid();
+    // column-gap: 1vw;
+    align-items: center;
+    justify-items: center;
+
+    .heart {
+      width: 3vw;
+      height: 3vw;
+      grid-column: 9/11;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    grid-column: 1/11;
+    margin-top: 4vw;
+
+    &__second {
+      text-align: center;
+      padding-right: 5vw;
+    }
+  }
+
+  &__title {
+    grid-column: 1/5;
+  }
+
+  &__button {
+    grid-column: 6/8;
+    color: $g-100;
+    position: relative;
+    z-index: 1;
+  }
+}

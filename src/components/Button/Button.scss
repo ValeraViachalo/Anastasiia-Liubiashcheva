@@ -70,5 +70,15 @@
         transition: $transition;
       }
     }
+
+    &--seconadry {
+      background-color: $c-white;
+      padding: 1vw 1.8vw;
+      border-radius: 0.4vw;
+
+      .arrow-wrapper {
+        line-height: 95%;
+      }
+    }
   }
 
