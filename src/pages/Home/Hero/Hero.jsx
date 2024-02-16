@@ -51,11 +51,7 @@ export default function Hero() {
       </div>
       <div className="hero__main">
         <p className="body-text-4 medium">{t("Hi love!")}</p>
-        <p className="body-text-4 medium">
-          {t("It`s — ")}
-          <span className="body-text-4 bold">{t("Anastasiia")}</span>
-          {t("here with you")}
-        </p>
+        <p className="body-text-4 medium" dangerouslySetInnerHTML={{ __html:  t("It`s")}} />
         <h4 className="hero__title">{t("Your vision partner")}.</h4>
       </div>
     </section>

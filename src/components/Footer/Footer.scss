@@ -3,7 +3,7 @@
 .footer {
   background: url("../../../public/images/Home/Footer.webp") no-repeat center;
   background-size: cover;
-  
+
   width: 100vw;
   height: 80lvh;
   color: $c-white;
@@ -33,7 +33,7 @@
     display: flex;
     flex-direction: column;
     gap: 4vw;
-    
+
     &__title {
       grid-column: 1/3;
     }
@@ -73,10 +73,27 @@
 
   &__ukraine {
     grid-column: 1/3;
+    display: flex;
+    gap: 0.4vw;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 0.8vw;
+      width: 1vw;
+      background: linear-gradient(
+        rgb(0, 26, 255) 49%,
+        rgb(238, 255, 0) 49%
+      );
+    }
   }
 
   &__rights {
     grid-column: 4/7;
+
+    .link-ul {
+      font: inherit;
+    }
   }
 
   .link__author {

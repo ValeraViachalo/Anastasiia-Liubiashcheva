@@ -58,7 +58,15 @@ export default function Footer() {
           </div>
 
           <p className="body-text-5 footer__rights">
-            ©2024. Horskyi Design. All rights reserved.
+            ©2024. {" "}
+            <a
+            href="https://www.behance.net/horskyir"
+            className="link-ul"
+            target="_blank"
+          >
+            Horskyi Design
+          </a>
+          {". "}All rights reserved.
           </p>
 
           <a
