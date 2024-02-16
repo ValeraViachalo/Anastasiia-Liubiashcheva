@@ -1,0 +1,43 @@
+@import "../../../styles/global.scss";
+
+.about {
+  @include grid();
+  margin-top: 5vw;
+
+  &__title {
+    grid-column: 7/13;
+    padding-left: 6vw;
+
+    .qoute {
+      margin-right: 8vw;
+    }
+  }
+
+  &__list {
+    grid-column: 1/10;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1vw;
+    row-gap: 3vw;
+    margin-top: 4vw;
+  }
+
+  &__item {
+    border-top: 0.2vw solid;
+    padding: 1vw 0;
+    width: 30%;
+
+      .top {
+        display: flex;
+        align-items: flex-end;
+
+        h2 {
+          line-height: 80%;
+        }
+
+        .bold {
+          margin-left: 1vw;
+        }
+      }    
+  }
+}

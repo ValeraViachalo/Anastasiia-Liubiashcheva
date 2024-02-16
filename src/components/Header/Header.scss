@@ -55,24 +55,25 @@
     width: 100%;
     padding: 0 5vw;
 
-    & > li {
-      display: flex;
-    }
-
     @include mq() {
       display: none;
     }
   }
 
   &__link {
-    font-size: 1.2vw;
-    padding: 0.5vw 0.7vw;
-    position: relative;
-    z-index: 1;
-    
-    & > span {
-      position: relative;
-      z-index: 1;  
+    &-wrapper {
+      // @include hoverForLinks();
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 1vw;
+
+      &:hover {
+        .header__link {
+          transform: translateY(-100%);
+          transition: all 0.4s ease;
+        }
+      }
     }
   }
 
@@ -100,5 +101,28 @@
   &__locale {
     display: flex;
     gap: 1.5vw;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 1vw;
+
+      &:hover {
+        .header__locale-button {
+          transform: translateY(-100%);
+          transition: all 0.4s ease;
+        }
+      }
+    }
+
+    &-button {
+      opacity: 0.7;
+      transition: $transition;
+
+      &--active {
+        opacity: 1;
+      }
+    }
   }
 }

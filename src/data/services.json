@@ -1,0 +1,37 @@
+[
+  {
+    "ifYou": "A startup",
+    "action": "Innovate",
+    "image": "/images/Home/Services/s-1.png"
+  },
+  {
+    "ifYou": "ready for the next level",
+    "action": "Change",
+    "image": "/images/Home/Services/s-2.png"
+  },
+  {
+    "ifYou": "want to develop new idea",
+    "action": "Disrupt",
+    "image": "/images/Home/Services/s-3.png"
+  },
+  {
+    "ifYou": "want to grow your business",
+    "action": "Scale",
+    "image": "/images/Home/Services/s-4.png"
+  },
+  {
+    "ifYou": "stuck & need a breakthrough",
+    "action": "Create",
+    "image": "/images/Home/Services/s-5.png"
+  },
+  {
+    "ifYou": "share my approach and vision",
+    "action": "Unite",
+    "image": "/images/Home/Services/s-6.png"
+  },
+  {
+    "ifYou": "not sure what to choose",
+    "action": "Help",
+    "image": "/images/Home/Services/s-7.png"
+  }
+]

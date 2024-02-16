@@ -102,7 +102,7 @@ export default function ImportantThing() {
                   initial="initial"
                   animate={isFliped ? "enter" : "initial"}
                 >
-                  <span class="semiBold">{t("You`re okay!")}</span>
+                  <span className="semiBold">{t("You`re okay!")}</span>
                   {t("It`s not an illusion, let me hear you,")}
                 </motion.p>
               </div>

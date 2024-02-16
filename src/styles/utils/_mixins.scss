@@ -1,22 +1,42 @@
 @import "./variables";
 
-@mixin mq($size: $tablet, $type: '<', $size-next: null) {
-  @if ($type == '<') {
+@mixin mq($size: $tablet, $type: "<", $size-next: null) {
+  @if ($type == "<") {
     @media (max-width: #{$size}px) {
       @content;
     }
   }
 
-  @if ($type == '>') {
+  @if ($type == ">") {
     @media (min-width: #{$size}px) {
       @content;
     }
   }
 
-  @if ($type == '<>') {
+  @if ($type == "<>") {
     @media screen and (min-width: #{$size}px) and (max-width: #{$size-next}px) {
       @content;
     }
+  }
+}
+
+@mixin hoverForLinks() {
+  position: relative;
+
+  &::after {
+    transition: $transition;
+    content: "";
+    position: absolute;
+    background-color: $g-80;
+    bottom: 0;
+    height: 0.06vw;
+    left: 0;
+    right: 100%;
+  }
+
+  &:hover::after {
+    right: 0;
+    left: 0;
   }
 }
 

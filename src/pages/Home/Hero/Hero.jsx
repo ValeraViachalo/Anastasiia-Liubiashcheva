@@ -13,10 +13,11 @@ export default function Hero() {
 
   useGSAP(() => {
     gsap.to(".hero", {
-      backgroundPositionY: "50lvh",
+      backgroundPositionY: "20lvh",
       clipPath: "inset(0 0 10% 0)",
       // ease: 'none',
       scrollTrigger: {
+        trigger: '.hero',
         start: "top top",
         end: "bottom top",
         scrub: true,
