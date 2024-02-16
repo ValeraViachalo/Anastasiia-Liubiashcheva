@@ -20,7 +20,7 @@ import classNames from "classnames";
 export const Header = () => {
   const { t } = useTranslation();
 
-  const [language, setLanguage] = useLocalStorage("language", "ua");
+  const [language, setLanguage] = useLocalStorage("language", "en");
   const [isShown, setShown] = useState(false);
 
   const handleLanguageChange = (selectedLanguage) => {
