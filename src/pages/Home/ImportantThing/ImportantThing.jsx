@@ -37,15 +37,15 @@ export default function ImportantThing() {
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    gsap.to(".slider", {
-      scrollTrigger: {
-        trigger: ".slider-wrapper",
-        start: "top center",
-        end: "95% center",
-        pin: ".slider",
-        pinSpacer: false,
-      },
-    });
+    // gsap.to(".slider", {
+    //   scrollTrigger: {
+    //     trigger: ".slider-wrapper",
+    //     start: "top center",
+    //     end: "95% center",
+    //     pin: ".slider",
+    //     pinSpacer: false,
+    //   },
+    // });
 
     // gsap.to('.slider__title-2', {
     //   transform: 'translateY(-100%)',
@@ -72,7 +72,7 @@ export default function ImportantThing() {
     <section className="important-thing">
       <div className="slider-wrapper">
         <div className="slider">
-          <h3 className="book slider__title">
+          <h3 className="book slider__title slider__title-1">
             <motion.p
               variants={animation(-100)}
               initial="initial"
