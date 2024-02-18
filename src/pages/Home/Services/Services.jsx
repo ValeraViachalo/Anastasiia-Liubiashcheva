@@ -10,27 +10,38 @@ import gsap from "gsap";
 export default function Services() {
   const [imageHover, setImageHover] = useState();
   const image = useRef();
+  let xMoveContainer = useRef();
+  let yMoveContainer = useRef();
+  let rotateContainer = useRef();
 
-  const spring = {
-    stiffness: 100,
-    damping: 25,
-    mass: 0.1,
+  const mapRange = (value, in_min, in_max, out_min, out_max) => {
+    return (
+      ((value - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+    );
   };
 
-  const mousePosition = {
-    x: useSpring(0, spring),
-    y: useSpring(0, spring),
-    rotare: useSpring(0, spring),
-  };
+  useGSAP(() => {
+    xMoveContainer.current = gsap.quickTo(image.current, "left", {
+      duration: 1.5,
+      ease: "power4",
+    });
+    yMoveContainer.current = gsap.quickTo(image.current, "top", {
+      duration: 1.5,
+      ease: "power4",
+    });
+    rotateContainer.current = gsap.quickTo(image.current, "rotation", {
+      duration: 1.5,
+      ease: "power4",
+      min: -15,
+      max: 6,
+    });
+  });
 
-  const mouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const targetX = clientX - (window.innerWidth / 2) * 0.01;
-    const targetY = clientY - (window.innerWidth / 1.5) * 0.3;
-    const rotate = clientX - (window.innerWidth / 500) * 0.1 - 80;
-    mousePosition.x.set(targetX);
-    mousePosition.y.set(targetY);
-    mousePosition.rotare.set(rotate);
+  const moveItems = (x, y) => {
+    xMoveContainer.current(x);
+    yMoveContainer.current(y);
+    let rotation = mapRange(x, 0, window.innerWidth, -25, 6); // перетворюємо x в діапазон обертання від -15 до 6 градусів
+    rotateContainer.current(rotation);
   };
 
   return (
@@ -38,28 +49,6 @@ export default function Services() {
       className="services container"
       // onMouseMove={(e) => mouseMove(e)}
     >
-      
-      <div className="titles">
-        <p className="body-text-2 uppercase description-title">Description</p>
-        <p className="body-text-2 uppercase feedback-title">Feedback</p>
-        <h5 className="services-title">I can help →</h5>
-      </div>
-      <div className="left">
-        <div className="description">
-          <p className="body-text-3">
-            Send inquiry/contact about personal and business growth coaching
-            options and project support Apply for mentoring hours Send a
-            professional inquiry
-          </p>
-        </div>
-        <div className="feedback">
-          <p className="body-text-3">
-            <span className="qoute">“</span> you’re the first person I ever
-            trusted with my vision
-          </p>
-        </div>
-      </div>
-      <div className="right">
       <motion.div
         className="services__image"
         ref={image}
@@ -84,7 +73,33 @@ export default function Services() {
           )}
         </AnimatePresence>
       </motion.div>
-        <ul className="services__list">
+      <div className="titles">
+        <p className="body-text-2 uppercase description-title">Description</p>
+        <p className="body-text-2 uppercase feedback-title">Feedback</p>
+        <h5 className="services-title">I can help →</h5>
+      </div>
+      <div className="left">
+        <div className="description">
+          <p className="body-text-3">
+            Send inquiry/contact about personal and business growth coaching
+            options and project support Apply for mentoring hours Send a
+            professional inquiry
+          </p>
+        </div>
+        <div className="feedback">
+          <p className="body-text-3">
+            <span className="qoute">“</span> you’re the first person I ever
+            trusted with my vision
+          </p>
+        </div>
+      </div>
+      <div className="right">
+        <ul
+          className="services__list"
+          onMouseMove={(e) => {
+            moveItems(e.clientX, e.clientY);
+          }}
+        >
           {sevicesList.map((currS, i) => (
             <li
               className="services__item body-text-3 uppercase"
