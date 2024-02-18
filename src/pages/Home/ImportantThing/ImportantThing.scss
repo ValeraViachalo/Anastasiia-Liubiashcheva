@@ -7,11 +7,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    height: 30vw;
+    position: sticky;
+    top: 50%;
 
     &-wrapper {
-      height: 150lvh;
+      height: 200lvh;
       width: 100vw;
       display: flex;
       flex-direction: column;
@@ -25,7 +25,14 @@
       overflow: hidden;
     }
 
-    &__title-2 {
+    &__title{
+      &-1 {
+        position: relative;
+      overflow: hidden;
+
+      }
+
+      &-2 {
       transform: translateY(-110%);
       width: 96vw;
 
@@ -42,16 +49,17 @@
           text-align: start;
         }
       }
-    }
-    h3 {
-      overflow: hidden;
-      position: relative;
-    }
+    }}
+    // h3 {
+    //   position: relative;
+    // }
   }
 
   &__wrapper {
     @include grid();
-    margin-top: 3vw;
+    // margin-top: 3vw;
+    transform: translateY(-16%);
+
 
     .left {
       grid-column: 1/5;

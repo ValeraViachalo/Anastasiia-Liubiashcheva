@@ -17,6 +17,9 @@
   &__line {
     position: absolute;
 
+    clip-path: inset(100% 0 0 0);
+    opacity: 0;
+
     transform: translateY(-50%);
     height: 160lvh;
     width: 0.1vw;

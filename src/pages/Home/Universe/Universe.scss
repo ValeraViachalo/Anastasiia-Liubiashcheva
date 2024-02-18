@@ -148,6 +148,14 @@
         gap: 1vw;
       }
 
+      &__title {
+        margin-bottom: 2vw;
+
+        &-2 {
+          margin: 0 0 2vw 2vw;
+        }
+      }
+
       &-1 {
         grid-column: 1/5;
       }

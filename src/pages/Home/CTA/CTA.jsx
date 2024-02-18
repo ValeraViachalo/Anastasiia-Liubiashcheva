@@ -26,7 +26,7 @@ export default function CTA() {
         end: '70% center',
         scrub: true,
       }
-    }, 0)
+    })
   })
 
   return (

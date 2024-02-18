@@ -36,32 +36,9 @@ export default function Services() {
   return (
     <section
       className="services container"
-      onMouseMove={(e) => mouseMove(e)}
+      // onMouseMove={(e) => mouseMove(e)}
     >
-      <motion.div
-        className="services__image"
-        ref={image}
-        style={{
-          x: mousePosition.x,
-          y: mousePosition.y,
-          // rotate: mousePosition.rotare,
-        }}
-      >
-        <AnimatePresence mode="popLayout">
-          {imageHover && (
-            <motion.img
-              alt="services"
-              src={imageHover}
-              className="services__image-item"
-              variants={ServicesAnim.Image}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              key={imageHover}
-            />
-          )}
-        </AnimatePresence>
-      </motion.div>
+      
       <div className="titles">
         <p className="body-text-2 uppercase description-title">Description</p>
         <p className="body-text-2 uppercase feedback-title">Feedback</p>
@@ -83,6 +60,30 @@ export default function Services() {
         </div>
       </div>
       <div className="right">
+      <motion.div
+        className="services__image"
+        ref={image}
+        // style={{
+        //   x: mousePosition.x,
+        //   y: mousePosition.y,
+        //   rotate: mousePosition.rotare,
+        // }}
+      >
+        <AnimatePresence mode="popLayout">
+          {imageHover && (
+            <motion.img
+              alt="services"
+              src={imageHover}
+              className="services__image-item"
+              variants={ServicesAnim.Image}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              key={imageHover}
+            />
+          )}
+        </AnimatePresence>
+      </motion.div>
         <ul className="services__list">
           {sevicesList.map((currS, i) => (
             <li
