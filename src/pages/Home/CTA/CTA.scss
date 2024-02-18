@@ -10,9 +10,10 @@
   background-repeat: no-repeat;
   width: 100vw;
   height: 180lvh;
-  margin-top: 1vw;
+  margin-top: 3vw;
   position: relative;
   color: $c-white;
+  z-index: 0;
 
   &__line {
     position: absolute;

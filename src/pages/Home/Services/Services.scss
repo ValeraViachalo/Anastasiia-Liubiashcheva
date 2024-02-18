@@ -3,14 +3,14 @@
 .services {
   @include grid();
   position: relative;
+  z-index: 2;
   margin-top: 5vw;
-
+  
   .titles {
     @include grid();
     align-items: end;
     grid-column: 1/13;
     padding-bottom: 0.5vw;
-    margin-bottom: 1vw;
     border-bottom: 0.1vw solid;
 
 
@@ -34,6 +34,7 @@
     .description,
     .feedback {
       width: 50%;
+      margin-top: 1vw;
 
       .qoute {
         margin-right: 3vw;
@@ -45,13 +46,20 @@
     grid-column: 7/13;
     margin-left: 0.3vw;
     position: relative;
+
   }
 
   &__image {
-    position: absolute;
+    // position: absolute;
     right: 8vw;
     width: 7.7vw;
     height: 10.6vw;
+
+    position: fixed;
+    top: 50%;
+    // left: 50%;
+    transform: translate(-50%, -50%);
+    // z-index: 1000;
     
     &-item {
       transform: rotate(15deg);
@@ -78,10 +86,6 @@
       z-index: -2;
     }
 
-    &:first-of-type {
-      padding: 0 0 1vw;
-    }
-
     &-left {
       display: flex;
       gap: 3vw;
@@ -90,5 +94,6 @@
     &-right {
       color: $g-70;
     }
+
   }
 }
