@@ -154,7 +154,7 @@ export default function ImportantThing() {
             <br />
             <span className="title__to-left">
               {t("space")}
-              <span className="figure">{t("for")}</span> {t("your")}
+              <span className="figure">{' '}{t("for")}{' '}</span> {t("your")}
             </span>
             <br />
             {t("business vision ツ")}

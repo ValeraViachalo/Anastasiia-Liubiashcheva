@@ -25,32 +25,35 @@ export default function Footer() {
           </li>
         </ul>
 
-        <ul className="socials">
+        <div className="socials">
           <p className="body-text-2 socials__title">Socials</p>
-          <li className="socials__item">
-            <a
-              href="https://www.instagram.com/liubiashcheva__?igsh=dXpiMmYwbmF0djI5&utm_source=qr"
-              className="link-ul body-text-2"
-              target="_blank"
-            >
-              Instagram
-            </a>
-          </li>
-          <li className="socials__item">
-            <a href="/" className="link-ul body-text-2" target="_blank">
-              YouTube
-            </a>
-          </li>
-          <li className="socials__item">
-            <a
-              href="https://t.me/liubiashcheva"
-              className="link-ul body-text-2"
-              target="_blank"
-            >
-              Telegram
-            </a>
-          </li>
-        </ul>
+          <ul className="socials__list">
+
+            <li className="socials__item">
+              <a
+                href="https://www.instagram.com/liubiashcheva__?igsh=dXpiMmYwbmF0djI5&utm_source=qr"
+                className="link-ul body-text-2"
+                target="_blank"
+              >
+                Instagram
+              </a>
+            </li>
+            <li className="socials__item">
+              <a href="/" className="link-ul body-text-2" target="_blank">
+                YouTube
+              </a>
+            </li>
+            <li className="socials__item">
+              <a
+                href="https://t.me/liubiashcheva"
+                className="link-ul body-text-2"
+                target="_blank"
+              >
+                Telegram
+              </a>
+            </li>
+          </ul>
+        </div>
 
         <div className="bottom">
           <div className="footer__ukraine">

@@ -10,6 +10,7 @@ import gsap from "gsap";
 export default function Services() {
   const [imageHover, setImageHover] = useState();
   const image = useRef();
+  const list = useRef();
   let xMoveContainer = useRef();
   let yMoveContainer = useRef();
   let rotateContainer = useRef();
@@ -38,9 +39,10 @@ export default function Services() {
   });
 
   const moveItems = (x, y) => {
-    xMoveContainer.current(x);
+    // xMoveContainer.current(x);
     yMoveContainer.current(y);
-    let rotation = mapRange(x, 0, window.innerWidth, -25, 6); // перетворюємо x в діапазон обертання від -15 до 6 градусів
+    let rotation = mapRange(y, 0, list.current.clientHeight, -9, 16); // перетворюємо x в діапазон обертання від -15 до 6 градусів
+
     rotateContainer.current(rotation);
   };
 
@@ -99,6 +101,7 @@ export default function Services() {
           onMouseMove={(e) => {
             moveItems(e.clientX, e.clientY);
           }}
+          ref={list}
         >
           {sevicesList.map((currS, i) => (
             <li
