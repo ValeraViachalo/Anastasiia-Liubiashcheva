@@ -14,15 +14,15 @@ export default function Loving() {
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    gsap.to(".loving__wrapper", {
-      yPercent: 5,
-      scrollTrigger: {
-        trigger: ".loving",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+    // gsap.to(".loving__wrapper", {
+    //   yPercent: 5,
+    //   scrollTrigger: {
+    //     trigger: ".loving",
+    //     start: "top top",
+    //     end: "bottom top",
+    //     scrub: true,
+    //   },
+    // });
   });
 
   return (

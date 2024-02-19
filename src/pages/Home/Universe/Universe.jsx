@@ -68,7 +68,10 @@ export default function Universe() {
           </span>
           <br />
           {t("Universe - an ecosystem of products on the basis")}
-          <span className="figure">{' '}{t("of")}{' '}</span> {t("your")}
+          <span className="figure-of" /> 
+          <span className="figure-of__n">
+            {t("your")}
+          </span>
           <br />
           <span style={{ lineHeight: "107%" }}>
             {t("mission, vision and existing.")}
@@ -77,7 +80,7 @@ export default function Universe() {
       </div>
 
       <div className="universe-video">
-        <div className="left body-text-4">
+        <div className="left body-text-4 body-text-4--first-line">
           <p>
             <span className="body-text qoute">“</span>
             {t("you`re the first person I ever trusted with my vision")}

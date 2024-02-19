@@ -112,7 +112,19 @@ h6 {
 }
 
 .figure {
-  @extend %figure;
+  // @extend %figure;
+  &-of {
+    background: url("../../../public/images/figure/Of.svg") no-repeat center;
+    width: 5vw;
+    display: inline-block;
+    height: 7vw;
+    position: absolute;
+    transform: translate(20%, -20%);
+
+    &__n {
+      margin-left: 5vw;
+    }
+  }
 }
 
 .light {
@@ -145,6 +157,11 @@ h6 {
   &-4 {
     font-size: 0.9vw;
     letter-spacing: -0.02vw;
+    line-height: 120%;
+
+    &--first-line {
+      line-height: 90%;
+    }
   }
 
   &-5 {
