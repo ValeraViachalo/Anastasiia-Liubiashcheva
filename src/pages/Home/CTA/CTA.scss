@@ -13,6 +13,20 @@
   position: relative;
   color: $c-white;
   z-index: 0;
+  overflow-x: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -6%;
+    width: 130vw;
+    height: 24vw;
+    transform: translateY(50%);
+    background: #141313;
+    filter: blur(2.5vw);
+    z-index: 10;
+  }
 
   &__line {
     position: absolute;

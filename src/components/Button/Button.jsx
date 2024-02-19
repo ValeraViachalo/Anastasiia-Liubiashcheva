@@ -86,10 +86,10 @@ export const ButtonSecondary = ({ href, children }) => {
       <span className="link-medium text">{children}</span>
       <div className="arrow-wrapper">
         <div className="arrow">
-          <span>→</span>
+          <span>←</span>
         </div>
         <div className="arrow">
-          <span>→</span>
+          <span>←</span>
         </div>
       </div>
     </Link>

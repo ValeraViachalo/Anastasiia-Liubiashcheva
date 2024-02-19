@@ -1,11 +1,12 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Services.scss";
 import sevicesList from "../../../data/services.json";
 
-import { AnimatePresence, motion, useSpring } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ServicesAnim } from "../../../helpers/anim";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useInView } from "react-intersection-observer";
 
 export default function Services() {
   const [imageHover, setImageHover] = useState();
@@ -14,6 +15,11 @@ export default function Services() {
   let xMoveContainer = useRef();
   let yMoveContainer = useRef();
   let rotateContainer = useRef();
+  let rotation = useRef();
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
   const mapRange = (value, in_min, in_max, out_min, out_max) => {
     return (
@@ -36,45 +42,50 @@ export default function Services() {
       min: -15,
       max: 6,
     });
-  });
 
+  });
+  
   const moveItems = (x, y) => {
     // xMoveContainer.current(x);
+    rotation.current = mapRange(y, 0, list.current.clientHeight, -9, 16);
     yMoveContainer.current(y);
-    let rotation = mapRange(y, 0, list.current.clientHeight, -9, 16); // перетворюємо x в діапазон обертання від -15 до 6 градусів
 
-    rotateContainer.current(rotation);
+    rotateContainer.current(rotation.current);
   };
+
+  
 
   return (
     <section
       className="services container"
       // onMouseMove={(e) => mouseMove(e)}
+      ref={ref}
     >
-      <motion.div
-        className="services__image"
-        ref={image}
-        // style={{
-        //   x: mousePosition.x,
-        //   y: mousePosition.y,
-        //   rotate: mousePosition.rotare,
-        // }}
-      >
-        <AnimatePresence mode="popLayout">
-          {imageHover && (
-            <motion.img
-              alt="services"
-              src={imageHover}
-              className="services__image-item"
-              variants={ServicesAnim.Image}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              key={imageHover}
-            />
-          )}
-        </AnimatePresence>
-      </motion.div>
+
+        <motion.div
+          className="services__image"
+          ref={image}
+          // style={{
+          //   x: mousePosition.x,
+          //   y: mousePosition.y,
+          //   rotate: mousePosition.rotare,
+          // }}
+        >
+          <AnimatePresence mode="popLayout">
+            {imageHover && (
+              <motion.img
+                alt="services"
+                src={imageHover}
+                className="services__image-item"
+                variants={ServicesAnim.Image}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                key={imageHover}
+              />
+            )}
+          </AnimatePresence>
+        </motion.div>
       <div className="titles">
         <p className="body-text-2 uppercase description-title">Description</p>
         <p className="body-text-2 uppercase feedback-title">Feedback</p>

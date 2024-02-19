@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Logo } from "../Logo/Logo";
 import linksList from "../../data/links.json";
 

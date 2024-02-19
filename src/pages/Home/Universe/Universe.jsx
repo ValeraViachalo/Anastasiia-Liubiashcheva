@@ -5,7 +5,6 @@ import { Heart } from "../../../components/Heart/Heart";
 import { Button } from "../../../components/Button/Button";
 import gsap from "gsap";
 
-import i18n from "../../../i18n";
 import { useTranslation } from "react-i18next";
 
 export default function Universe() {
