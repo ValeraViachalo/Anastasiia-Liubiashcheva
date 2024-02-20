@@ -112,7 +112,34 @@ h6 {
 }
 
 .figure {
-  @extend %figure;
+  // @extend %figure;
+  &-of {
+    background: url("../../../public/images/figure/Of.svg") no-repeat center;
+    width: 5vw;
+    display: inline-block;
+    height: 8vw;
+    position: absolute;
+    transform: translate(20%, -20%);
+    background-size: contain;
+
+    &__n {
+      margin-left: 5vw;
+    }
+  }
+
+  &-for {
+    background: url("../../../public/images/figure/for.svg") no-repeat center;
+    width: 6.4vw;
+    display: inline-block;
+    height: 8vw;
+    position: absolute;
+    transform: translate(-20%, -20%);
+    background-size: contain;
+
+    &__n {
+      margin-left: 5.6vw;
+    }
+  }
 }
 
 .light {
@@ -145,6 +172,11 @@ h6 {
   &-4 {
     font-size: 0.9vw;
     letter-spacing: -0.02vw;
+    line-height: 120%;
+
+    &--first-line {
+      line-height: 90%;
+    }
   }
 
   &-5 {
@@ -170,4 +202,8 @@ a {
     font-weight: 400;
     line-height: 120%;
   }
+}
+
+.qoute {
+  margin-right: 4vw;
 }

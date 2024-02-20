@@ -5,13 +5,16 @@ import { Heart } from "../../../components/Heart/Heart";
 import { Button } from "../../../components/Button/Button";
 import gsap from "gsap";
 
-import i18n from "../../../i18n";
 import { useTranslation } from "react-i18next";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
 
 export default function Universe() {
   const { t } = useTranslation();
 
-  const plane1 = useRef(null);
+  const plane1 = useRef();
+  const buttonSticky = useRef();
+
   let requestAnimationFrameId = null;
   let xForce = 0;
   let yForce = 0;
@@ -53,6 +56,18 @@ export default function Universe() {
     }
   };
 
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: '.universe',
+      start: 'center bottom',
+      end: 'max',
+      pin: buttonSticky.current,
+      pinSpacing: false,
+    })
+  })
+
   return (
     <section className="universe container">
       <div
@@ -68,7 +83,10 @@ export default function Universe() {
           </span>
           <br />
           {t("Universe - an ecosystem of products on the basis")}
-          <span className="figure">{t("of")}</span> {t("your")}
+          <span className="figure-of" /> 
+          <span className="figure-of__n">
+            {t("your")}
+          </span>
           <br />
           <span style={{ lineHeight: "107%" }}>
             {t("mission, vision and existing.")}
@@ -77,7 +95,7 @@ export default function Universe() {
       </div>
 
       <div className="universe-video">
-        <div className="left body-text-4">
+        <div className="left body-text-4 body-text-4--first-line">
           <p>
             <span className="body-text qoute">“</span>
             {t("you`re the first person I ever trusted with my vision")}
@@ -139,7 +157,7 @@ export default function Universe() {
               </p>
             </div>
           </div>
-          <div className="video__contact-button">
+          <div className="video__contact-button" ref={buttonSticky}>
             <Button state="secondary">{t("Contact Me.")}</Button>
           </div>
         </div>

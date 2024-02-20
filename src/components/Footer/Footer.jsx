@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./Footer.scss";
+import { LinkBtn } from "../Button/Button";
 
 export default function Footer() {
   return (
@@ -11,46 +12,52 @@ export default function Footer() {
         <ul className="contacts">
           <li className="contacts__item">
             <p className="body-text-2 contacts__name">For collaboration</p>
-            <a href="mailto:Loving.is.my.answer@gmail.com">
-              <h6>Loving.is.my.answer@gmail.com</h6>
-            </a>
+            <h6>
+              <LinkBtn classes="/" href="mailto:Loving.is.my.answer@gmail.com">
+                Loving.is.my.answer@gmail.com
+              </LinkBtn>
+            </h6>
           </li>
           <li className="contacts__item">
             <p className="body-text-2 contacts__name">
               Telegram / iMessage / WhatsApp
             </p>
-            <a href="tel:+380993724505">
-              <h6>+38 099 372 4505</h6>
-            </a>
+            <h6>
+              <LinkBtn classes="/" href="tel:+380993724505">
+                +38 099 372 4505
+              </LinkBtn>
+            </h6>
           </li>
         </ul>
 
-        <ul className="socials">
+        <div className="socials">
           <p className="body-text-2 socials__title">Socials</p>
-          <li className="socials__item">
-            <a
-              href="https://www.instagram.com/liubiashcheva__?igsh=dXpiMmYwbmF0djI5&utm_source=qr"
-              className="link-ul body-text-2"
-              target="_blank"
-            >
-              Instagram
-            </a>
-          </li>
-          <li className="socials__item">
-            <a href="/" className="link-ul body-text-2" target="_blank">
-              YouTube
-            </a>
-          </li>
-          <li className="socials__item">
-            <a
-              href="https://t.me/liubiashcheva"
-              className="link-ul body-text-2"
-              target="_blank"
-            >
-              Telegram
-            </a>
-          </li>
-        </ul>
+          <ul className="socials__list">
+            <li className="socials__item">
+              <LinkBtn
+                target="_blank"
+                classes="link-ul body-text-2"
+                href="https://www.instagram.com/liubiashcheva__?igsh=dXpiMmYwbmF0djI5&utm_source=qr"
+              >
+                Instagram
+              </LinkBtn>
+            </li>
+            <li className="socials__item">
+              <LinkBtn target="_blank" classes="link-ul body-text-2" href="/#">
+                YouTube
+              </LinkBtn>
+            </li>
+            <li className="socials__item">
+              <LinkBtn
+                target="_blank"
+                classes="link-ul body-text-2"
+                href="https://t.me/liubiashcheva"
+              >
+                Telegram
+              </LinkBtn>
+            </li>
+          </ul>
+        </div>
 
         <div className="bottom">
           <div className="footer__ukraine">
@@ -58,15 +65,15 @@ export default function Footer() {
           </div>
 
           <p className="body-text-5 footer__rights">
-            ©2024. {" "}
-            <a
-            href="https://www.behance.net/horskyir"
-            className="link-ul"
-            target="_blank"
-          >
-            Horskyi Design
-          </a>
-          {". "}All rights reserved.
+            ©2024.{" "}
+            <LinkBtn
+              href="https://www.behance.net/horskyir"
+              classes="link-ul"
+              target="_blank"
+            >
+              Horskyi Design
+            </LinkBtn>
+            {". "}All rights reserved.
           </p>
 
           <a

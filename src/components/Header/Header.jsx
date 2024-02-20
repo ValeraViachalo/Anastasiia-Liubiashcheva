@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Logo } from "../Logo/Logo";
 import linksList from "../../data/links.json";
 
@@ -16,11 +16,12 @@ import i18n from "../../i18n";
 
 import { AnimatePresence, motion } from "framer-motion";
 import classNames from "classnames";
+import { LinkBtn } from "../Button/Button";
 
 export const Header = () => {
   const { t } = useTranslation();
 
-  const [language, setLanguage] = useLocalStorage("language", "ua");
+  const [language, setLanguage] = useLocalStorage("language", "en");
   const [isShown, setShown] = useState(false);
 
   const handleLanguageChange = (selectedLanguage) => {
@@ -60,27 +61,20 @@ export const Header = () => {
       >
         <div className="left">
           <Logo className="header__logo" color="#212529" />
-          <Link to="/" className="body-text-5 link-medium uppercase">
+          <LinkBtn href="/">
             {t("Work With Me")}
-          </Link>
+          </LinkBtn>
         </div>
 
         <div className="header__wrapper">
           <ul className="header__list-links">
             {linksList.map((currLink, index) => (
-              <li key={`header_link_${index}`} className="header__link-wrapper">
-                <Link
-                  className="body-text-5 link-medium uppercase header__link"
-                  to={currLink.link}
+              <li key={`header_link_${index}`}>
+                <LinkBtn
+                  href={currLink.link}
                 >
-                  {t(currLink.name)}
-                </Link>
-                <Link
-                  className="body-text-5 link-medium uppercase header__link"
-                  to={currLink.link}
-                >
-                  {t(currLink.name)}
-                </Link>
+                  {currLink.name}
+                </LinkBtn>
               </li>
             ))}
           </ul>
@@ -118,8 +112,11 @@ export const Header = () => {
           </div>
 
           <Link className="body-text-5 link-medium uppercase">
-            {t("Contact")}
           </Link>
+
+          <LinkBtn href="/">
+            {t("Contact")}
+          </LinkBtn>
         </div>
 
         <div className="header__nav">

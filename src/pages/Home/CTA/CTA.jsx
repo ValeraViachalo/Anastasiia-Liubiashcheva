@@ -20,6 +20,7 @@ export default function CTA() {
     gsap.to('.cta__line', {
       clipPath: 'inset(0% 0 0 0)',
       opacity: 1,
+      stagger: 0.1,
       scrollTrigger: {
         trigger: '.cta',
         start: '5% center',
@@ -40,8 +41,8 @@ export default function CTA() {
         </div>
         <div className="center">
           <h5 className="light cta__title">
-            Stop doubting & unlock your{" "}
-            <span className="italic semiBold">full potential now</span>
+            Stop doubting & unlock your full{" "}
+            <span className="italic semiBold"> potential now</span>
           </h5>
 
           <div className="cta__button">

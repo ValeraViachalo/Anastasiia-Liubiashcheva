@@ -3,16 +3,16 @@
 .loving {
   // margin-top: 10vw;
   width: 100vw;
-  height: 223lvh;
-  background: url("../../../../public/images/Home/loving.webp") no-repeat;
+  height: 222.7lvh;
+  background: url("../../../../public/images/Home/loving.webp") no-repeat center;
   background-size: cover;
-  background-position: 50% 100%;
+  background-position-y: 100%;
   position: relative;
 
   &__wrapper {
     position: absolute;
     transform: translate(-50%, -50%);
-    bottom: 10%;
+    bottom: -6%;
     left: 50%;
     text-align: center;
     mix-blend-mode: exclusion;
