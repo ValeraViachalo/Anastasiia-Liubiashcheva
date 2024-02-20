@@ -122,6 +122,7 @@
 
         &__contact-button {
           position: absolute;
+          z-index: 101;
           right: 0;
           bottom: 40%;
         }

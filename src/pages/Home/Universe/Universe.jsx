@@ -6,11 +6,15 @@ import { Button } from "../../../components/Button/Button";
 import gsap from "gsap";
 
 import { useTranslation } from "react-i18next";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
 
 export default function Universe() {
   const { t } = useTranslation();
 
-  const plane1 = useRef(null);
+  const plane1 = useRef();
+  const buttonSticky = useRef();
+
   let requestAnimationFrameId = null;
   let xForce = 0;
   let yForce = 0;
@@ -51,6 +55,18 @@ export default function Universe() {
       requestAnimationFrameId = null;
     }
   };
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: '.universe',
+      start: 'center bottom',
+      end: 'max',
+      pin: buttonSticky.current,
+      pinSpacing: false,
+    })
+  })
 
   return (
     <section className="universe container">
@@ -141,7 +157,7 @@ export default function Universe() {
               </p>
             </div>
           </div>
-          <div className="video__contact-button">
+          <div className="video__contact-button" ref={buttonSticky}>
             <Button state="secondary">{t("Contact Me.")}</Button>
           </div>
         </div>

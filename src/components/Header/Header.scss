@@ -61,23 +61,6 @@
     }
   }
 
-  &__link {
-    &-wrapper {
-      // @include hoverForLinks();
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      height: 1vw;
-
-      &:hover {
-        .header__link {
-          transform: translateY(-100%);
-          transition: all 0.4s ease;
-        }
-      }
-    }
-  }
-
   &__nav {
     @include mq($tablet + 1, ">") {
       display: none;

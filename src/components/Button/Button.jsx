@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import "./Button.scss";
@@ -72,6 +72,7 @@ export const Button = ({ href, children, state }) => {
     </Link>
   );
 };
+
 export const ButtonSecondary = ({ href, children }) => {
   return (
     <Link to={href} className="button button--seconadry">
@@ -92,6 +93,38 @@ export const ButtonSecondary = ({ href, children }) => {
           <span>←</span>
         </div>
       </div>
+    </Link>
+  );
+};
+
+export const LinkBtn = ({
+  href,
+  children,
+  classes = "body-text-5 link-medium uppercase",
+  ...rest
+}) => {
+  const wrapperRef = useRef();
+  const linkRef = useRef();
+
+  useEffect(() => {
+    if (wrapperRef.current && linkRef.current) {
+      const fontSize = parseFloat(window.getComputedStyle(linkRef.current).fontSize);
+      wrapperRef.current.style.height = `${fontSize * 1.2}px`;
+    }
+  });
+
+  useEffect(() => {
+    console.log(linkRef);
+  }, [linkRef])
+
+  return (
+    <Link to={href} ref={wrapperRef} className="link-wrapper" {...rest}>
+      <span ref={linkRef} className={`${classes} link-button`}>
+        {children}
+      </span>
+      <span className={`${classes} link-button`}>
+        {children}
+      </span>
     </Link>
   );
 };

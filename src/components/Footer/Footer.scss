@@ -8,6 +8,7 @@
   height: 80lvh;
   color: $c-white;
   position: relative;
+  z-index: 100;
   padding-top: 1vw;
 
   &__wrapper {
@@ -83,6 +84,7 @@
 
   &__rights {
     grid-column: 4/7;
+    display: flex;
 
     .link-ul {
       font: inherit;
