@@ -58,6 +58,21 @@ export const Header = {
       transition,
     },
   },
+  ContactBtn: {
+    initial: {
+      transform: 'translateY(100%)',
+      transition,
+    },
+    animate: {
+      transform: 'translateY(0%)',
+      transition,
+    },
+    exit: {
+      transform: 'translateY(100%)',
+      transition,
+    },
+
+  }
 };
 
 export const CounterAnim = {

@@ -110,3 +110,23 @@
     }
   }
 }
+
+.contact-button {
+  position: fixed;
+  bottom: 0;
+  right: 1.6vw;
+  mix-blend-mode: difference;
+  z-index: 101;
+  color: $c-white;
+
+  .text {
+    &::after {
+      background: $c-black;
+      width: 100%;
+    }
+  }
+
+  path {
+    fill: $c-white;
+  }
+}

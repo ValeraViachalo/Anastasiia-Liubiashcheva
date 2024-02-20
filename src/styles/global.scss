@@ -6,6 +6,7 @@
 body {
   @extend %body-text;
   color: $g-100;
+  background-color: $c-white;
   overflow-x: hidden;
   opacity: 1;
   position: relative;

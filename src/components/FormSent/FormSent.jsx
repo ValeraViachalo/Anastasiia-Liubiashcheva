@@ -118,10 +118,9 @@ const FormSent = () => {
       className="container"
     >
       <div className="form">
-        <h2 className="form__title">Зворотній зв’язок</h2>
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <legend className="form-text">Ім’я та призвище:</legend>
+            <legend className="form-text">[ Your name ]*</legend>
             <div className="form-container">
               <div className="input-container__input">
                 <input
@@ -136,50 +135,17 @@ const FormSent = () => {
                 {errors.firstName && (
                   <p className="input-message error">{errors.firstName}</p>
                 )}
-                {isFormValid !== null && !errors.firstName && (
-                  <p
-                    className={`input-message ${
-                      isFormValid ? "success" : "error"
-                    }`}
-                  >
-                    {isFormValid ? "Вірно" : "Не вірно"}
-                  </p>
-                )}
-              </div>
-              <div className="input-container__input">
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  className="input-container__input--item"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                />
-                {isFormValid !== null && !errors.lastName && (
-                  <p
-                    className={`input-message ${
-                      isFormValid ? "success" : "error"
-                    }`}
-                  >
-                    {isFormValid ? "Вірно" : "Не вірно"}
-                  </p>
-                )}
               </div>
             </div>
           </fieldset>
+          
           <div className="form-telephone">
             <label className="form-text" htmlFor="phoneNumber">
-              Номер телефону
+              [ Your phone ]*
             </label>
             <div className="input-container phone">
-              <div className="number">
-                <div className="number-image"></div>
-                <span>+380</span>
-              </div>
               <InputMask
-                placeholder="Номер телефону"
-                mask="999999999"
+                mask="9999999999"
                 maskChar=""
                 value={formData.phoneNumber}
                 onChange={handleChange}
@@ -199,24 +165,36 @@ const FormSent = () => {
           {errors.phoneNumber && (
             <p className="input-message error">{errors.phoneNumber}</p>
           )}
-          {isFormValid !== null && !errors.phoneNumber && (
-            <p className={`input-message ${isFormValid ? "success" : "error"}`}>
-              {isFormValid ? "Вірно" : "Не вірно"}
-            </p>
-          )}
+          <fieldset>
+            <legend className="form-text">[ Your email ]*</legend>
+            <div className="form-container">
+              <div className="input-container__input">
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  className="input-container__input--item"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                />
+                {errors.firstName && (
+                  <p className="input-message error">{errors.firstName}</p>
+                )}
+              </div>
+            </div>
+          </fieldset>
           <div>
             <label className="form-text" htmlFor="description">
-              Ваше питання
+              Your request
             </label>
             <div className="input-container">
               <textarea
-                placeholder="Розкажіть детальніше про ваше запитання"
                 className="input"
                 id="description"
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                required
               />
             </div>
             {isFormValid !== null && !errors.description && (

@@ -16,13 +16,14 @@ import i18n from "../../i18n";
 
 import { AnimatePresence, motion } from "framer-motion";
 import classNames from "classnames";
-import { LinkBtn } from "../Button/Button";
+import { Button, LinkBtn } from "../Button/Button";
 
 export const Header = () => {
   const { t } = useTranslation();
 
   const [language, setLanguage] = useLocalStorage("language", "en");
   const [isShown, setShown] = useState(false);
+  const [isShownBtn, setShownBtn] = useState(false);
 
   const handleLanguageChange = (selectedLanguage) => {
     i18n.changeLanguage(selectedLanguage);
@@ -49,10 +50,19 @@ export const Header = () => {
       onEnter: () => setShown(true),
       onLeaveBack: () => setShown(false),
     });
+   
+    ScrollTrigger.create({
+      trigger: ".universe",
+      start: "15% center",
+      end: "15% center",
+      scrub: true,
+      onEnter: () => setShownBtn(true),
+      onLeaveBack: () => setShownBtn(false),
+    });
   });
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="popLayout">
       <motion.header
         className="header"
         variants={HeaderAnim.HomePresence}
@@ -123,6 +133,15 @@ export const Header = () => {
           <Nav />
         </div>
       </motion.header>
+
+      <motion.div
+        className="contact-button"
+        variants={HeaderAnim.ContactBtn}
+        initial="initial"
+        animate={isShownBtn ? "animate" : "exit"}
+      >
+        <Button state="secondary">{t("Contact Me.")}</Button>
+      </motion.div>
     </AnimatePresence>
   );
 };

@@ -56,18 +56,6 @@ export default function Universe() {
     }
   };
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  useGSAP(() => {
-    ScrollTrigger.create({
-      trigger: '.universe',
-      start: 'center bottom',
-      end: 'max',
-      pin: buttonSticky.current,
-      pinSpacing: false,
-    })
-  })
-
   return (
     <section className="universe container">
       <div
@@ -157,9 +145,9 @@ export default function Universe() {
               </p>
             </div>
           </div>
-          <div className="video__contact-button" ref={buttonSticky}>
-            <Button state="secondary">{t("Contact Me.")}</Button>
-          </div>
+          {/* <div className="video__contact-button" ref={buttonSticky}>
+                <Button state="secondary">{t("Contact Me.")}</Button>
+              </div> */}
         </div>
       </div>
 
