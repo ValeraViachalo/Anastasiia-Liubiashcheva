@@ -8,9 +8,9 @@ const resources = {
   en: {
     translation: en,
   },
-  ua: {
-    translation: ua,
-  },
+  // ua: {
+  //   translation: ua,
+  // },
 };
 
 i18n.use(initReactI18next).init({
