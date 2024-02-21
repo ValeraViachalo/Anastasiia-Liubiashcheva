@@ -46,7 +46,7 @@ export default function CTA() {
           </h5>
 
           <div className="cta__button">
-            <ButtonSecondary state="primary-ar">Contact me.</ButtonSecondary>
+            <ButtonSecondary href="/contact" state="primary-ar">Contact me.</ButtonSecondary>
             <span className="cta__line" />
             <span className="cta__line" />
           </div>

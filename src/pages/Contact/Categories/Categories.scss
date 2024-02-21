@@ -1,0 +1,21 @@
+@import "/src/styles/global.scss";
+
+.categories {
+  margin-top: 4.8vw;
+  @include grid();
+
+  &__wrapper {
+    grid-column: 7/13;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 2vw;
+  }
+
+  &__item {
+    padding-top: 1.4vw;
+    border-top: 0.2vw solid;
+    width: 32%;
+  }
+}

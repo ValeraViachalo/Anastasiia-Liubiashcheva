@@ -7,7 +7,8 @@ import Home from "./pages/Home/Home";
 import ReactLenis from "@studio-freight/react-lenis";
 import { Header } from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import FormSent from "./components/FormSent/FormSent";
+import FormSent from "./pages/Contact/FormSent/FormSent";
+import Contact from "./pages/Contact/Contact";
 
 const queryC = new QueryClient();
 
@@ -20,10 +21,10 @@ function App() {
           index: true,
           element: <Home />,
         },
-        // {
-        //   path: 'blog',
-        //   element: <Blog />,
-        // },
+        {
+          path: 'contact',
+          element: <Contact />,
+        },
         // {
         //   path: 'blogs',
         //   children: [
@@ -43,16 +44,15 @@ function App() {
 
   const location = useLocation();
 
+
   return (
     <QueryClientProvider client={queryC}>
       <ReactLenis root options={{ duration: 1.5 }}>
         <main>
           <Header />
-          <FormSent />
           <AnimatePresence mode="wait" initial={false}>
             {React.cloneElement(element, { key: location.pathname })}
           </AnimatePresence>
-          <Footer />
         </main>
       </ReactLenis>
     </QueryClientProvider>

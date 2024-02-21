@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import InputMask from "react-input-mask";
 import "./FormSent.scss";
 
-import sendMessage from "../../requests/sendMessage.js";
-import formatFormData from "../../helpers/formatFormData.js";
+import sendMessage from "../../../requests/sendMessage.js";
+import formatFormData from "../../../helpers/formatFormData.js";
 
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const FormSent = () => {
   const [formData, setFormData] = useState({
     firstName: "",
-    lastName: "",
     phoneNumber: "",
+    email: "",
     description: "",
   });
 
@@ -55,7 +56,7 @@ const FormSent = () => {
     // Функція для скидання форми на початковий стан
     setFormData({
       firstName: "",
-      lastName: "",
+      email: "",
       phoneNumber: "",
       description: "",
     });
@@ -111,20 +112,16 @@ const FormSent = () => {
   }, [errorMessage]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="container"
-    >
-      <div className="form">
-        <form onSubmit={handleSubmit}>
-          <fieldset>
-            <legend className="form-text">[ Your name ]*</legend>
-            <div className="form-container">
-              <div className="input-container__input">
+    <div className="form">
+      <p className="form__title">Share your contact →</p>
+      <form onSubmit={handleSubmit} className="form__wrapper">
+        <fieldset>
+          <div className="form-container">
+            <div className="input-container__input">
+              <h6>
                 <input
                   type="text"
+                  placeholder="[ Your name ]*"
                   id="firstName"
                   name="firstName"
                   className="input-container__input--item"
@@ -132,18 +129,17 @@ const FormSent = () => {
                   onChange={handleChange}
                   required
                 />
-                {errors.firstName && (
-                  <p className="input-message error">{errors.firstName}</p>
-                )}
-              </div>
+              </h6>
+              {errors.firstName && (
+                <p className="input-message error">{errors.firstName}</p>
+              )}
             </div>
-          </fieldset>
-          
-          <div className="form-telephone">
-            <label className="form-text" htmlFor="phoneNumber">
-              [ Your phone ]*
-            </label>
-            <div className="input-container phone">
+          </div>
+        </fieldset>
+
+        <div className="form-telephone">
+          <div className="input-container phone">
+            <h6>
               <InputMask
                 mask="9999999999"
                 maskChar=""
@@ -152,7 +148,8 @@ const FormSent = () => {
               >
                 {(inputProps) => (
                   <input
-                    className="input-phone"
+                    placeholder="[ Your phone ]*"
+                    className="input-phone input-container__input--item"
                     type="text"
                     id="phoneNumber"
                     name="phoneNumber"
@@ -160,58 +157,59 @@ const FormSent = () => {
                   />
                 )}
               </InputMask>
-            </div>
+            </h6>
           </div>
-          {errors.phoneNumber && (
-            <p className="input-message error">{errors.phoneNumber}</p>
-          )}
-          <fieldset>
-            <legend className="form-text">[ Your email ]*</legend>
-            <div className="form-container">
-              <div className="input-container__input">
+        </div>
+        <fieldset>
+          <legend className="form-text"></legend>
+          <div className="form-container">
+            <div className="input-container__input">
+              <h6>
                 <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
+                  placeholder="[ Your email ]*"
+                  type="email"
+                  id="email"
+                  name="email"
                   className="input-container__input--item"
-                  value={formData.firstName}
+                  value={formData.email}
                   onChange={handleChange}
                   required
                 />
-                {errors.firstName && (
-                  <p className="input-message error">{errors.firstName}</p>
-                )}
-              </div>
+              </h6>
+              {errors.email && (
+                <p className="input-message error">{errors.email}</p>
+              )}
             </div>
-          </fieldset>
-          <div>
-            <label className="form-text" htmlFor="description">
-              Your request
-            </label>
-            <div className="input-container">
+          </div>
+        </fieldset>
+        <div>
+          <div className="input-container">
+            <h6>
               <textarea
-                className="input"
+                placeholder="Your request"
+                className="input input-container__input--item input-container__input--item-textarea"
                 id="description"
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
               />
-            </div>
-            {isFormValid !== null && !errors.description && (
-              <p
-                className={`input-message ${isFormValid ? "success" : "error"}`}
-              >
-                {isFormValid ? "Вірно" : "Не вірно"}
-              </p>
-            )}
+            </h6>
           </div>
-          <button className="form--button" type="submit" id="submitButton">
-            Відправити
-          </button>
-        </form>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
-      </div>
-    </motion.div>
+        </div>
+        {/* <button className="form--button" type="submit" id="submitButton">
+            Send
+          </button> */}
+
+        <button className="form--button button" type="submit" id="submitButton">
+          <div className="arrow-wrapper">
+            <div className="arrow">→</div>
+            <div className="arrow">→</div>
+          </div>
+          <h5 className="link-ul text">Send</h5>
+        </button>
+      </form>
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+    </div>
   );
 };
 

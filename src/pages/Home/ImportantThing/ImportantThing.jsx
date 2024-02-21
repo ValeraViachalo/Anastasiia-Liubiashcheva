@@ -198,7 +198,7 @@ export default function ImportantThing() {
               </ul>
 
               <div className="steps__button">
-                <Button state="primary" href="/">
+                <Button state="primary" href="/contact">
                   {t("Work with me")}
                 </Button>
               </div>

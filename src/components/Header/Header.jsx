@@ -5,7 +5,7 @@ import linksList from "../../data/links.json";
 import "./Header.scss";
 import { Header as HeaderAnim } from "../../helpers/anim";
 import { Nav } from "../Nav/Nav";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -20,6 +20,10 @@ import { Button, LinkBtn } from "../Button/Button";
 
 export const Header = () => {
   const { t } = useTranslation();
+
+  const { pathname } = useLocation();
+
+  const isHomePage = pathname.split("/")[1];
 
   const [language, setLanguage] = useLocalStorage("language", "en");
   const [isShown, setShown] = useState(false);
@@ -42,24 +46,26 @@ export const Header = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    ScrollTrigger.create({
-      trigger: ".hero",
-      start: "50% top",
-      end: "50% top",
-      scrub: true,
-      onEnter: () => setShown(true),
-      onLeaveBack: () => setShown(false),
-    });
-   
-    ScrollTrigger.create({
-      trigger: ".universe",
-      start: "15% center",
-      end: "15% center",
-      scrub: true,
-      onEnter: () => setShownBtn(true),
-      onLeaveBack: () => setShownBtn(false),
-    });
-  });
+    if (!isHomePage) {
+      ScrollTrigger.create({
+        trigger: ".hero",
+        start: "50% top",
+        end: "50% top",
+        scrub: true,
+        onEnter: () => setShown(true),
+        onLeaveBack: () => setShown(false),
+      });
+
+      ScrollTrigger.create({
+        trigger: ".universe",
+        start: "15% center",
+        end: "15% center",
+        scrub: true,
+        onEnter: () => setShownBtn(true),
+        onLeaveBack: () => setShownBtn(false),
+      });
+    }
+  }, [isHomePage]);
 
   return (
     <AnimatePresence mode="popLayout">
@@ -67,24 +73,20 @@ export const Header = () => {
         className="header"
         variants={HeaderAnim.HomePresence}
         initial="initial"
-        animate={isShown ? "animate" : "exit"}
+        animate={isShown || isHomePage ? "animate" : "exit"}
       >
         <div className="left">
-          <Logo className="header__logo" color="#212529" />
-          <LinkBtn href="/">
-            {t("Work With Me")}
-          </LinkBtn>
+          <Link to="/" className="header__logo">
+            <Logo className="header__logo-item" color="#212529" />
+          </Link>
+          <LinkBtn href="/contact">{t("Work With Me")}</LinkBtn>
         </div>
 
         <div className="header__wrapper">
           <ul className="header__list-links">
             {linksList.map((currLink, index) => (
-              <li key={`header_link_${index}`}>
-                <LinkBtn
-                  href={currLink.link}
-                >
-                  {currLink.name}
-                </LinkBtn>
+              <li key={`header_${index}`}>
+                <LinkBtn href={currLink.link}>{currLink.name}</LinkBtn>
               </li>
             ))}
           </ul>
@@ -121,12 +123,9 @@ export const Header = () => {
             </div>
           </div>
 
-          <Link className="body-text-5 link-medium uppercase">
-          </Link>
+          <Link className="body-text-5 link-medium uppercase"></Link>
 
-          <LinkBtn href="/">
-            {t("Contact")}
-          </LinkBtn>
+          <LinkBtn href="/">{t("Contact")}</LinkBtn>
         </div>
 
         <div className="header__nav">
@@ -134,14 +133,17 @@ export const Header = () => {
         </div>
       </motion.header>
 
-      <motion.div
-        className="contact-button"
-        variants={HeaderAnim.ContactBtn}
-        initial="initial"
-        animate={isShownBtn ? "animate" : "exit"}
-      >
-        <Button state="secondary">{t("Contact Me.")}</Button>
-      </motion.div>
+      <AnimatePresence>
+        {isHomePage !== "contact" && (
+        <motion.div
+          className="contact-button"
+          variants={HeaderAnim.ContactBtn}
+          initial="initial"
+          animate={isShownBtn ? "animate" : "exit"}
+        >
+          <Button href="/contact" state="secondary">{t("Contact Me.")}</Button>
+        </motion.div>)}
+      </AnimatePresence>
     </AnimatePresence>
   );
 };

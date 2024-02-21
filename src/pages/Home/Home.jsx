@@ -1,7 +1,5 @@
-
 import { useTranslation } from "react-i18next";
-import { Button } from "../../components/Button/Button";
-import { Header } from "../../components/Header/Header";
+import { motion } from "framer-motion";
 import About from "./About/About";
 import CTA from "./CTA/CTA";
 
@@ -10,12 +8,24 @@ import ImportantThing from "./ImportantThing/ImportantThing";
 import Loving from "./Loving/Loving";
 import Services from "./Services/Services";
 import Universe from "./Universe/Universe";
+import Footer from "../../components/Footer/Footer";
+import { Transition } from "../../helpers/anim";
+import { useEffect } from "react";
 
 export default function Home() {
   const { t } = useTranslation();
-  return (
 
-  <main className="home">
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+  <motion.main
+    variants={Transition}
+    initial="initial"
+    animate="animate"
+    exit="exit"
+    className="home">
     <Hero />
     <Universe />
     <ImportantThing />
@@ -23,7 +33,8 @@ export default function Home() {
     <About />
     <Services />
     <CTA />
-  </main>
+    <Footer />
+  </motion.main>
 
   );
 }

@@ -113,10 +113,6 @@ export const LinkBtn = ({
     }
   });
 
-  useEffect(() => {
-    console.log(linkRef);
-  }, [linkRef])
-
   return (
     <Link to={href} ref={wrapperRef} className="link-wrapper" {...rest}>
       <span ref={linkRef} className={`${classes} link-button`}>

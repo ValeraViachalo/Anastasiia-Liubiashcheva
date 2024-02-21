@@ -32,6 +32,11 @@ textarea {
   margin: 0;
 }
 
+input,
+textarea {
+  font: inherit;
+}
+
 html {
   line-height: 1;
 }

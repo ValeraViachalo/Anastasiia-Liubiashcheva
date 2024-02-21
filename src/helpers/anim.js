@@ -116,3 +116,24 @@ export const ServicesAnim = {
     },
   },
 };
+
+export const Transition = {
+  initial: {
+    opacity: 0,
+    filter: 'blur(1vw)',
+    scale: 0.9,
+    transition,
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0)',
+    transition,
+  },
+  exit: {
+    opacity: 0,
+    filter: 'blur(1vw)',
+    scale: 0.9,
+    transition,
+  }
+}

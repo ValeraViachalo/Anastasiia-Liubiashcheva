@@ -1,4 +1,4 @@
-export const Logo = ({ color, ...rest}) => (
+export const Logo = ({ color, ...rest }) => (
   <svg
     width="81"
     height="39"
