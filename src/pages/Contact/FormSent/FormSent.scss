@@ -3,7 +3,7 @@
 .form {
   @include grid();
 
-            margin-top: 5vw;
+  margin-top: 5vw;
 
   &__wrapper {
     grid-column: 7/13;
@@ -57,6 +57,13 @@
         height: 3.3vw;
         width: 3.3vw;
       }
+    }
+  }
+
+  .required-field {
+    border-bottom-color: $c-light-orange;
+    &::placeholder {
+      color: $c-light-orange;
     }
   }
 }

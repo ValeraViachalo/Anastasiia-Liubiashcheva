@@ -19,6 +19,7 @@ const FormSent = () => {
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isFormSent, setIsFormSent] = useState(false); // Додали стан для відстеження події відправки форми
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,12 +40,16 @@ const FormSent = () => {
     const newErrors = {};
 
     if (!formData.firstName) {
-      newErrors.firstName = "Ім’я є обов’язковим полем";
+      newErrors.firstName = "This is a required field";
     }
 
     const phoneRegex = /^\d{9}$/;
     if (!phoneRegex.test(formData.phoneNumber)) {
-      newErrors.phoneNumber = "Не вірно";
+      newErrors.phoneNumber = "This is a required field";
+    }
+
+    if (!formData.email) {
+      newErrors.email = "This is a required field";
     }
 
     setErrors(newErrors);
@@ -67,6 +72,7 @@ const FormSent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsFormSent(true);
     const isValid = validateForm();
     setIsFormValid(isValid);
 
@@ -124,10 +130,13 @@ const FormSent = () => {
                   placeholder="[ Your name ]*"
                   id="firstName"
                   name="firstName"
-                  className="input-container__input--item"
+                  className={`input-container__input--item ${
+                    isFormSent && !formData.firstName.trim()
+                      ? "required-field"
+                      : ""
+                  }`}
                   value={formData.firstName}
                   onChange={handleChange}
-                  required
                 />
               </h6>
               {errors.firstName && (
@@ -136,30 +145,39 @@ const FormSent = () => {
             </div>
           </div>
         </fieldset>
-
-        <div className="form-telephone">
-          <div className="input-container phone">
-            <h6>
-              <InputMask
-                mask="9999999999"
-                maskChar=""
-                value={formData.phoneNumber}
-                onChange={handleChange}
-              >
-                {(inputProps) => (
-                  <input
-                    placeholder="[ Your phone ]*"
-                    className="input-phone input-container__input--item"
-                    type="text"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    {...inputProps}
-                  />
-                )}
-              </InputMask>
-            </h6>
+        <fieldset>
+          <div className="form-telephone">
+            <div className="input-container phone">
+              <h6>
+                <InputMask
+                  mask="9999999999"
+                  maskChar=""
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                >
+                  {(inputProps) => (
+                    <input
+                      placeholder="[ Your phone ]*"
+                      className={`input-phone input-container__input--item ${
+                        isFormSent && !formData.phoneNumber.trim()
+                          ? "required-field"
+                          : ""
+                      }`}
+                      type="text"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      {...inputProps}
+                    />
+                  )}
+                </InputMask>
+              </h6>
+              {errors.phoneNumber && (
+                <p className="input-message error">{errors.phoneNumber}</p>
+              )}
+            </div>
           </div>
-        </div>
+        </fieldset>
+
         <fieldset>
           <legend className="form-text"></legend>
           <div className="form-container">
@@ -170,10 +188,11 @@ const FormSent = () => {
                   type="email"
                   id="email"
                   name="email"
-                  className="input-container__input--item"
+                  className={`input-container__input--item ${
+                    isFormSent && !formData.email.trim() ? "required-field" : ""
+                  }`}
                   value={formData.email}
                   onChange={handleChange}
-                  required
                 />
               </h6>
               {errors.email && (
@@ -196,9 +215,6 @@ const FormSent = () => {
             </h6>
           </div>
         </div>
-        {/* <button className="form--button" type="submit" id="submitButton">
-            Send
-          </button> */}
 
         <button className="form--button button" type="submit" id="submitButton">
           <div className="arrow-wrapper">
