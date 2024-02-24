@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import InputMask from "react-input-mask";
 import "./FormSent.scss";
 
@@ -6,7 +6,6 @@ import sendMessage from "../../../requests/sendMessage.js";
 import formatFormData from "../../../helpers/formatFormData.js";
 
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
 
 const FormSent = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +18,7 @@ const FormSent = () => {
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [isFormSent, setIsFormSent] = useState(false); // Додали стан для відстеження події відправки форми
+  const [isFormSent, setIsFormSent] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,35 +38,44 @@ const FormSent = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.firstName) {
-      newErrors.firstName = "This is a required field";
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "Mistake";
     }
 
-    const phoneRegex = /^\d{9}$/;
-    if (!phoneRegex.test(formData.phoneNumber)) {
-      newErrors.phoneNumber = "This is a required field";
+    if (
+      !formData.phoneNumber.trim() ||
+      formData.phoneNumber.replace(/\D/g, "").length < 9
+    ) {
+      newErrors.phoneNumber = "Mistake";
     }
 
-    if (!formData.email) {
-      newErrors.email = "This is a required field";
+    if (!formData.email.trim()) {
+      newErrors.email = "Mistake";
     }
+
+    // Перевірка обов'язкових полів, які не були заповнені
+    Object.entries(formData).forEach(([key, value]) => {
+      if (
+        ["firstName", "phoneNumber", "email"].includes(key) &&
+        !value.trim()
+      ) {
+        newErrors[key] = "This is a required field";
+      }
+    });
 
     setErrors(newErrors);
 
     return Object.keys(newErrors).length === 0;
   };
 
-  const resetForm = () => {
-    // Функція для скидання форми на початковий стан
-    setFormData({
+  const resetFormFields = () => {
+    setFormData((prevData) => ({
+      ...prevData,
       firstName: "",
-      email: "",
       phoneNumber: "",
+      email: "",
       description: "",
-    });
-    setErrors({});
-    setIsFormValid(null);
-    setErrorMessage(null);
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -77,45 +85,34 @@ const FormSent = () => {
     setIsFormValid(isValid);
 
     if (isValid) {
-      const phoneNumberWithPrefix = `+380${formData.phoneNumber}`;
+      const phoneNumberWithPrefix = `+380${formData.phoneNumber.replace(
+        /\D/g,
+        ""
+      )}`;
       const dataToSend = {
         ...formData,
         phoneNumber: phoneNumberWithPrefix,
       };
 
-      console.log("Дані, готові до відправки:", dataToSend);
-      window.location.href = "#/form-request";
-
-      const message = formatFormData(dataToSend);
+      console.log("Data to send:", dataToSend);
 
       try {
-        const result = await sendMessage(message, { throwIfFailed: false });
+        const result = await sendMessage(formatFormData(dataToSend), {
+          throwIfFailed: false,
+        });
 
         if (!result.ok) {
-          // Request failed
-          setErrorMessage(
-            "Помилка під час відправки запиту. Спробуйте ще раз."
-          );
+          setErrorMessage("Failed to send message, please try again.");
         } else {
-          // Request OK
-          // Скидуємо форму або виконуємо інші дії для успішного запиту
-          resetForm(); // Скидання форми
+          resetFormFields(); // Clear only necessary fields
         }
       } catch (err) {
-        // Do something with error...
         setErrorMessage(
-          "Сталася помилка під час відправки запиту. Спробуйте ще раз або зверніться до служби підтримки."
+          "An error occurred while sending the request. Please try again or contact support."
         );
       }
     }
   };
-
-  useEffect(() => {
-    if (errorMessage) {
-      // Якщо є помилка, виводимо її в консоль
-      console.error(errorMessage);
-    }
-  }, [errorMessage]);
 
   return (
     <div className="form">
@@ -134,13 +131,21 @@ const FormSent = () => {
                     isFormSent && !formData.firstName.trim()
                       ? "required-field"
                       : ""
-                  }`}
+                  } ${errors.firstName ? "mistake-field" : ""}`}
                   value={formData.firstName}
                   onChange={handleChange}
                 />
               </h6>
               {errors.firstName && (
-                <p className="input-message error">{errors.firstName}</p>
+                <p
+                  className={`"input-message ${
+                    isFormSent && !formData.firstName.trim()
+                      ? "required-field"
+                      : ""
+                  } ${errors.firstName ? "mistake-field" : ""}`}
+                >
+                  {errors.firstName}
+                </p>
               )}
             </div>
           </div>
@@ -162,7 +167,7 @@ const FormSent = () => {
                         isFormSent && !formData.phoneNumber.trim()
                           ? "required-field"
                           : ""
-                      }`}
+                      } ${errors.phoneNumber ? "mistake-field" : ""}`}
                       type="text"
                       id="phoneNumber"
                       name="phoneNumber"
@@ -172,7 +177,15 @@ const FormSent = () => {
                 </InputMask>
               </h6>
               {errors.phoneNumber && (
-                <p className="input-message error">{errors.phoneNumber}</p>
+                <p
+                  className={`"input-message ${
+                    isFormSent && !formData.phoneNumber.trim()
+                      ? "required-field"
+                      : ""
+                  } ${errors.phoneNumber ? "mistake-field" : ""}`}
+                >
+                  {errors.phoneNumber}
+                </p>
               )}
             </div>
           </div>
@@ -190,13 +203,19 @@ const FormSent = () => {
                   name="email"
                   className={`input-container__input--item ${
                     isFormSent && !formData.email.trim() ? "required-field" : ""
-                  }`}
+                  } ${errors.email ? "mistake-field" : ""}`}
                   value={formData.email}
                   onChange={handleChange}
                 />
               </h6>
               {errors.email && (
-                <p className="input-message error">{errors.email}</p>
+                <p
+                  className={`input-message ${
+                    isFormSent && !formData.email.trim() ? "required-field" : ""
+                  } ${errors.email ? "mistake-field" : ""}`}
+                >
+                  {errors.email}
+                </p>
               )}
             </div>
           </div>

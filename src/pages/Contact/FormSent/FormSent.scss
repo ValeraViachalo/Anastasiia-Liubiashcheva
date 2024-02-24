@@ -60,7 +60,16 @@
     }
   }
 
+  .mistake-field {
+    color: $c-light-red;
+    border-bottom-color: $c-light-red;
+    &::placeholder {
+      color: $c-light-red;
+    }
+  }
+
   .required-field {
+    color: $c-light-orange;
     border-bottom-color: $c-light-orange;
     &::placeholder {
       color: $c-light-orange;

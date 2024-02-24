@@ -3,6 +3,7 @@ function formatFormData(formData) {
     firstName: "Ім'я:",
     lastName: "Прізвище:",
     phoneNumber: "Номер телефону:",
+    email: "Email:",
     description: "Питання:",
   };
 
