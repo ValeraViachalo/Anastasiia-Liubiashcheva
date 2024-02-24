@@ -27,6 +27,12 @@ const FormSent = () => {
       [name]: value,
     });
 
+    // Оновлення помилок у стані
+    setErrors({
+      ...errors,
+      [name]: "", // Очищення помилки при зміні значення поля
+    });
+
     if (name === "phoneNumber") {
       setFormData({
         ...formData,
