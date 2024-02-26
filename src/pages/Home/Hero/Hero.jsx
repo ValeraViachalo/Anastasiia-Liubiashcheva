@@ -3,7 +3,6 @@ import "./Hero.scss";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import i18n from "../../../i18n";
 import { useTranslation } from "react-i18next";
 
 export default function Hero() {

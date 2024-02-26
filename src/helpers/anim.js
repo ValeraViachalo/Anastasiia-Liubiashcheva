@@ -129,6 +129,9 @@ export const Transition = {
     scale: 1,
     filter: 'blur(0)',
     transition,
+    transitionEnd: {
+      filter: 'none',
+    }
   },
   exit: {
     opacity: 0,

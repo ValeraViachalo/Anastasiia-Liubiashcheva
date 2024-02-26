@@ -20,21 +20,21 @@ export default function Home() {
   }, []);
 
   return (
-  <motion.main
-    variants={Transition}
-    initial="initial"
-    animate="animate"
-    exit="exit"
-    className="home">
-    <Hero />
-    <Universe />
-    <ImportantThing />
-    <Loving />
-    <About />
-    <Services />
-    <CTA />
-    <Footer />
-  </motion.main>
-
+    <motion.main
+      variants={Transition}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="home"
+    >
+      <Hero />
+      <Universe />
+      <ImportantThing />
+      <Loving />
+      <About />
+      <Services />
+      <CTA />
+      <Footer />
+    </motion.main>
   );
 }

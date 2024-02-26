@@ -1,0 +1,76 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background-color: #fff;
+  z-index: 1000;
+
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1vw;
+
+    &__left {
+      display: flex;
+      gap: 5vw;
+    }
+
+    &__right {
+      display: flex;
+      gap: 10vw;
+      text-align: end;
+
+      .growth {
+        text-align: start;
+        margin-right: 2.5vw;
+      }
+    }
+  }
+
+  .center {
+    position: absolute;
+    bottom: 45%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    text-align: center;
+
+    .heart {
+      width: 2vw;
+      margin: 0 auto;
+
+      //scale(30)
+    }
+  }
+
+  &__logo {
+    width: 28vw;
+    height: 13vw;
+  }
+
+  &__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &-bar {
+      background-color: black;
+      width: 100%;
+      height: 1.5lvh;
+      position: absolute;
+      bottom: 0;
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+  }
+
+  &__numbers {
+    margin: 0 1vw 1vw;
+    position: relative;
+
+    &::before {
+      content: "‘";
+    }
+  }
+}

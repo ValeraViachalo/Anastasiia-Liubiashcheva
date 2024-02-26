@@ -22,6 +22,10 @@ body {
   display: none;
 }
 
+[data-hidden] {
+  opacity: 0;
+}
+
 .container {
   padding: 0 1.6vw;
 }

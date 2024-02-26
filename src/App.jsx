@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useLocation, useRoutes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AnimatePresence } from "framer-motion";
@@ -9,10 +9,15 @@ import { Header } from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import FormSent from "./pages/Contact/FormSent/FormSent";
 import Contact from "./pages/Contact/Contact";
+import { Loader } from "./components/Loader/Loader";
+import gsap from "gsap";
 
 const queryC = new QueryClient();
 
 function App() {
+  const [loaderFinished, setLoaderFinished] = useState(false);
+  const [timeline, setTimeline] = useState(null);
+
   const element = useRoutes([
     {
       path: "/",
@@ -37,17 +42,17 @@ function App() {
       ],
     },
     // {
-    //   path: "*",
-    //   element: <ErrorPage />,
-    // },
-  ]);
-
+      //   path: "*",
+      //   element: <ErrorPage />,
+      // },
+    ]);
+    
   const location = useLocation();
-
 
   return (
     <QueryClientProvider client={queryC}>
       <ReactLenis root options={{ duration: 1.5 }}>
+        {!loaderFinished && (<Loader setLoaderFinished={setLoaderFinished} />)}
         <main>
           <Header />
           <AnimatePresence mode="wait" initial={false}>

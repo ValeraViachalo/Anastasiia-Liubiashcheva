@@ -68,7 +68,7 @@ export const Header = () => {
   }, [isHomePage]);
 
   return (
-    <AnimatePresence mode="popLayout">
+    <>
       <motion.header
         className="header"
         variants={HeaderAnim.HomePresence}
@@ -85,7 +85,7 @@ export const Header = () => {
         <div className="header__wrapper">
           <ul className="header__list-links">
             {linksList.map((currLink, index) => (
-              <li key={`header_${index}`}>
+              <li key={`header_l-${index}`}>
                 <LinkBtn href={currLink.link}>{currLink.name}</LinkBtn>
               </li>
             ))}
@@ -133,7 +133,6 @@ export const Header = () => {
         </div>
       </motion.header>
 
-      <AnimatePresence>
         {isHomePage !== "contact" && (
         <motion.div
           className="contact-button"
@@ -143,7 +142,6 @@ export const Header = () => {
         >
           <Button href="/contact" state="secondary">{t("Contact Me.")}</Button>
         </motion.div>)}
-      </AnimatePresence>
-    </AnimatePresence>
+        </>
   );
 };

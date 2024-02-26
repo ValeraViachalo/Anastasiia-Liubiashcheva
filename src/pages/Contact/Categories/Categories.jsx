@@ -16,7 +16,7 @@ export const Categories = () => {
     <section className="categories">
       <div className="categories__wrapper">
         {ifYoure.map((currIf, i) => (
-          <p className="body-text-2 categories__item">
+          <p className="body-text-2 categories__item" key={`categories__item-${i}`}>
             {currIf}
           </p>
         ))}

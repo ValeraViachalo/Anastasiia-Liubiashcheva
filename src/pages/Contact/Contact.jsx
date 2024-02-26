@@ -6,7 +6,7 @@ import { Categories } from "./Categories/Categories";
 const Transition = {
   initial: {
     opacity: 0,
-    y: '-100%',
+    y: '100%',
     filter: "blur(1vw)",
     scale: 0.9,
     transition: {

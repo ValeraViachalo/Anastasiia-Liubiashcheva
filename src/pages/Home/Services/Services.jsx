@@ -72,7 +72,7 @@ export default function Services() {
           // }}
         >
           <AnimatePresence mode="popLayout">
-            {imageHover && (
+            {(imageHover && inView) && (
               <motion.img
                 alt="services"
                 src={imageHover}
@@ -93,14 +93,14 @@ export default function Services() {
       </div>
       <div className="left">
         <div className="description">
-          <p className="body-text-3">
+          <p className="body-text-3 normal">
             Send inquiry/contact about personal and business growth coaching
             options and project support Apply for mentoring hours Send a
             professional inquiry
           </p>
         </div>
         <div className="feedback">
-          <p className="body-text-3">
+          <p className="body-text-3 normal">
             <span className="qoute">“</span> you’re the first person I ever
             trusted with my vision
           </p>
