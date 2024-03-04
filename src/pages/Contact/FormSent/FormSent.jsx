@@ -19,26 +19,33 @@ const FormSent = () => {
   const [isFormValid, setIsFormValid] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isFormSent, setIsFormSent] = useState(false);
+  const [isFormSentSuccessfully, setIsFormSentSuccessfully] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
 
-    // Оновлення помилок у стані
-    setErrors({
-      ...errors,
-      [name]: "", // Очищення помилки при зміні значення поля
-    });
+    let newValue = value;
 
     if (name === "phoneNumber") {
-      setFormData({
-        ...formData,
-        phoneNumber: value.replace(/\D/g, ""),
-      });
+      if (value.charAt(0) === "0") {
+        newValue = "38" + value.substring(1).replace(/\D/g, "");
+      }
     }
+
+    setFormData({
+      ...formData,
+      [name]: newValue,
+    });
+
+    setErrors({
+      ...errors,
+      [name]: "",
+    });
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const validateForm = () => {
@@ -55,11 +62,10 @@ const FormSent = () => {
       newErrors.phoneNumber = "Mistake";
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = "Mistake";
+    if (!formData.email.trim() || !validateEmail(formData.email)) {
+      newErrors.email = "Invalid email address";
     }
 
-    // Перевірка обов'язкових полів, які не були заповнені
     Object.entries(formData).forEach(([key, value]) => {
       if (
         ["firstName", "phoneNumber", "email"].includes(key) &&
@@ -91,10 +97,12 @@ const FormSent = () => {
     setIsFormValid(isValid);
 
     if (isValid) {
-      const phoneNumberWithPrefix = `+380${formData.phoneNumber.replace(
-        /\D/g,
-        ""
-      )}`;
+      let phoneNumberWithPrefix = formData.phoneNumber.replace(/\D/g, "");
+
+      if (phoneNumberWithPrefix.charAt(0) === "0") {
+        phoneNumberWithPrefix = `38${phoneNumberWithPrefix}`;
+      }
+
       const dataToSend = {
         ...formData,
         phoneNumber: phoneNumberWithPrefix,
@@ -110,7 +118,8 @@ const FormSent = () => {
         if (!result.ok) {
           setErrorMessage("Failed to send message, please try again.");
         } else {
-          resetFormFields(); // Clear only necessary fields
+          setIsFormSentSuccessfully(true);
+          resetFormFields();
         }
       } catch (err) {
         setErrorMessage(
@@ -134,7 +143,9 @@ const FormSent = () => {
                   id="firstName"
                   name="firstName"
                   className={`input-container__input--item ${
-                    isFormSent && !formData.firstName.trim()
+                    isFormSent &&
+                    !formData.firstName.trim() &&
+                    !isFormSentSuccessfully
                       ? "required-field"
                       : ""
                   } ${errors.firstName ? "mistake-field" : ""}`}
@@ -145,7 +156,9 @@ const FormSent = () => {
               {errors.firstName && (
                 <p
                   className={`"input-message ${
-                    isFormSent && !formData.firstName.trim()
+                    isFormSent &&
+                    !formData.firstName.trim() &&
+                    !isFormSentSuccessfully
                       ? "required-field"
                       : ""
                   } ${errors.firstName ? "mistake-field" : ""}`}
@@ -161,7 +174,7 @@ const FormSent = () => {
             <div className="input-container phone">
               <h6>
                 <InputMask
-                  mask="9999999999"
+                  mask="+999999999999"
                   maskChar=""
                   value={formData.phoneNumber}
                   onChange={handleChange}
@@ -170,7 +183,9 @@ const FormSent = () => {
                     <input
                       placeholder="[ Your phone ]*"
                       className={`input-phone input-container__input--item ${
-                        isFormSent && !formData.phoneNumber.trim()
+                        isFormSent &&
+                        !formData.phoneNumber.trim() &&
+                        !isFormSentSuccessfully
                           ? "required-field"
                           : ""
                       } ${errors.phoneNumber ? "mistake-field" : ""}`}
@@ -185,7 +200,9 @@ const FormSent = () => {
               {errors.phoneNumber && (
                 <p
                   className={`"input-message ${
-                    isFormSent && !formData.phoneNumber.trim()
+                    isFormSent &&
+                    !formData.phoneNumber.trim() &&
+                    !isFormSentSuccessfully
                       ? "required-field"
                       : ""
                   } ${errors.phoneNumber ? "mistake-field" : ""}`}
@@ -208,7 +225,11 @@ const FormSent = () => {
                   id="email"
                   name="email"
                   className={`input-container__input--item ${
-                    isFormSent && !formData.email.trim() ? "required-field" : ""
+                    isFormSent &&
+                    !formData.email.trim() &&
+                    !isFormSentSuccessfully
+                      ? "required-field"
+                      : ""
                   } ${errors.email ? "mistake-field" : ""}`}
                   value={formData.email}
                   onChange={handleChange}
@@ -217,7 +238,11 @@ const FormSent = () => {
               {errors.email && (
                 <p
                   className={`input-message ${
-                    isFormSent && !formData.email.trim() ? "required-field" : ""
+                    isFormSent &&
+                    !formData.email.trim() &&
+                    !isFormSentSuccessfully
+                      ? "required-field"
+                      : ""
                   } ${errors.email ? "mistake-field" : ""}`}
                 >
                   {errors.email}
