@@ -136,7 +136,7 @@ const FormSent = () => {
         <fieldset>
           <div className="form-container">
             <div className="input-container__input">
-              <h6>
+              <p>
                 <input
                   type="text"
                   placeholder="[ Your name ]*"
@@ -152,10 +152,10 @@ const FormSent = () => {
                   value={formData.firstName}
                   onChange={handleChange}
                 />
-              </h6>
+              </p>
               {errors.firstName && (
                 <p
-                  className={`"input-message ${
+                  className={`"input-message body-text-3 ${
                     isFormSent &&
                     !formData.firstName.trim() &&
                     !isFormSentSuccessfully
@@ -172,7 +172,7 @@ const FormSent = () => {
         <fieldset>
           <div className="form-telephone">
             <div className="input-container phone">
-              <h6>
+              <p>
                 <InputMask
                   mask="+999999999999"
                   maskChar=""
@@ -196,10 +196,10 @@ const FormSent = () => {
                     />
                   )}
                 </InputMask>
-              </h6>
+              </p>
               {errors.phoneNumber && (
                 <p
-                  className={`"input-message ${
+                  className={`"input-message body-text-3 ${
                     isFormSent &&
                     !formData.phoneNumber.trim() &&
                     !isFormSentSuccessfully
@@ -218,7 +218,7 @@ const FormSent = () => {
           <legend className="form-text"></legend>
           <div className="form-container">
             <div className="input-container__input">
-              <h6>
+              <p>
                 <input
                   placeholder="[ Your email ]*"
                   type="email"
@@ -234,10 +234,10 @@ const FormSent = () => {
                   value={formData.email}
                   onChange={handleChange}
                 />
-              </h6>
+              </p>
               {errors.email && (
                 <p
-                  className={`input-message ${
+                  className={`input-message body-text-3 ${
                     isFormSent &&
                     !formData.email.trim() &&
                     !isFormSentSuccessfully
@@ -253,7 +253,7 @@ const FormSent = () => {
         </fieldset>
         <div>
           <div className="input-container">
-            <h6>
+            <p>
               <textarea
                 placeholder="Your request"
                 className="input input-container__input--item input-container__input--item-textarea"
@@ -262,7 +262,7 @@ const FormSent = () => {
                 value={formData.description}
                 onChange={handleChange}
               />
-            </h6>
+            </p>
           </div>
         </div>
 

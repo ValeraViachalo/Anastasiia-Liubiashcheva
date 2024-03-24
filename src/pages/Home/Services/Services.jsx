@@ -1,12 +1,14 @@
 import React, { useRef, useState } from "react";
-import "./Services.scss";
-import sevicesList from "../../../data/services.json";
-
 import { AnimatePresence, motion } from "framer-motion";
-import { ServicesAnim } from "../../../helpers/anim";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useInView } from "react-intersection-observer";
+import { BrowserView } from "react-device-detect";
+
+import { ServicesAnim } from "../../../helpers/anim";
+import "./Services.scss";
+import sevicesList from "../../../data/services.json";
+
 
 export default function Services() {
   const [imageHover, setImageHover] = useState();
@@ -71,20 +73,22 @@ export default function Services() {
           //   rotate: mousePosition.rotare,
           // }}
         >
-          <AnimatePresence mode="popLayout">
-            {(imageHover && inView) && (
-              <motion.img
-                alt="services"
-                src={imageHover}
-                className="services__image-item"
-                variants={ServicesAnim.Image}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                key={imageHover}
-              />
-            )}
-          </AnimatePresence>
+          <BrowserView>
+            <AnimatePresence mode="popLayout">
+              {(imageHover && inView) && (
+                <motion.img
+                  alt="services"
+                  src={imageHover}
+                  className="services__image-item"
+                  variants={ServicesAnim.Image}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  key={imageHover}
+                />
+              )}
+            </AnimatePresence>
+          </BrowserView>
         </motion.div>
       <div className="titles">
         <p className="body-text-2 uppercase description-title">Description</p>

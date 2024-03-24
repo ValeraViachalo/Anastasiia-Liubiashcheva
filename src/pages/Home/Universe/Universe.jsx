@@ -48,7 +48,7 @@ export default function Universe() {
     if (Math.abs(xForce) < 0.01) xForce = 0;
     if (Math.abs(yForce) < 0.01) yForce = 0;
 
-    if (xForce != 0 || yForce != 0) {
+    if (xForce !== 0 || yForce !== 0) {
       requestAnimationFrame(animate);
     } else {
       cancelAnimationFrame(requestAnimationFrameId);

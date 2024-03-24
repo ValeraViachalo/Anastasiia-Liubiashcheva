@@ -5,29 +5,6 @@ import { Body } from './Body/Body';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 
-const LinkList = [
-  {
-    name: "Home",
-    link: "#top"
-  },
-  {
-    name: "Packages",
-    link: "#packages"
-  },
-  {
-    name: "Does this program suit you?",
-    link: "#program-suit"
-  },
-  {
-    name: "Preparation",
-    link: "#preparation"
-  },
-  {
-    name: "Questionnaire",
-    link: "#questionnaire"
-  }
-]
-
 
 export const Nav = () => {
   const [isActive, setIsActive] = useState(false);

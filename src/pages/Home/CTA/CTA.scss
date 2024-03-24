@@ -13,7 +13,11 @@
   position: relative;
   color: $c-white;
   z-index: 0;
-  overflow-x: hidden;
+  overflow: hidden;
+
+  @include forHorizontalTablet() {
+    height: 150lvh;
+  }
 
   &::after {
     content: "";
@@ -53,6 +57,10 @@
       height: 220lvh;
 
       transform: translateY(-45%) rotate(-135deg);
+
+      @include forHorizontalTablet() {
+        transform: translateY(-46.7%) rotate(-135deg);
+      }
     }
   }
 

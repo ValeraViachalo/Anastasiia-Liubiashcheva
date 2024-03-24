@@ -33,6 +33,10 @@
       display: flex;
       flex-direction: column;
       gap: 3.5vw;
+      
+      @include forVerticalTablet() {
+        grid-column: 1/6;
+      }
 
       .heart {
         width: 1.5vw;
@@ -67,6 +71,10 @@
           // letter-spacing: 0.02vw;
           width: 50%;
 
+          @include forVerticalTablet() {
+            width: 100%;
+          }
+
           &:first-of-type {
             p {
               &:first-of-type {
@@ -86,12 +94,22 @@
               }
             }
           }
+
+          &:nth-of-type(2) {
+            @include forVerticalTablet() {
+              display: none;
+            }
+          }
         }
       }
 
       .video {
         grid-column: 1/4;
         position: relative;
+
+        @include forVerticalTablet() {
+          grid-column: 1/7;
+        }
 
         &__wrapper {
           position: relative;
@@ -114,9 +132,19 @@
 
         &__subscription {
           margin-top: 1.5vw;
+
+          @include forVerticalTablet() {
+            display: flex;
+            justify-content: space-between;
+          }
+
           .concept {
             width: 40%;
             margin-bottom: 1.5vw;
+
+            @include forVerticalTablet() {
+              width: 60%;
+          }
           }
         }
 

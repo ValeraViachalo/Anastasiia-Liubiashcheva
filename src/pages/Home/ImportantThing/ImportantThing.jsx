@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, useIsPresent } from "framer-motion";
+import { motion } from "framer-motion";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";

@@ -31,6 +31,12 @@
       margin-bottom: 1.3vw;
       color: $g-70;
     }
+
+    &__item {
+      .link-wrapper {
+        height: 3.5vw;
+      }
+    }
   }
 
   .socials {
@@ -52,6 +58,10 @@
 
     &__item {
       font-weight: 300 !important;
+
+      .link-wrapper {
+        height: 1.4vw;
+      }
     }
   }
 

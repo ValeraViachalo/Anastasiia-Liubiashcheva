@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 import useLocalStorage from "../../hooks/use-localstorage";
 import i18n from "../../i18n";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import classNames from "classnames";
 import { Button, LinkBtn } from "../Button/Button";
 
@@ -79,7 +79,7 @@ export const Header = () => {
           <Link to="/" className="header__logo">
             <Logo className="header__logo-item" color="#212529" />
           </Link>
-          <LinkBtn href="/contact">{t("Work With Me")}</LinkBtn>
+          <LinkBtn href="/contact" data-from-VTab>{t("Work With Me")}</LinkBtn>
         </div>
 
         <div className="header__wrapper">
@@ -91,6 +91,11 @@ export const Header = () => {
             ))}
           </ul>
         </div>
+
+        {/* <div className="header__nav">
+          <Nav />
+        </div> */}
+        
         <div className="right">
           <div className="header__locale">
             <div className="header__locale-wrapper">
@@ -125,11 +130,7 @@ export const Header = () => {
 
           <Link className="body-text-5 link-medium uppercase"></Link>
 
-          <LinkBtn href="/">{t("Contact")}</LinkBtn>
-        </div>
-
-        <div className="header__nav">
-          <Nav />
+          <LinkBtn href="/" data-from-VTab>{t("Contact")}</LinkBtn>
         </div>
       </motion.header>
 

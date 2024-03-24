@@ -19,6 +19,14 @@
       justify-content: start;
       text-align: center;
       position: relative;
+
+      @include forHorizontalTablet() {
+        height: 160lvh;
+      }
+
+      @include forVerticalTablet() {
+        height: 100lvh;
+      }
     }
 
     &__text {
@@ -61,6 +69,9 @@
     // margin-top: 3vw;
     transform: translateY(-16%);
 
+    @include forVerticalTablet() {
+      margin-top: 4vw;
+    }
 
     .left {
       grid-column: 1/5;

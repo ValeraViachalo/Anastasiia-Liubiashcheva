@@ -6,8 +6,12 @@
   height: 222.7lvh;
   background: url("../../../../public/images/Home/loving.webp") no-repeat center;
   background-size: cover;
-  background-position-y: 100%;
+  background-position: 100%;
   position: relative;
+
+  @include forHorizontalTablet() {
+    height: 160lvh;
+  }
 
   &__wrapper {
     position: absolute;

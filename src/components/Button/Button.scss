@@ -5,6 +5,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5vw;
+  text-wrap: nowrap;
 
   &:hover {
     .arrow {
@@ -116,38 +117,6 @@
   }
 }
 
-// .link {
-//   display: flex;
-//   flex-direction: column;
-//   overflow: hidden;
-//   height: 1vw;
-//   gap: 0.5vw;
-//   position: relative;
-
-//   &__text {
-//     position: absolute;
-//     transition: all 0.4s ease;
-
-//     &:nth-of-type(1) {
-//       transform: translateY(100%);
-//     }
-//     &:nth-of-type(2) {
-//       transform: translateY(-100%);
-//     }
-//   }
-
-//   &:hover {
-//     .link__text {
-//       &:nth-of-type(1) {
-//         top: 100%;
-//       }
-//       &:nth-of-type(2) {
-//         top: 0%;
-//       }
-//     }
-//   }
-// }
-
 .link {
   &-wrapper {
     display: flex;
@@ -155,6 +124,7 @@
     overflow-y: clip;
     height: inherit;
     font: inherit;
+    height: 1.1vw;
 
     &:hover {
       .link-button {

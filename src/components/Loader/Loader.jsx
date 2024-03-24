@@ -14,6 +14,7 @@ export const Loader = ({ setLoaderFinished }) => {
   const topRef = useRef();
   const centerTextRef = useRef([]);
   const heartRef = useRef();
+  const heartForHomeRef = useRef();
   const logoRef = useRef();
 
   const progressRef = useRef();
@@ -31,7 +32,7 @@ export const Loader = ({ setLoaderFinished }) => {
       progressAnim(progressRef, progressNumberRef, progressWrapper),
       0
     ).add(
-      presenceLoaderAnim(logoRef, topRef, heartRef, centerTextRef, loaderRef),
+      presenceLoaderAnim(logoRef, topRef, heartForHomeRef, centerTextRef, loaderRef),
       2
     );
   });
@@ -90,9 +91,12 @@ export const Loader = ({ setLoaderFinished }) => {
           <Logo className="loader__logo" color="#212529" />
         </div>
 
-        <div className="heart" ref={heartRef} data-hidden>
+        {/* <div className="heart" ref={heartRef} data-hidden>
           <Heart color="#212529" />
-        </div>
+        </div> */}
+      </div>
+      <div className="heart--for-home" ref={heartForHomeRef} data-hidden>
+
       </div>
 
       <div className="loader__progress" ref={progressWrapper}>

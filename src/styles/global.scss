@@ -26,6 +26,26 @@ body {
   opacity: 0;
 }
 
+[data-only-Desktop] {
+  display: none;
+  
+  @include forDesktop() {
+    display: block;
+  }
+}
+
+[data-from-VTab] {
+  display: none;
+
+  @include forHorizontalTablet() {
+    display: flex;
+  }
+
+  @include forDesktop() {
+    display: flex;
+  }
+}
+
 .container {
   padding: 0 1.6vw;
 }

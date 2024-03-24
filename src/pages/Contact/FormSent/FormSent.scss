@@ -7,7 +7,10 @@
 
   &__wrapper {
     grid-column: 7/13;
-    text-align: end;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
   }
 
   &__title {
@@ -18,7 +21,7 @@
     border: none;
     border-bottom: 0.2vw solid;
     padding: 0.6vw 0;
-    margin-bottom: 2vw;
+    margin-bottom: 0.3vw;
     outline: none;
     width: 100%;
 
@@ -48,6 +51,8 @@
   }
 
   &--button {
+    justify-content: flex-end;
+    
     .arrow {
       @extend %h5;
       line-height: 89%;

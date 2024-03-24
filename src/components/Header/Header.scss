@@ -17,10 +17,28 @@
   left: 0;
   right: 0;
 
-  @include mq() {
-    height: 14vw;
-    justify-content: space-between;
-    padding: 0 6.3vw;
+  @include forHorizontalTablet() {
+    padding: 0.6vw 2vw;
+  }
+
+  @include forVerticalTablet() {
+    padding: 1.3vw 2.2vw;
+  }
+
+  .link-wrapper {
+    @include forHorizontalTablet() {
+      height: 1.2vw;
+    }
+
+    @include forVerticalTablet() {
+      height: 2.3vw;
+    }
+
+    .link-button {
+      @include forHorizontalTablet() {
+        font-size: 1.1vw;
+      }
+    }
   }
 
   &__wrapper {
@@ -30,7 +48,6 @@
     gap: 1.8vw;
     height: 100%;
     grid-column: 5/9;
-
 
     @include mq() {
       display: none;
@@ -43,9 +60,14 @@
     position: relative;
     z-index: 100;
 
-    @include mq() {
-      width: 14.7vw;
-      height: 13.5vw;
+    @include forHorizontalTablet() {
+      width: 26%;
+      height: 2vw;
+    }
+
+    @include forVerticalTablet() {
+      width: 22vw;
+      height: 6vw;
     }
 
     &-item {
@@ -61,14 +83,16 @@
     width: 100%;
     padding: 0 5vw;
 
-    @include mq() {
+    @include forVerticalTablet() {
       display: none;
     }
   }
 
   &__nav {
-    @include mq($tablet + 1, ">") {
-      display: none;
+    display: none;
+
+    @include forVerticalTablet() {
+      display: block;
     }
   }
 
@@ -84,12 +108,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    
+    @include forVerticalTablet() {
+      grid-column: 3/3;
+    }
   }
 
   &__locale {
     display: flex;
     gap: 1.5vw;
+
+    @include forHorizontalTablet() {
+      height: 1.2vw;
+    }
+
+    &-button {
+      @include forHorizontalTablet() {
+        font-size: 1.1vw !important;
+      }
+    }
 
     &-wrapper {
       display: flex;
@@ -102,6 +139,10 @@
           transform: translateY(-100%);
           transition: all 0.4s ease;
         }
+      }
+
+      @include forVerticalTablet() {
+        height: 2.3vw;
       }
     }
 

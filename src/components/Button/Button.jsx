@@ -106,13 +106,6 @@ export const LinkBtn = ({
   const wrapperRef = useRef();
   const linkRef = useRef();
 
-  useEffect(() => {
-    if (wrapperRef.current && linkRef.current) {
-      const fontSize = parseFloat(window.getComputedStyle(linkRef.current).fontSize);
-      wrapperRef.current.style.height = `${fontSize * 1.2}px`;
-    }
-  });
-
   return (
     <Link to={href} ref={wrapperRef} className="link-wrapper" {...rest}>
       <span ref={linkRef} className={`${classes} link-button`}>

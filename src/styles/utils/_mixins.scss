@@ -20,6 +20,24 @@
   }
 }
 
+@mixin forVerticalTablet() {
+  @media screen and (min-aspect-ratio: 2/3) and (max-aspect-ratio: 4/3) {
+    @content;
+  }
+}
+
+@mixin forHorizontalTablet() {
+  @media screen and (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
+    @content;
+  }
+}
+
+@mixin forDesktop() {
+  @media screen and (min-aspect-ratio: 16/9) {
+    @content;
+  }
+}
+
 @mixin hoverForLinks() {
   position: relative;
 
@@ -43,4 +61,5 @@
 @mixin grid() {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  column-gap: 2vw;
 }
