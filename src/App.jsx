@@ -9,11 +9,16 @@ import { Header } from "./components/Header/Header";
 import Contact from "./pages/Contact/Contact";
 import { Loader } from "./components/Loader/Loader";
 import gsap from "gsap";
+import LogoAnim from "./components/Loader/LogoAnim/LogoAnim";
+import { ScrollBar } from "./components/ScrollBar/ScrollBar";
+import { ScrollProvider } from "./helpers/scrollProvider";
+import classNames from "classnames";
 
 const queryC = new QueryClient();
 
 function App() {
   const [loaderFinished, setLoaderFinished] = useState(false);
+  // const [loaderFinished, setLoaderFinished] = useState(true);
 
   const element = useRoutes([
     {
@@ -24,8 +29,12 @@ function App() {
           element: <Home />,
         },
         {
-          path: 'contact',
+          path: "contact",
           element: <Contact />,
+        },
+        {
+          path: "logo-anim",
+          element: <LogoAnim />,
         },
         // {
         //   path: 'blogs',
@@ -39,26 +48,28 @@ function App() {
       ],
     },
     // {
-      //   path: "*",
-      //   element: <ErrorPage />,
-      // },
-    ]);
-    
+    //   path: "*",
+    //   element: <ErrorPage />,
+    // },
+  ]);
+
   const location = useLocation();
 
   return (
     <QueryClientProvider client={queryC}>
-      <ReactLenis root options={{ duration: 1.5 }}>
-        {/* {!loaderFinished && (
-          <Loader setLoaderFinished={setLoaderFinished} />
-        )} */}
-        <main>
+      <ScrollProvider>
+        {!loaderFinished && <Loader setLoaderFinished={setLoaderFinished} />}
+        <main
+          className={classNames("main", {
+            "main--loading": !loaderFinished,
+          })}
+        >
           <Header />
           <AnimatePresence mode="wait" initial={false}>
             {React.cloneElement(element, { key: location.pathname })}
           </AnimatePresence>
         </main>
-      </ReactLenis>
+      </ScrollProvider>
     </QueryClientProvider>
   );
 }

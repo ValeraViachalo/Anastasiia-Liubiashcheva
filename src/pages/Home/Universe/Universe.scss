@@ -34,7 +34,7 @@
       flex-direction: column;
       gap: 3.5vw;
       
-      @include forVerticalTablet() {
+      @include forTablet() {
         grid-column: 1/6;
       }
 
@@ -71,7 +71,7 @@
           // letter-spacing: 0.02vw;
           width: 50%;
 
-          @include forVerticalTablet() {
+          @include forTablet() {
             width: 100%;
           }
 
@@ -90,13 +90,19 @@
                   position: absolute;
                   top: -0.3vw;
                   left: 0;
+
+                  @include forTablet {
+                    width: 12.6vw;
+                    height: 3.2vw;
+                    top: 0;
+                  }
                 }
               }
             }
           }
 
           &:nth-of-type(2) {
-            @include forVerticalTablet() {
+            @include forTablet() {
               display: none;
             }
           }
@@ -107,7 +113,7 @@
         grid-column: 1/4;
         position: relative;
 
-        @include forVerticalTablet() {
+        @include forTablet() {
           grid-column: 1/7;
         }
 
@@ -133,7 +139,7 @@
         &__subscription {
           margin-top: 1.5vw;
 
-          @include forVerticalTablet() {
+          @include forTablet() {
             display: flex;
             justify-content: space-between;
           }
@@ -142,7 +148,7 @@
             width: 40%;
             margin-bottom: 1.5vw;
 
-            @include forVerticalTablet() {
+            @include forTablet() {
               width: 60%;
           }
           }

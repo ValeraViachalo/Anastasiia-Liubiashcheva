@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Logo } from "../Logo/Logo";
 import { Heart } from "../Heart/Heart";
 import gsap from "gsap";
+import LogoAnim from "./LogoAnim/LogoAnim";
 
 export const Loader = ({ setLoaderFinished }) => {
   const loaderRef = useRef();
@@ -28,10 +29,12 @@ export const Loader = ({ setLoaderFinished }) => {
       onComplete: () => setLoaderFinished(true),
     });
 
-    tl.add(
+    tl
+    .add(
       progressAnim(progressRef, progressNumberRef, progressWrapper),
       0
-    ).add(
+    )
+    .add(
       presenceLoaderAnim(logoRef, topRef, heartForHomeRef, centerTextRef, loaderRef),
       2
     );
@@ -42,11 +45,11 @@ export const Loader = ({ setLoaderFinished }) => {
       <div className="top container" ref={topRef} data-hidden>
         <div className="top__left">
           <p
-            className="body-text-4 medium"
+            className="body-text-4 semiBold fz--mobile-9"
             dangerouslySetInnerHTML={{ __html: t("For <br /> creators") }}
           />
           <p
-            className="body-text-4 medium"
+            className="body-text-4 semiBold fz--mobile-9"
             dangerouslySetInnerHTML={{
               __html: t("By <br /> Anastasiia Liubiashcheva"),
             }}
@@ -54,14 +57,14 @@ export const Loader = ({ setLoaderFinished }) => {
         </div>
         <div className="top__right">
           <p
-            className="body-text-4 medium"
+            className="body-text-4 semiBold fz--mobile-9"
             dangerouslySetInnerHTML={{
               __html: t(
                 "<span class='growth'>Business growth since</span><br />→ 2019"
               ),
             }}
           />
-          <p className="body-text-4 medium">
+          <p className="semiBold body-text-4 fz--mobile-9">
             {t("United by")}
             <br />
             {t("love")}
@@ -71,7 +74,7 @@ export const Loader = ({ setLoaderFinished }) => {
 
       <div className="center">
         <p
-          className="body-text-4 medium"
+          className="body-text-4 semiBold"
           ref={(t) => centerTextRef.current.push(t)}
           data-hidden
         >
@@ -79,7 +82,7 @@ export const Loader = ({ setLoaderFinished }) => {
         </p>
         <p
           data-hidden
-          className="body-text-4 medium"
+          className="body-text-4 semiBold"
           ref={(t) => centerTextRef.current.push(t)}
           dangerouslySetInnerHTML={{
             __html: t(
@@ -87,17 +90,17 @@ export const Loader = ({ setLoaderFinished }) => {
             ),
           }}
         />
-        <div ref={logoRef} data-hidden>
-          <Logo className="loader__logo" color="#212529" />
+        <div className="loader__logo" ref={logoRef}>
+          {/* <Logo className="loader__logo" color="#212529" /> */}
+          <LogoAnim />
         </div>
 
         {/* <div className="heart" ref={heartRef} data-hidden>
           <Heart color="#212529" />
         </div> */}
       </div>
-      <div className="heart--for-home" ref={heartForHomeRef} data-hidden>
+      <div className="heart--for-home" ref={heartForHomeRef} data-hidden />
 
-      </div>
 
       <div className="loader__progress" ref={progressWrapper}>
         <div className="loader__progress-bar" ref={progressRef} />

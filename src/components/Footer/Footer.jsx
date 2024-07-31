@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__wrapper">
-        <p className="contacts__title">Contacts →</p>
+        <p className="contacts__title fz--tablet-14 fz--mobile-14">Contacts →</p>
 
         <ul className="contacts">
           <li className="contacts__item">
@@ -36,21 +36,21 @@ export default function Footer() {
             <li className="socials__item">
               <LinkBtn
                 target="_blank"
-                classes="link-ul body-text-2"
+                classes="link-ul body-text-2 fz--tablet-14 fz--mobile-12"
                 href="https://www.instagram.com/liubiashcheva__?igsh=dXpiMmYwbmF0djI5&utm_source=qr"
               >
                 Instagram
               </LinkBtn>
             </li>
             <li className="socials__item">
-              <LinkBtn target="_blank" classes="link-ul body-text-2" href="/#">
+              <LinkBtn target="_blank" classes="link-ul body-text-2 fz--tablet-14 fz--mobile-12" href="/#">
                 YouTube
               </LinkBtn>
             </li>
             <li className="socials__item">
               <LinkBtn
                 target="_blank"
-                classes="link-ul body-text-2"
+                classes="link-ul body-text-2 fz--tablet-14 fz--mobile-12"
                 href="https://t.me/liubiashcheva"
               >
                 Telegram

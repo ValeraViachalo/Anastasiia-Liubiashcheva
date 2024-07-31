@@ -9,7 +9,6 @@ import { ServicesAnim } from "../../../helpers/anim";
 import "./Services.scss";
 import sevicesList from "../../../data/services.json";
 
-
 export default function Services() {
   const [imageHover, setImageHover] = useState();
   const image = useRef();
@@ -44,9 +43,8 @@ export default function Services() {
       min: -15,
       max: 6,
     });
-
   });
-  
+
   const moveItems = (x, y) => {
     // xMoveContainer.current(x);
     rotation.current = mapRange(y, 0, list.current.clientHeight, -9, 16);
@@ -55,60 +53,59 @@ export default function Services() {
     rotateContainer.current(rotation.current);
   };
 
-  
-
   return (
     <section
       className="services container"
       // onMouseMove={(e) => mouseMove(e)}
       ref={ref}
     >
-
-        <motion.div
-          className="services__image"
-          ref={image}
-          // style={{
-          //   x: mousePosition.x,
-          //   y: mousePosition.y,
-          //   rotate: mousePosition.rotare,
-          // }}
-        >
-          <BrowserView>
-            <AnimatePresence mode="popLayout">
-              {(imageHover && inView) && (
-                <motion.img
-                  alt="services"
-                  src={imageHover}
-                  className="services__image-item"
-                  variants={ServicesAnim.Image}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  key={imageHover}
-                />
-              )}
-            </AnimatePresence>
-          </BrowserView>
-        </motion.div>
+      <motion.div
+        className="services__image"
+        ref={image}
+        // style={{
+        //   x: mousePosition.x,
+        //   y: mousePosition.y,
+        //   rotate: mousePosition.rotare,
+        // }}
+      >
+        <BrowserView>
+          <AnimatePresence mode="popLayout">
+            {imageHover && inView && (
+              <motion.img
+                alt="services"
+                src={imageHover}
+                className="services__image-item"
+                variants={ServicesAnim.Image}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                key={imageHover}
+              />
+            )}
+          </AnimatePresence>
+        </BrowserView>
+      </motion.div>
       <div className="titles">
-        <p className="body-text-2 uppercase description-title">Description</p>
-        <p className="body-text-2 uppercase feedback-title">Feedback</p>
+        <p className="body-text-2 uppercase description-title fz--tablet-14">
+          Description
+        </p>
+        <p className="body-text-2 uppercase feedback-title fz--tablet-14">
+          Feedback
+        </p>
         <h5 className="services-title">I can help →</h5>
       </div>
-      <div className="left">
-        <div className="description">
-          <p className="body-text-3 normal">
-            Send inquiry/contact about personal and business growth coaching
-            options and project support Apply for mentoring hours Send a
-            professional inquiry
-          </p>
-        </div>
-        <div className="feedback">
-          <p className="body-text-3 normal">
-            <span className="qoute">“</span> you’re the first person I ever
-            trusted with my vision
-          </p>
-        </div>
+      <div className="description">
+        <p className="body-text-3 normal fz--tablet-14">
+          Send inquiry/contact about personal and business growth coaching
+          options and project support Apply for mentoring hours Send a
+          professional inquiry
+        </p>
+      </div>
+      <div className="feedback">
+        <p className="body-text-3 normal fz--tablet-14">
+          <span className="qoute">“</span> you’re the first person I ever
+          trusted with my vision
+        </p>
       </div>
       <div className="right">
         <ul
@@ -120,7 +117,7 @@ export default function Services() {
         >
           {sevicesList.map((currS, i) => (
             <li
-              className="services__item body-text-3 uppercase"
+              className="services__item body-text-3 uppercase fz--tablet-12"
               key={`services-${i}`}
               onMouseEnter={() => setImageHover(currS.image)}
               onMouseLeave={() => setImageHover(null)}

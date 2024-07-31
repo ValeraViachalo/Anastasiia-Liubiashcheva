@@ -153,17 +153,17 @@ export default function Universe() {
 
       <div className="statics">
         <div className="nums nums-1">
-          <p className="nums__title">{t("Impact based projects:")}</p>
+          <p className="nums__title fz--tablet-16">{t("Impact based projects:")}</p>
           <h1>
             25+
           </h1>
         </div>
         <div className="nums nums-2">
           <div>
-            <p className="nums__title nums__title-2">{t("Pitching on:")}</p>
+            <p className="nums__title nums__title-2 fz--tablet-16">{t("Pitching on:")}</p>
             <h1>500+</h1>
           </div>
-          <p>{t("ppl audience")}</p>
+          <p className="fz--tablet-16">{t("ppl audience")}</p>
         </div>
       </div>
     </section>

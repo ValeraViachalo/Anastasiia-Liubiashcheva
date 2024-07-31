@@ -11,6 +11,9 @@ import Universe from "./Universe/Universe";
 import Footer from "../../components/Footer/Footer";
 import { Transition } from "../../helpers/anim";
 import { useEffect } from "react";
+import { ScrollBar } from "../../components/ScrollBar/ScrollBar";
+
+import "./Home.scss";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -27,6 +30,7 @@ export default function Home() {
       exit="exit"
       className="home"
     >
+      <ScrollBar />
       <Hero />
       <Universe />
       <ImportantThing />

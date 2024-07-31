@@ -18,15 +18,30 @@
     mix-blend-mode: difference;
     padding-top: 1vw;
 
+    @include forMobile {
+      padding-left: VW(10, $mobile);
+      padding-right: VW(10, $mobile);
+    }
+
+    .body-text-4 {
+      text-wrap: nowrap;
+    }
+
     &__left {
       display: flex;
       gap: 5vw;
+      @include forMobile {
+        gap: 1vw;
+      }
     }
-    
+
     &__right {
       display: flex;
       gap: 10vw;
       text-align: end;
+      @include forMobile {
+        gap: 1vw;
+      }
 
       .growth {
         text-align: start;
@@ -47,7 +62,7 @@
   &__title {
     margin-top: 3vw;
 
-    @include forVerticalTablet() {
+    @include forTablet() {
       margin-top: 6vw;
     }
   }

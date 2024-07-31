@@ -11,31 +11,17 @@ import { useTranslation } from "react-i18next";
 export default function Loving() {
   const { t } = useTranslation();
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  useGSAP(() => {
-    // gsap.to(".loving__wrapper", {
-    //   yPercent: 5,
-    //   scrollTrigger: {
-    //     trigger: ".loving",
-    //     start: "top top",
-    //     end: "bottom top",
-    //     scrub: true,
-    //   },
-    // });
-  });
-
   return (
     <section className="loving">
       <div className="loving__wrapper">
         <div className="text">
-          <p className="body-text-4">
+          <p className="body-text-4 fz--tablet-14 fz--mobile-7">
             {t("My guiding")}
             <br />
             {t("principle has always been:")}
           </p>
 
-          <p className="link-medium">
+          <p className="link-medium fz--tablet-18 fz--mobile-10">
             {t("”You either do it with love or not at all”")}
           </p>
         </div>
@@ -43,7 +29,7 @@ export default function Loving() {
         <Logo className="logo" color="#ffffff" />
 
         <div className="bottom text">
-          <p className="body-text-4">
+          <p className="body-text-4 fz--tablet-14 fz--mobile-7">
             {t("This philosophy")}
             <br />
             {t(
@@ -51,7 +37,7 @@ export default function Loving() {
             )}
           </p>
 
-          <p className="link-medium">{t("”the one who is giving love”")}</p>
+          <p className="link-medium fz--tablet-18 fz--mobile-10">{t("”the one who is giving love”")}</p>
 
           <div className="heart">
             <Heart color="white" />

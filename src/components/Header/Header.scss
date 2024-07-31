@@ -2,6 +2,7 @@
 
 .header {
   @include grid();
+  grid-template-columns: repeat(12, 1fr);
 
   align-items: center;
 
@@ -17,25 +18,26 @@
   left: 0;
   right: 0;
 
-  @include forHorizontalTablet() {
+  @include forPortraitTablet() {
     padding: 0.6vw 2vw;
   }
 
-  @include forVerticalTablet() {
+  @include forTablet() {
     padding: 1.3vw 2.2vw;
+    gap: VW(16, $tablet);
   }
 
   .link-wrapper {
-    @include forHorizontalTablet() {
+    @include forPortraitTablet() {
       height: 1.2vw;
     }
 
-    @include forVerticalTablet() {
+    @include forTablet() {
       height: 2.3vw;
     }
 
     .link-button {
-      @include forHorizontalTablet() {
+      @include forPortraitTablet() {
         font-size: 1.1vw;
       }
     }
@@ -49,7 +51,11 @@
     height: 100%;
     grid-column: 5/9;
 
-    @include mq() {
+    @include forTablet() {
+      display: none;
+    }
+
+    @include forMobile() {
       display: none;
     }
   }
@@ -60,14 +66,14 @@
     position: relative;
     z-index: 100;
 
-    @include forHorizontalTablet() {
+    @include forPortraitTablet() {
       width: 26%;
       height: 2vw;
     }
 
-    @include forVerticalTablet() {
-      width: 22vw;
-      height: 6vw;
+    @include forTablet() {
+      width: VW(76, $tablet);
+      height: VW(36, $tablet);
     }
 
     &-item {
@@ -82,16 +88,12 @@
     justify-content: space-evenly;
     width: 100%;
     padding: 0 5vw;
-
-    @include forVerticalTablet() {
-      display: none;
-    }
   }
 
   &__nav {
     display: none;
 
-    @include forVerticalTablet() {
+    @include forTablet() {
       display: block;
     }
   }
@@ -109,7 +111,7 @@
     justify-content: space-between;
     align-items: center;
     
-    @include forVerticalTablet() {
+    @include forTablet() {
       grid-column: 3/3;
     }
   }
@@ -118,12 +120,12 @@
     display: flex;
     gap: 1.5vw;
 
-    @include forHorizontalTablet() {
+    @include forPortraitTablet() {
       height: 1.2vw;
     }
 
     &-button {
-      @include forHorizontalTablet() {
+      @include forPortraitTablet() {
         font-size: 1.1vw !important;
       }
     }
@@ -133,6 +135,8 @@
       flex-direction: column;
       overflow: hidden;
       height: 1vw;
+      position: relative;
+      z-index: 11;
 
       &:hover {
         .header__locale-button {
@@ -141,7 +145,7 @@
         }
       }
 
-      @include forVerticalTablet() {
+      @include forTablet() {
         height: 2.3vw;
       }
     }
@@ -155,6 +159,50 @@
       }
     }
   }
+
+  &__button-wrapper {
+    grid-column: 12/12;
+  }
+
+  .header-button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 3vw;
+    padding: 1.4vw 0;
+    position: relative;
+    z-index: 11;
+  
+    @include forMobile() {
+      width: 12vw;
+      height: 5vw;
+    }
+  
+    &__line {
+      width: 80%;
+      height: 0.2vw;
+      background-color: $c-black;
+      transition: all $transition;
+  
+      &--active {
+        width: 70%;
+  
+        &:nth-of-type(1) {
+          transform: rotate(45deg) translate(0.3vw, 0.6vw);
+          
+          @include forMobile() {
+            transform: rotate(48deg) translate(1.7vw, 0.8vw);
+          }
+        }
+        
+        &:nth-of-type(2) {
+          transform: rotate(-45deg) translate(0vw, -0.6vw);
+        }
+      }
+    }
+  } 
 }
 
 .contact-button {

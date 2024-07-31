@@ -3,24 +3,51 @@
 .loving {
   // margin-top: 10vw;
   width: 100vw;
-  height: 222.7lvh;
+  height: 191lvh;
   background: url("../../../../public/images/Home/loving.webp") no-repeat center;
   background-size: cover;
-  background-position: 100%;
+  background-position: 100% 100%;
   position: relative;
 
-  @include forHorizontalTablet() {
+  @include forPortraitTablet() {
     height: 160lvh;
+  }
+
+  @include forTablet {
+    height: 84vh;
+    margin-top: VW(140, $tablet);
+  }
+  
+  @include forMobile {
+    height: 70vh;
+    margin-top: VW(140, $mobile);
+    background-position: 70% 100%;
   }
 
   &__wrapper {
     position: absolute;
-    transform: translate(-50%, -50%);
-    bottom: -6%;
+    transform: translate(-50%, 0%);
+    bottom: 13%;
     left: 50%;
     text-align: center;
     mix-blend-mode: exclusion;
     color: $c-white;
+    
+    @include forTablet {
+      display: flex;
+      flex-direction: column;
+      gap: VW(10, $tablet);
+      align-items: center;
+      bottom: 14%;
+    }
+    
+    @include forMobile {
+      display: flex;
+      flex-direction: column;
+      gap: VW(10, $mobile);
+      align-items: center;
+      bottom: 10%;
+    }
 
     .text {
       display: flex;
@@ -30,13 +57,30 @@
 
     .logo {
       width: 30vw;
-      height: 20vw;
+      height: 15vw;
+      
+      @include forMobile {
+        width: 70vw;
+        height: 35vw;
+      }
     }
 
     .heart {
       height: 2vw;
       width: 2vw;
       margin: 6vw auto 0;
+      
+      @include forTablet {
+        height: 3vw;
+        width: 3vw;
+        margin: 1vh auto 0;
+      }
+      
+      @include forMobile {
+        height: 5vw;
+        width: 5vw;
+        margin: 2vh auto 0;
+      }
     }
   }
 }

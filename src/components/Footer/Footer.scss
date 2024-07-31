@@ -11,6 +11,10 @@
   z-index: 100;
   padding-top: 1vw;
 
+  @include forTablet {
+    height: VW(292, $tablet);
+  }
+
   &__wrapper {
     @include grid();
     padding: 16vw 1.6vw 0;
@@ -42,6 +46,9 @@
   .socials {
     grid-column: 10/12;
     
+    @include forTablet {
+      grid-column: 10/13;
+    }
 
     &__title {
       color: $g-70;
@@ -61,6 +68,10 @@
 
       .link-wrapper {
         height: 1.4vw;
+
+        @include forTablet {
+          height: 2.3vw;
+        }
       }
     }
   }
@@ -96,6 +107,8 @@
     grid-column: 4/7;
     display: flex;
 
+    font-size: VW(8, $tablet) !important;
+
     .link-ul {
       font: inherit;
     }
@@ -105,5 +118,12 @@
     grid-column: 10/10;
     width: 3vw;
     height: 1.5vw;
+
+    font-size: 0;
+
+    @include forTablet {
+      width: VW(30, $tablet);
+      height: VW(14, $tablet);
+    }
   }
 }

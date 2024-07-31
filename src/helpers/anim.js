@@ -1,43 +1,64 @@
+export const anim = (variants) => {
+  return {
+    initial: "initial",
+    animate: "animate",
+    exit: "exit",
+    variants,
+  };
+};
+
+
 const transition = {
   duration: 1,
   ease: [0.76, 0, 0.24, 1],
 };
 
-export const Menu = {
+export const MenuAnim = {
   menuOpen: {
     initial: {
-      height: 0,
-      left: 0,
-      right: 0,
+      opacity: 0,
+      clipPath: "inset(0 0 30% 0)",
     },
-    enter: {
-      height: "max(75lvh, 507px)",
-      transition,
+    animate: {
+      opacity: 1,
+      clipPath: "inset(0 0 0% 0)",
+      transition: {
+        ...transition,
+      },
     },
     exit: {
-      height: 0,
+      opacity: 0,
+      clipPath: "inset(0 0 30% 0)",
       transition: {
-        duration: 1,
-        delay: 0.2,
-        ease: [0.76, 0, 0.24, 1],
+        ...transition,
+        duration: .8,
+        delay: 0.12,
       },
     },
   },
-  menuContainer: {
+  linksList: {
     initial: {
-      opacity: 0,
-    },
-    enter: {
-      opacity: 1,
+      opacity: 0.2,
       transition: {
-        duration: 0.5,
+        duration: .4,
         delay: 1,
       },
     },
+    animate: (i) => ({
+      opacity: 1,
+      transition: { 
+        duration: .4,
+        delay: i
+      },
+    }),
     exit: {
       opacity: 0,
+      transition: {
+        duration: .4,
+      },
     },
   },
+
 };
 
 export const Header = {
@@ -51,6 +72,9 @@ export const Header = {
       clipPath: "inset(0 0 0% 0)",
       opacity: 1,
       transition,
+      transitionEnd: {
+        clipPath: "none",
+      }
     },
     exit: {
       clipPath: "inset(0 0 100% 0)",

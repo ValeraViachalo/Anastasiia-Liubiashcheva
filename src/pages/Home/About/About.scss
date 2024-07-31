@@ -8,6 +8,16 @@
     grid-column: 6/13;
     padding-left: 5.4vw;
 
+    @include forMobile {
+      grid-column: 1/12;
+      padding-left: 0;
+      text-align: end;
+
+      .qoute {
+        display: none;
+      }
+    }
+
     .qoute {
       margin-right: 8vw;
     }
@@ -20,12 +30,27 @@
     column-gap: 1vw;
     row-gap: 3vw;
     margin-top: 5vw;
+    
+    @include forTablet {
+      // column-gap: VW(17, $tablet);
+      row-gap: VW(20, $tablet);
+    }
+    
+    @include forMobile {
+      grid-column: 1/12;
+      justify-content: space-between;
+      margin-top: VW(32, $mobile);
+    }
   }
 
   &__item {
     border-top: 0.2vw solid;
     padding: 1vw 0;
     width: 30%;
+    
+    @include forMobile {
+      width: 47%;
+    }
 
       .top {
         display: flex;
@@ -38,6 +63,10 @@
         .bold {
           margin-left: 1vw;
         }
-      }    
+      }  
+
+      .light {
+        padding-right: 1vw;
+      }  
   }
 }

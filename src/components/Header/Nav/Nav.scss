@@ -1,0 +1,49 @@
+@import "/src/styles/global.scss";
+
+.navigation {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 100vw;
+  height: calc(VW(609, $tablet) - VW(140, $tablet));
+  background-color: $c-white;
+  padding: VW(100, $tablet) 0 VW(40, $tablet);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform-origin: top right;
+
+  @include forPortraitTablet() {
+    display: none;
+  }
+  
+  @include forDesktop() {
+    display: none;
+  }
+
+  &__top-link {
+    color: $c-light-blue;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+  }
+
+  &__link {
+    font: inherit;
+    text-transform: none;
+    display: block;
+    position: relative;
+    .link-wrapper {
+      @include forTablet {
+        height: 4.7vw;
+      }
+    }
+  }
+  
+}

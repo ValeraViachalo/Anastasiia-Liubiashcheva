@@ -29,11 +29,11 @@ export default function Hero() {
       <div className="top container">
         <div className="top__left">
           <p
-            className="body-text-4 medium"
+            className="body-text-4 medium fz--mobile-8"
             dangerouslySetInnerHTML={{ __html: t("For") }}
           />
           <p
-            className="body-text-4 medium"
+            className="body-text-4 medium fz--mobile-8"
             dangerouslySetInnerHTML={{
               __html: t("By <br /> Anastasiia Liubiashcheva"),
             }}
@@ -41,14 +41,14 @@ export default function Hero() {
         </div>
         <div className="top__right">
           <p
-            className="body-text-4 medium"
+            className="body-text-4 medium fz--mobile-8"
             dangerouslySetInnerHTML={{
               __html: t(
                 "<span class='growth'>Business growth since</span><br />→ 2019"
               ),
             }}
           />
-          <p className="body-text-4 medium">
+          <p className="body-text-4 medium fz--mobile-8">
             {t("United by")}
             <br />
             {t("love")}

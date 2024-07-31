@@ -63,16 +63,9 @@ export const presenceLoaderAnim = (
     );
   });
 
-  // tl.to(heartRef.current, {
-  //   scale: 100,
-  //   duration: 0.6,
-  //   delay: 0.5,
-  //   ease: "power4.in",
-  // });
-
   tl.to(heartRef.current, {
-    maskSize: '200vw',
-    duration: 1.2,
+    maskSize: '300vw',
+    duration: 1.3,
     delay: 0.5,
     ease: "expo.inOut",
   });

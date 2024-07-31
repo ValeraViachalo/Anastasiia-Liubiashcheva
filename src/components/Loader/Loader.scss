@@ -1,8 +1,14 @@
+@import "/src/styles/global.scss";
+
 .loader {
   position: fixed;
   inset: 0;
   background-color: #fff;
   z-index: 1000;
+
+  // [data-hidden] {
+  //   opacity: 1 !important;
+  // }
 
   .top {
     display: flex;
@@ -11,9 +17,26 @@
     position: relative;
     z-index: 2;
 
+    @include forMobile {
+      padding-left: VW(10, $mobile);
+      padding-right: VW(10, $mobile);
+      padding-top: VW(10, $mobile);
+      gap: 5vw;
+      justify-content: flex-start;
+    }
+
+    
     &__left {
       display: flex;
       gap: 5vw;
+      
+      .body-text-4 {
+        text-wrap: nowrap;
+      }
+
+      @include forMobile {
+        gap: 3vw;
+      }
     }
 
     &__right {
@@ -21,9 +44,42 @@
       gap: 10vw;
       text-align: end;
 
+      @include forMobile {
+        gap: 3vw;
+      }
+
       .growth {
         text-align: start;
         margin-right: 2.5vw;
+
+        @include forTablet {
+          margin-right: 0;
+        }
+
+        @include forMobile {
+          margin-right: 0;
+          display: block;
+          text-wrap: wrap;
+          width: 62%;
+        }
+      }
+
+      .body-text-4 {
+        
+        &:nth-of-type(1) {
+          @include forMobile {
+          display: flex;
+          align-items: end;
+
+            width: 27vw;
+          }
+          
+          br {
+            @include forMobile {
+              display: none;
+            }
+          }
+        }
       }
     }
   }
@@ -36,6 +92,10 @@
 
     text-align: center;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .heart {
       width: 2vw;
       margin: 0 auto;
@@ -45,6 +105,28 @@
   &__logo {
     width: 28vw;
     height: 13vw;
+    margin-top: 0.5vw;
+
+    svg {
+      scale: 1.2;
+      transform-origin: bottom;
+    }
+
+    @include forPortraitTablet {
+      width: 31vw;
+    }
+
+    @include forTablet {
+      width: 65vw;
+      height: 23vw;
+      margin-top: 1.5vw;
+    }
+    
+    @include forMobile {
+      width: 77vw;
+      height: 34vw;
+      margin-top: 0;
+    }
   }
 
   &__progress {
@@ -68,6 +150,14 @@
     margin: 0 1vw 1vw;
     position: relative;
 
+    @include forTablet {
+      margin: 0 1vw 2vw;
+    }
+    
+    @include forMobile {
+      margin: 0 1vw 3vw;
+    }
+
     &::before {
       content: "‘";
     }
@@ -87,5 +177,19 @@
     mask: url("../../../public/images/heart.svg") no-repeat;
     mask-size: 4vw;
     mask-position: center 68%;
+
+    @include forPortraitTablet {
+      mask-position: center 64%;
+    }
+
+    @include forTablet {
+      mask-size: 8vw;
+      mask-position: center 67%;
+    }
+    
+    @include forMobile {
+      mask-size: 14vw;
+      mask-position: center 66%;
+    }
   }
 }
