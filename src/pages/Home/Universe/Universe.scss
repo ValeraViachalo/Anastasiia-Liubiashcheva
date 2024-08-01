@@ -3,6 +3,11 @@
 .universe {
   overflow: hidden;
 
+  @include forMobile {
+    margin-top: VW(40, $mobile);
+    padding-bottom: 10vw;
+  }
+
   .top-title {
     cursor: default;
     position: relative;
@@ -14,7 +19,14 @@
     -webkit-background-clip: text;
     background-position-x: 0%;
     background-size: contain;
-    
+
+    @include forMobile {
+      background-size: 500%;
+
+      background-position: -87vw -27vw !important;
+      background-repeat: no-repeat;
+    }
+
     .first-line {
       display: inline-block;
       width: 90%;
@@ -33,14 +45,34 @@
       display: flex;
       flex-direction: column;
       gap: 3.5vw;
-      
+
       @include forTablet() {
         grid-column: 1/6;
+      }
+
+      @include forMobile {
+        flex-direction: row-reverse; 
+        justify-content: space-between;
+        
+        grid-column: 1/12;
+        margin-top: VW(60, $mobile);
+        padding-right: VW(30, $mobile);
+
+        &__text {
+          @include forMobile {
+            display: flex;
+            width: 45%;
+          }
+        }
       }
 
       .heart {
         width: 1.5vw;
         margin-bottom: 3vw;
+        
+        @include forMobile {
+          width: VW(22, $mobile);
+        }
       }
     }
 
@@ -53,6 +85,11 @@
 
       position: relative;
 
+      @include forMobile {
+        grid-column: 1/12;
+        grid-row: 1/1;
+      }
+
       .subtitles {
         overflow: hidden;
         display: flex;
@@ -62,16 +99,15 @@
         grid-column: 1/8;
 
         .paragraph {
-          display: flex;
           flex-direction: column;
           gap: 1vw;
-          // color: $c-white;
-          // mix-blend-mode: difference;
-          // font-weight: 100;
-          // letter-spacing: 0.02vw;
           width: 50%;
 
           @include forTablet() {
+            width: 100%;
+          }
+
+          @include forMobile() {
             width: 100%;
           }
 
@@ -96,6 +132,12 @@
                     height: 3.2vw;
                     top: 0;
                   }
+
+                  @include forMobile() {
+                    width: 23vw;
+                    height: 5.2vw;
+                    top: 0;
+                  }
                 }
               }
             }
@@ -112,9 +154,13 @@
       .video {
         grid-column: 1/4;
         position: relative;
-
+        
         @include forTablet() {
           grid-column: 1/7;
+        }
+        
+        @include forMobile {
+          grid-column: 1/8;
         }
 
         &__wrapper {
@@ -143,6 +189,11 @@
             display: flex;
             justify-content: space-between;
           }
+          
+          @include forMobile {
+            display: flex;
+            justify-content: space-between;
+          }  
 
           .concept {
             width: 40%;
@@ -150,7 +201,11 @@
 
             @include forTablet() {
               width: 60%;
-          }
+            }
+            
+            @include forMobile {
+              width: 60%;
+            }    
           }
         }
 
@@ -200,6 +255,11 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
+
+        @include forMobile {
+          flex-wrap: wrap;
+          transform: translateY(5vw);
+        }
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation, useRoutes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AnimatePresence } from "framer-motion";
@@ -13,12 +13,27 @@ import LogoAnim from "./components/Loader/LogoAnim/LogoAnim";
 import { ScrollBar } from "./components/ScrollBar/ScrollBar";
 import { ScrollProvider } from "./helpers/scrollProvider";
 import classNames from "classnames";
+import { LoaderContext, LoaderProvider } from "./components/Loader/LoaderContext";
 
 const queryC = new QueryClient();
 
 function App() {
-  const [loaderFinished, setLoaderFinished] = useState(false);
+  // const [loaderFinished, setLoaderFinished] = useState(false);
   // const [loaderFinished, setLoaderFinished] = useState(true);
+
+  return (
+    <QueryClientProvider client={queryC}>
+      <LoaderProvider>
+        <ScrollProvider>
+          <Root />
+        </ScrollProvider>
+      </LoaderProvider>
+    </QueryClientProvider>
+  );
+}
+
+const Root = () => {
+  const { loaderFinished } = useContext(LoaderContext);
 
   const element = useRoutes([
     {
@@ -56,22 +71,20 @@ function App() {
   const location = useLocation();
 
   return (
-    <QueryClientProvider client={queryC}>
-      <ScrollProvider>
-        {!loaderFinished && <Loader setLoaderFinished={setLoaderFinished} />}
-        <main
-          className={classNames("main", {
-            "main--loading": !loaderFinished,
-          })}
-        >
-          <Header />
-          <AnimatePresence mode="wait" initial={false}>
-            {React.cloneElement(element, { key: location.pathname })}
-          </AnimatePresence>
-        </main>
-      </ScrollProvider>
-    </QueryClientProvider>
+    <>
+      {!loaderFinished && <Loader />}
+      <main
+        className={classNames("main", {
+          "main--loading": !loaderFinished,
+        })}
+      >
+        <Header />
+        <AnimatePresence mode="wait" initial={false}>
+          {React.cloneElement(element, { key: location.pathname })}
+        </AnimatePresence>
+      </main>
+    </>
   );
-}
+};
 
 export default App;

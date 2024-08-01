@@ -36,8 +36,8 @@ body {
   }
   
   @include forMobile {
-    padding-left: VW(18, $mobile);
-    padding-right: VW(18, $mobile);
+    padding-left: VW(16, $mobile);
+    padding-right: VW(16, $mobile);
   }
 }
 

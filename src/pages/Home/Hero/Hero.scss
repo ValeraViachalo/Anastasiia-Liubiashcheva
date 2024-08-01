@@ -12,26 +12,41 @@
 
   color: $c-white;
 
+  @include forMobile {
+    clip-path: none !important;
+  }
+
   .top {
     display: flex;
     justify-content: space-between;
-    mix-blend-mode: difference;
     padding-top: 1vw;
+    position: relative;
+    z-index: 2;
+    mix-blend-mode: difference;
+    
+    @include forTablet {
+      padding-top: 1.4vw;
+    }
 
     @include forMobile {
       padding-left: VW(10, $mobile);
       padding-right: VW(10, $mobile);
+      padding-top: VW(10, $mobile);
+      gap: 5vw;
+      justify-content: flex-start;
     }
 
-    .body-text-4 {
-      text-wrap: nowrap;
-    }
-
+    
     &__left {
       display: flex;
       gap: 5vw;
+      
+      .body-text-4 {
+        text-wrap: nowrap;
+      }
+
       @include forMobile {
-        gap: 1vw;
+        gap: 3vw;
       }
     }
 
@@ -39,13 +54,43 @@
       display: flex;
       gap: 10vw;
       text-align: end;
+
       @include forMobile {
-        gap: 1vw;
+        gap: 3vw;
       }
 
       .growth {
         text-align: start;
         margin-right: 2.5vw;
+
+        @include forTablet {
+          margin-right: 0;
+        }
+
+        @include forMobile {
+          margin-right: 0;
+          display: block;
+          text-wrap: wrap;
+          width: 62%;
+        }
+      }
+
+      .body-text-4 {
+        
+        &:nth-of-type(1) {
+          @include forMobile {
+          display: flex;
+          align-items: end;
+
+            width: 27vw;
+          }
+          
+          br {
+            @include forMobile {
+              display: none;
+            }
+          }
+        }
       }
     }
   }
@@ -64,6 +109,48 @@
 
     @include forTablet() {
       margin-top: 6vw;
+    }
+   
+    @include forMobile() {
+      margin-top: VW(10, $mobile);
+    }
+  }
+
+  &__button {
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include forDesktop {
+      display: none;
+    }
+
+    @include forPortraitTablet {
+      display: none;
+    }
+
+    .button--seconadry {
+      background-color: transparent;
+
+      font-size: VW(28, $tablet);
+
+      @include forMobile {
+        font-size: VW(28, $mobile);
+        gap: VW(5, $mobile);
+      }
+
+      .arrow-wrapper {
+        @include forTablet {
+          width: VW(28, $tablet);
+          height: VW(28, $tablet);
+        }
+
+        @include forMobile {
+          width: VW(28, $mobile);
+          height: VW(28, $mobile);
+        }
+      }
     }
   }
 }

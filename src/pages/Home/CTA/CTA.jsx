@@ -38,14 +38,20 @@ export default function CTA() {
   return (
     <section className="cta" ref={ctaRef}>
       <div className="cta__wrapper">
-        <div className="top">
-          <p className="body-text-3 light fz--tablet-10">
-            <span className="qoute">“</span>I want to see myself and my business
+
+        <div className="top" data-hide-for-mobile>
+          <p className="top__qoute body-text-3 light fz--tablet-10 fz--mobile-12">
+            <span className="qoute fz--mobile-32">“</span>I want to see myself and my business
             with your eyes
           </p>
+          <h5 className="light cta__title fz--mobile-24" data-only-mobile>
+            Stop doubting & unlock your full{" "}
+            <span className="italic semiBold"> potential now</span>
+          </h5>
         </div>
+
         <div className="center">
-          <h5 className="light cta__title fz--tablet-20">
+          <h5 className="light cta__title fz--tablet-20" data-hide-for-mobile>
             Stop doubting & unlock your full{" "}
             <span className="italic semiBold"> potential now</span>
           </h5>
@@ -65,16 +71,16 @@ export default function CTA() {
           </div>
 
           <div className="heart">
-            <Heart color="white" />
+            <Heart color="white" data-hide-for-mobile/>
           </div>
         </div>
         <div className="bottom">
-          <p className="body-text-3 uppercase fz--tablet-10">
+          <p className="body-text-3 uppercase fz--tablet-10 fz--mobile-10">
             Be
             <br />
             brave
           </p>
-          <p className="body-text-3 uppercase bottom__second fz--tablet-10">
+          <p className="body-text-3 uppercase bottom__second fz--tablet-10 fz--mobile-10">
             Be
             <br />
             different

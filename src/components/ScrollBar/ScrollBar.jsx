@@ -3,9 +3,12 @@ import React, { useEffect, useState, useContext } from "react";
 
 import "./ScrollBar.scss";
 import { ScrollContext } from '../../helpers/scrollContext';
+import { LoaderContext } from '../Loader/LoaderContext';
 
 export const ScrollBar = () => {
   const [rangeValue, setRangeValue] = useState(0);
+  const { loaderFinished } = useContext(LoaderContext);
+
 
   const { scrollYProgress } = useScroll();
   const scrollSpring = useSpring(scrollYProgress, { stiffness: 1000, damping: 100 });
@@ -30,7 +33,7 @@ export const ScrollBar = () => {
     return () => unsubscribe();
   }, [scrollYProgress]);
 
-  return (
+  return loaderFinished && (
     <div className="progress-bar" data-desktop-element>
       <motion.div className="progress-bar__bar" style={{ top, y }} />
       <input

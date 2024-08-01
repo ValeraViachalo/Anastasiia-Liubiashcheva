@@ -27,6 +27,10 @@
     gap: VW(16, $tablet);
   }
 
+  @include forMobile {
+    padding: VW(5, $mobile) VW(15, $mobile);
+  }
+
   .link-wrapper {
     @include forPortraitTablet() {
       height: 1.2vw;
@@ -75,6 +79,11 @@
       width: VW(76, $tablet);
       height: VW(36, $tablet);
     }
+    
+    @include forMobile() {
+      width: VW(76, $mobile);
+      height: VW(36, $mobile);
+    }
 
     &-item {
       width: 100%;
@@ -90,19 +99,15 @@
     padding: 0 5vw;
   }
 
-  &__nav {
-    display: none;
-
-    @include forTablet() {
-      display: block;
-    }
-  }
-
   .left {
     display: flex;
     justify-content: space-between;
     align-items: center;
     grid-column: 1/3;
+    
+    @include forMobile {
+      grid-column: 1/4;
+    }
   }
 
   .right {
@@ -114,14 +119,22 @@
     @include forTablet() {
       grid-column: 3/3;
     }
+  
+    @include forMobile() {
+      grid-column: 10/10;
+    }
   }
 
   &__locale {
     display: flex;
     gap: 1.5vw;
-
+    
     @include forPortraitTablet() {
       height: 1.2vw;
+    }
+    
+    @include forMobile() {
+      gap: VW(10, $mobile);
     }
 
     &-button {
@@ -138,15 +151,19 @@
       position: relative;
       z-index: 11;
 
-      &:hover {
+      @include hover {
         .header__locale-button {
           transform: translateY(-100%);
-          transition: all 0.4s ease;
+          transition: transform 0.4s ease;
         }
       }
 
       @include forTablet() {
         height: 2.3vw;
+      }
+
+      @include forMobile() {
+        height: VW(14, $mobile);
       }
     }
 
@@ -193,7 +210,7 @@
           transform: rotate(45deg) translate(0.3vw, 0.6vw);
           
           @include forMobile() {
-            transform: rotate(48deg) translate(1.7vw, 0.8vw);
+            transform: rotate(48deg) translate(1vw, 1vw);
           }
         }
         
@@ -212,6 +229,10 @@
   mix-blend-mode: difference;
   z-index: 101;
   color: $c-white;
+
+  @include forMobile {
+    display: none;
+  }
 
   .text {
     &::after {

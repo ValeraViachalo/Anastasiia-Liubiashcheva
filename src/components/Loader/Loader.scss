@@ -5,6 +5,7 @@
   inset: 0;
   background-color: #fff;
   z-index: 1000;
+  // opacity: 0.9 !important;
 
   // [data-hidden] {
   //   opacity: 1 !important;
@@ -91,14 +92,13 @@
     transform: translate(-50%, 50%);
 
     text-align: center;
-
+    
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .heart {
-      width: 2vw;
-      margin: 0 auto;
+    
+    @include forMobile {
+      bottom: 46%;
     }
   }
 
@@ -177,7 +177,7 @@
     mask: url("../../../public/images/heart.svg") no-repeat;
     mask-size: 4vw;
     mask-position: center 68%;
-
+    
     @include forPortraitTablet {
       mask-position: center 64%;
     }
@@ -189,7 +189,7 @@
     
     @include forMobile {
       mask-size: 14vw;
-      mask-position: center 66%;
+      mask-position: center 64%;
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 
 import "./Loader.scss";
 import { presenceLoaderAnim, progressAnim } from "./anim";
@@ -8,8 +8,12 @@ import { Logo } from "../Logo/Logo";
 import { Heart } from "../Heart/Heart";
 import gsap from "gsap";
 import LogoAnim from "./LogoAnim/LogoAnim";
+import { LoaderContext } from "./LoaderContext";
 
-export const Loader = ({ setLoaderFinished }) => {
+export const Loader = () => {
+  const { setLoaderFinished } = useContext(LoaderContext);
+  
+
   const loaderRef = useRef();
 
   const topRef = useRef();

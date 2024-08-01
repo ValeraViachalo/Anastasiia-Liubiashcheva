@@ -67,6 +67,16 @@ export const Header = () => {
         onLeaveBack: () => setShownBtn(false),
         // markers: 1
       });
+      
+      ScrollTrigger.create({
+        trigger: ".footer",
+        start: "-10% bottom",
+        end: "-10% bottom",
+        scrub: true,
+        onLeaveBack: () => setShownBtn(true),
+        onEnter: () => setShownBtn(false),
+        // markers: 1
+      });
     }
   }, [isHomePage]);
 
@@ -114,10 +124,6 @@ export const Header = () => {
             ))}
           </ul>
         </div>
-
-        {/* <div className="header__nav">
-          <Nav />
-        </div> */}
 
         <div className="right">
           <div className="header__locale">
@@ -179,6 +185,7 @@ export const Header = () => {
           </Button>
         </motion.div>
       )}
+
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import LogoAnimJson from "./Lottie.json";
-// import LogoAnimJson from "./LogoAnimJson.lottie";
+import LogoAnimJson from "./JSON1.json";
+// import LogoAnimJson from "./Lottie.json";
 import Lottie from "lottie-react";
 
 export default function LogoAnim() {
@@ -9,7 +9,7 @@ export default function LogoAnim() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLogo(true);
-    }, 1000); // 500ms delay
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);

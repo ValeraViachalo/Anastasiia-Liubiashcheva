@@ -231,6 +231,10 @@ h6 {
     @include forTablet() {
       font-size: 2.2vw;
     }
+    
+    @include forMobile() {
+      font-size: VW(14, $mobile);
+    }
   }
 }
 
@@ -251,9 +255,14 @@ a {
   &-medium {
     font-weight: 400;
     line-height: 120%;
+
+    @include forMobile {
+      font-size: VW(14, $mobile);
+    }
   }
 }
 
 .qoute {
   margin-right: 4vw;
+  font-weight: 500 !important;
 }

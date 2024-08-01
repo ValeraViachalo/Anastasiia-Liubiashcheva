@@ -58,7 +58,50 @@ export const MenuAnim = {
       },
     },
   },
-
+  background: {
+    initial: {
+      opacity: 0,
+      transition: {
+        duration: .4,
+      },
+    },
+    animate: {
+      opacity: 0.3,
+      transition: { 
+        duration: .5,
+        delay: .1
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: .4,
+        delay: .8,
+      },
+    },
+  },
+  backgroundFilter: {
+    initial: {
+      opacity: 0,
+      transition: {
+        duration: .4,
+      },
+    },
+    animate: {
+      opacity: 1,
+      transition: { 
+        duration: .5,
+        delay: .1
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: .4,
+        delay: .8,
+      },
+    },
+  }
 };
 
 export const Header = {

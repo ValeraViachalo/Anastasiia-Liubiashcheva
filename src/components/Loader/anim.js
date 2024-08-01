@@ -64,8 +64,8 @@ export const presenceLoaderAnim = (
   });
 
   tl.to(heartRef.current, {
-    maskSize: '300vw',
-    duration: 1.3,
+    maskSize: '400vw',
+    duration: 1.45,
     delay: 0.5,
     ease: "expo.inOut",
   });

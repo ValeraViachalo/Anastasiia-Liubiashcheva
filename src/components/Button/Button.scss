@@ -45,6 +45,10 @@
     }
   }
 
+  @include forMobile {
+    gap: VW(5, $mobile);
+  }
+
   .arrow {
     width: 1.6vw;
     height: 1.6vw;
@@ -127,9 +131,15 @@
     background-color: $c-white;
     padding: 1vw 1.8vw;
     border-radius: 0.4vw;
-
+    
     @include forTablet {
       font-size: VW(14, $tablet);
+    }
+    
+    @include forMobile {
+      font-size: VW(14, $mobile);
+      padding: 1.8vw 2.8vw;
+      border-radius: 1vw;
     }
 
     @include hover {
@@ -158,6 +168,11 @@
         @include forTablet {
           width: VW(14, $tablet);
           height: VW(14, $tablet);
+        }
+    
+        @include forMobile {
+          width: VW(14, $mobile);
+          height: VW(14, $mobile);
         }
     
         &:nth-of-type(2) {
