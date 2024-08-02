@@ -1,67 +1,86 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import "./CTA.scss";
 import { ButtonSecondary } from "../../../components/Button/Button";
 import { Heart } from "../../../components/Heart/Heart";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 export default function CTA() {
+  const ctaRef = useRef();
 
-  gsap.registerPlugin(ScrollTrigger);
+  const { scrollYProgress } = useScroll({
+    target: ctaRef,
+    offset: ["5% 50%", "70% 50%"],
+    layoutEffect: false,
+  });
+  const smoothProgress1 = useSpring(scrollYProgress, {
+    stiffness: 400,
+    damping: 100,
+  });
+  const smoothProgress2 = useSpring(scrollYProgress, {
+    stiffness: 1000,
+    damping: 100,
+  });
 
-  useGSAP(() => {
-    gsap.set('.cta__line', {
-      clipPath: 'inset(100% 0 0 0)',
-      opacity: 0
-    })
+  const clipPath1 = useTransform(
+    smoothProgress1,
+    [0, 1],
+    ["inset(100% 0 0 0)", "inset(0% 0 0 0)"]
+  );
+  const clipPath2 = useTransform(
+    smoothProgress2,
+    [0, 1],
+    ["inset(100% 0 0 0)", "inset(0% 0 0 0)"]
+  );
 
-    gsap.to('.cta__line', {
-      clipPath: 'inset(0% 0 0 0)',
-      opacity: 1,
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: '.cta',
-        start: '5% center',
-        end: '70% center',
-        scrub: true,
-      }
-    })
-  })
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="cta">
+    <section className="cta" ref={ctaRef}>
       <div className="cta__wrapper">
-        <div className="top">
-          <p className="body-text-3 light">
-            <span className="qoute">“</span>I want to see myself and my business
+
+        <div className="top" data-hide-for-mobile>
+          <p className="top__qoute body-text-3 light fz--tablet-10 fz--mobile-12">
+            <span className="qoute fz--mobile-32">“</span>I want to see myself and my business
             with your eyes
           </p>
+          <h5 className="light cta__title fz--mobile-24" data-only-mobile>
+            Stop doubting & unlock your full{" "}
+            <span className="italic semiBold"> potential now</span>
+          </h5>
         </div>
+
         <div className="center">
-          <h5 className="light cta__title">
+          <h5 className="light cta__title fz--tablet-20" data-hide-for-mobile>
             Stop doubting & unlock your full{" "}
             <span className="italic semiBold"> potential now</span>
           </h5>
 
           <div className="cta__button">
-            <ButtonSecondary state="primary-ar">Contact me.</ButtonSecondary>
-            <span className="cta__line" />
-            <span className="cta__line" />
+            <ButtonSecondary href="/contact" state="primary-ar">
+              Contact me.
+            </ButtonSecondary>
+            <motion.span
+              style={{ clipPath: clipPath1, opacity }}
+              className="cta__line"
+            />
+            <motion.span
+              style={{ clipPath: clipPath2, opacity }}
+              className="cta__line"
+            />
           </div>
 
           <div className="heart">
-            <Heart color="white" />
+            <Heart color="white" data-hide-for-mobile/>
           </div>
         </div>
         <div className="bottom">
-          <p className="body-text-3 uppercase">
+          <p className="body-text-3 uppercase fz--tablet-10 fz--mobile-10">
             Be
             <br />
             brave
           </p>
-          <p className="body-text-3 uppercase bottom__second">
+          <p className="body-text-3 uppercase bottom__second fz--tablet-10 fz--mobile-10">
             Be
             <br />
             different

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useLocation, useRoutes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AnimatePresence } from "framer-motion";
@@ -6,11 +6,35 @@ import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home/Home";
 import ReactLenis from "@studio-freight/react-lenis";
 import { Header } from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+import Contact from "./pages/Contact/Contact";
+import { Loader } from "./components/Loader/Loader";
+import gsap from "gsap";
+import LogoAnim from "./components/Loader/LogoAnim/LogoAnim";
+import { ScrollBar } from "./components/ScrollBar/ScrollBar";
+import { ScrollProvider } from "./helpers/scrollProvider";
+import classNames from "classnames";
+import { LoaderContext, LoaderProvider } from "./components/Loader/LoaderContext";
 
 const queryC = new QueryClient();
 
 function App() {
+  // const [loaderFinished, setLoaderFinished] = useState(false);
+  // const [loaderFinished, setLoaderFinished] = useState(true);
+
+  return (
+    <QueryClientProvider client={queryC}>
+      <LoaderProvider>
+        <ScrollProvider>
+          <Root />
+        </ScrollProvider>
+      </LoaderProvider>
+    </QueryClientProvider>
+  );
+}
+
+const Root = () => {
+  const { loaderFinished } = useContext(LoaderContext);
+
   const element = useRoutes([
     {
       path: "/",
@@ -19,10 +43,14 @@ function App() {
           index: true,
           element: <Home />,
         },
-        // {
-        //   path: 'blog',
-        //   element: <Blog />,
-        // },
+        {
+          path: "contact",
+          element: <Contact />,
+        },
+        {
+          path: "logo-anim",
+          element: <LogoAnim />,
+        },
         // {
         //   path: 'blogs',
         //   children: [
@@ -43,18 +71,20 @@ function App() {
   const location = useLocation();
 
   return (
-    <QueryClientProvider client={queryC}>
-      <ReactLenis root options={{ duration: 1.5 }}>
-        <main>
-          <Header />
-          <AnimatePresence mode="wait" initial={false}>
-            {React.cloneElement(element, { key: location.pathname })}
-          </AnimatePresence>
-          <Footer />
-        </main>
-      </ReactLenis>
-    </QueryClientProvider>
+    <>
+      {!loaderFinished && <Loader />}
+      <main
+        className={classNames("main", {
+          "main--loading": !loaderFinished,
+        })}
+      >
+        <Header />
+        <AnimatePresence mode="wait" initial={false}>
+          {React.cloneElement(element, { key: location.pathname })}
+        </AnimatePresence>
+      </main>
+    </>
   );
-}
+};
 
 export default App;

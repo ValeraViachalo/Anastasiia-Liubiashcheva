@@ -1,0 +1,83 @@
+@import "/src/styles/global.scss";
+
+.form {
+  @include grid();
+
+  margin-top: 5vw;
+
+  &__wrapper {
+    grid-column: 7/13;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+
+  &__title {
+    grid-column: 1/4;
+  }
+
+  .input-container__input--item {
+    border: none;
+    border-bottom: 0.2vw solid;
+    padding: 0.6vw 0;
+    margin-bottom: 0.3vw;
+    outline: none;
+    width: 100%;
+
+    &:focus {
+      border-bottom-color: $c-light-blue;
+    }
+
+    &-textarea {
+      min-width: 100%;
+      width: 100%;
+      max-height: 25lvh;
+
+      &::-webkit-scrollbar {
+        display: block;
+        width: 0.8vw;
+      }
+
+      &:-webkit-scrollbar-track {
+        background-color: $g-50;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $c-black;
+        cursor: grab;
+      }
+    }
+  }
+
+  &--button {
+    justify-content: flex-end;
+    
+    .arrow {
+      @extend %h5;
+      line-height: 89%;
+      width: 3.3vw;
+
+      &-wrapper {
+        height: 3.3vw;
+        width: 3.3vw;
+      }
+    }
+  }
+
+  .mistake-field {
+    color: $c-light-red;
+    border-bottom-color: $c-light-red;
+    &::placeholder {
+      color: $c-light-red;
+    }
+  }
+
+  .required-field {
+    color: $c-light-orange;
+    border-bottom-color: $c-light-orange;
+    &::placeholder {
+      color: $c-light-orange;
+    }
+  }
+}

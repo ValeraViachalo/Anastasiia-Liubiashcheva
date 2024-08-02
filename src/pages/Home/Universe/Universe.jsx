@@ -48,25 +48,13 @@ export default function Universe() {
     if (Math.abs(xForce) < 0.01) xForce = 0;
     if (Math.abs(yForce) < 0.01) yForce = 0;
 
-    if (xForce != 0 || yForce != 0) {
+    if (xForce !== 0 || yForce !== 0) {
       requestAnimationFrame(animate);
     } else {
       cancelAnimationFrame(requestAnimationFrameId);
       requestAnimationFrameId = null;
     }
   };
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  useGSAP(() => {
-    ScrollTrigger.create({
-      trigger: '.universe',
-      start: 'center bottom',
-      end: 'max',
-      pin: buttonSticky.current,
-      pinSpacing: false,
-    })
-  })
 
   return (
     <section className="universe container">
@@ -77,27 +65,29 @@ export default function Universe() {
           manageMouseMove(e);
         }}
       >
-        <h3>
+        <h3 data-hide-for-mobile>
           <span className="first-line">
             {t("I’m here to help you see and build your own")}
           </span>
           <br />
           {t("Universe - an ecosystem of products on the basis")}
-          <span className="figure-of" /> 
-          <span className="figure-of__n">
-            {t("your")}
-          </span>
+          <span className="figure-of" />
+          <span className="figure-of__n">{t("your")}</span>
           <br />
           <span style={{ lineHeight: "107%" }}>
             {t("mission, vision and existing.")}
           </span>
         </h3>
+        <h3 className="fz--mobile-18" data-only-mobile>
+          I’m here to help you see and build your own. Universe — an ecosystem
+          of products on the basis of your mission, vision and existing.
+        </h3>
       </div>
 
       <div className="universe-video">
         <div className="left body-text-4 body-text-4--first-line">
-          <p>
-            <span className="body-text qoute">“</span>
+          <p className="left__text">
+            <span className="body-text semiBold qoute">“</span>
             {t("you`re the first person I ever trusted with my vision")}
           </p>
 
@@ -105,7 +95,7 @@ export default function Universe() {
             <Heart color="black" />
           </div>
 
-          <p>
+          <p data-hide-for-mobile>
             {t(
               "#lovemark #growth #strategy #ecosystem #marketing #startup #business #community"
             )}
@@ -126,7 +116,7 @@ export default function Universe() {
                 )}
               </p>
             </p>
-            <p className="paragraph">
+            <p className="paragraph" data-hide-for-mobile--flex>
               <p>
                 {t(
                   "The mystique of a deep ocean. The beauty of women is not just skin-deep; it is an essence that transcends the tangible, an ethereal quality that is both delicate and powerful, bridging the chasm between the corporeal and the spiritual."
@@ -157,25 +147,27 @@ export default function Universe() {
               </p>
             </div>
           </div>
-          <div className="video__contact-button" ref={buttonSticky}>
-            <Button state="secondary">{t("Contact Me.")}</Button>
-          </div>
+          {/* <div className="video__contact-button" ref={buttonSticky}>
+                <Button state="secondary">{t("Contact Me.")}</Button>
+              </div> */}
         </div>
       </div>
 
       <div className="statics">
         <div className="nums nums-1">
-          <p className="nums__title">{t("Impact based projects:")}</p>
-          <h1>
-            25+
-          </h1>
+          <p className="nums__title fz--tablet-16 fz--mobile-14">
+            {t("Impact based projects:")}
+          </p>
+          <h1>25+</h1>
         </div>
         <div className="nums nums-2">
           <div>
-            <p className="nums__title nums__title-2">{t("Pitching on:")}</p>
+            <p className="nums__title nums__title-2 fz--tablet-16 fz--mobile-14">
+              {t("Pitching on:")}
+            </p>
             <h1>500+</h1>
           </div>
-          <p>{t("ppl audience")}</p>
+          <p className="fz--tablet-16 fz--mobile-14">{t("ppl audience")}</p>
         </div>
       </div>
     </section>

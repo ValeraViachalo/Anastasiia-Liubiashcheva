@@ -5,6 +5,21 @@
   position: relative;
   z-index: 2;
   margin-top: 13vw;
+  
+  @include forMobile {
+    display: flex;
+    flex-direction: column;
+    margin-top: VW(80, $mobile);
+  }
+
+  &-title {
+    grid-column: 7/13;
+    
+    @include forMobile {
+      grid-column: 1/13;
+      margin-bottom: VW(2, $mobile);
+    }
+  }
 
   .titles {
     @include grid();
@@ -13,31 +28,17 @@
     padding-bottom: 0.5vw;
     border-bottom: 0.1vw solid;
 
+    &__left {
+      display: flex;
+
+      grid-column: 1/5;
+      @include forTablet {
+        grid-column: 1/6;
+      }
+    }
+
     .description-title {
       grid-column: 1/2;
-    }
-
-    .feedback-title {
-      grid-column: 3/6;
-    }
-
-    .services-title {
-      grid-column: 7/13;
-    }
-  }
-
-  .left {
-    display: flex;
-    grid-column: 1/5;
-
-    .description,
-    .feedback {
-      width: 50%;
-      margin-top: 1vw;
-
-      .qoute {
-        margin-right: 3vw;
-      }
     }
   }
 
@@ -45,6 +46,11 @@
     grid-column: 7/13;
     margin-left: 0.3vw;
     position: relative;
+    
+    @include forMobile {
+      grid-column: 1/12;
+      grid-row: 2 / 2;
+    }
   }
 
   &__image {
@@ -58,6 +64,14 @@
     top: 50%;
     right: 8vw;
 
+    @include forTablet {
+      display: none;
+    }
+
+    @include forMobile {
+      display: none;
+    }
+
     &-item {
       width: 100%;
       height: 100%;
@@ -70,18 +84,22 @@
     justify-content: space-between;
     cursor: default;
     position: relative;
-    // border-bottom: 0.1vw solid $g-100;
+    border-bottom: 0.1vw solid $g-100;
 
-    &::after {
-      content: "";
-      position: absolute;
-      height: 0.01vw;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: $g-100;
-      z-index: -2;
+    @include forMobile {
+      padding: VW(8, $mobile) 0;
     }
+
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   height: 0.05vw;
+    //   left: 0;
+    //   right: 0;
+    //   bottom: 0;
+    //   background-color: $g-100;
+    //   z-index: -2;
+    // }
 
     &-left {
       display: flex;
@@ -94,6 +112,71 @@
       color: $g-70;
       position: relative;
       z-index: -10;
+    }
+  }
+
+  .description {
+    padding-top: VW(20);
+    grid-column: 1/3;
+
+    @include forTablet {
+      grid-column: 1/4;
+    }
+    
+    &-title {
+      grid-column: 1/3;
+
+      @include forTablet {
+        grid-column: 1/4;
+      }
+    }
+  }
+
+  .feedback {
+    padding-top: VW(20);
+    grid-column: 3/5;
+
+    @include forTablet {
+      grid-column: 4/6;
+    }
+    
+    &-title {
+      grid-column: 3/5;
+      
+      @include forTablet {
+        grid-column: 4/6;
+      }
+    }
+
+    &__wrapper-mobile {
+      display: none;
+      @include forMobile {
+        display: flex;
+        justify-content: space-between;
+        grid-row: 3 / 3;
+        margin-top: VW(55, $mobile);
+      }
+
+      
+      .feedback,
+      .description {
+        @include forMobile {
+          width: 43vw;
+        }  
+      }
+
+      .feedback {
+        & > p {
+          position: relative;
+
+          .qoute {
+            @include forMobile {
+              position: absolute;
+              top: -40%;
+            }
+          } 
+        }
+      }
     }
   }
 }

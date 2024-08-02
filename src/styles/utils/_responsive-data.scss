@@ -1,0 +1,169 @@
+@import "./mixins";
+
+[data-hidden] {
+  opacity: 0;
+}
+
+[data-only-desktop] {
+  display: none;
+
+  @include forPortraitTablet() {
+    display: block;
+  }
+  
+  @include forDesktop() {
+    display: block;
+  }
+}
+
+[data-only-desktop--flex] {
+  display: none;
+
+  @include forPortraitTablet() {
+    display: flex;
+  }
+
+  @include forDesktop() {
+    display: flex;
+  }
+}
+
+[data-not-desktop] {
+  display: block;
+
+  @include forPortraitTablet() {
+    display: none;
+  }
+
+  @include forDesktop() {
+    display: none;
+  }
+}
+
+[data-not-desktop--flex] {
+  display: flex;
+
+  @include forDesktop() {
+    display: none;
+  }
+}
+
+[data-hide-for-mobile] {
+  display: block;
+
+  @include forMobile() {
+    display: none;
+  }
+}
+
+[data-hide-for-mobile--flex] {
+  display: flex;
+
+  @include forMobile() {
+    display: none !important;
+  }
+}
+
+[data-only-mobile] {
+  display: none;
+
+  @include forMobile() {
+    display: block;
+  }
+}
+
+[data-only-mobile--flex] {
+  display: none;
+
+  @include forMobile() {
+    display: flex;
+  }
+}
+
+[data-touch-element] {
+  display: block;
+
+  @include forDesktop {
+    display: none;
+  }
+
+  @include forPortraitTablet {
+    display: none;
+  }
+
+  @media (hover: none) and (min-aspect-ratio: 2/3) {
+    display: block !important;
+  }
+}
+
+[data-touch-element--flex] {
+  display: flex;
+
+  @include forDesktop {
+    display: none;
+  }
+
+  @include forPortraitTablet {
+    display: none;
+  }
+
+  @media (hover: none) and (min-aspect-ratio: 2/3) {
+    display: flex !important;
+  }
+}
+
+[data-desktop-element] {
+  @media (hover: none) {
+    display: none !important;
+  }
+
+  @include forMobile {
+    display: none;
+  }
+
+  @include forTablet {
+    display: none;
+  }
+
+  @include forDesktop {
+    display: block;
+  }
+
+  @include forPortraitTablet {
+    display: block;
+  }
+}
+
+[data-desktop-element--flex] {
+  @media (hover: none) {
+    display: none !important;
+  }
+
+  @include forMobile {
+    display: none;
+  }
+
+  @include forTablet {
+    display: none;
+  }
+
+  @include forDesktop {
+    display: block;
+  }
+
+  @include forPortraitTablet {
+    display: block;
+  }
+}
+
+[data-from-VTab] {
+  display: none;
+
+  @include forPortraitTablet() {
+    display: flex;
+  }
+
+  @include forDesktop() {
+    display: flex;
+  }
+}

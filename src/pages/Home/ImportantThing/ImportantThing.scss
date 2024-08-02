@@ -11,14 +11,17 @@
     top: 45%;
 
     &-wrapper {
-      height: 220lvh;
+      height: 160lvh;
       width: 100vw;
-      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: start;
       text-align: center;
       position: relative;
+
+      @include forPortraitTablet() {
+        height: 160lvh;
+      }
     }
 
     &__text {
@@ -26,47 +29,104 @@
       margin-top: 1.5vw;
     }
 
-    &__title{
+    &__title {
       &-1 {
         position: relative;
         overflow: hidden;
-
       }
 
       &-2 {
-      transform: translateY(-110%);
-      width: 96vw;
-
-      .mask-text__line {
-        overflow: hidden;
+        transform: translateY(-110%);
+        width: 93vw;
         
-        &:nth-of-type(1) {
-          line-height: 110%;
-          text-align: end;
+        @include forTablet {
+          transform: translateY(0%);
         }
         
-        &:nth-of-type(2) {
-          line-height: 120%;
-          text-align: start;
+        @include forMobile {
+          width: 89vw;
+          transform: translateY(0%);
+        }
+
+        .mask-text__line {
+          overflow: hidden;
+
+          &:nth-of-type(1) {
+            line-height: 110%;
+            text-align: end;
+          }
+
+          &:nth-of-type(2) {
+            line-height: 120%;
+            text-align: start;
+            
+            @include forMobile {
+              line-height: 100%;
+            }    
+          }
         }
       }
-    }}
+    }
     // h3 {
     //   position: relative;
     // }
   }
 
+  .top-title-mobile {
+    @include forDesktop {
+      height: 120vh;
+    }
+
+    @include forPortraitTablet {
+      height: 100vh;
+    }
+
+    @include forTablet {
+      height: 70vh;
+    }
+
+    @include forMobile {
+      height: 70vh;
+    }
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &__top {
+      text-align: center;
+    }
+  }
+
   &__wrapper {
     @include grid();
-    // margin-top: 3vw;
     transform: translateY(-16%);
 
+    @include forTablet() {
+      transform: translateY(0%);
+    }
+
+    @include forMobile() {
+      transform: translateY(0%);
+      display: flex;
+      flex-direction: column-reverse;
+    }
 
     .left {
       grid-column: 1/5;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       margin-top: 14vw;
+
+      @include forTablet {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @include forMobile {
+        display: flex;
+        flex-direction: column;
+      }
 
       &-title {
         text-wrap: nowrap;
@@ -76,7 +136,7 @@
         display: flex;
         flex-direction: column;
         gap: 3vw;
-        
+
         &__name {
           margin-top: 1vw;
         }
@@ -84,59 +144,125 @@
     }
 
     .right {
-      grid-column: 7/12;
+      grid-column: 6/10;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(6, VW(137));
+      column-gap: 2vw;
+
+      @include forMobile {
+        grid-template-columns: repeat(6, 1fr);
+        margin-top: VW(10, $mobile);
+      }
 
       .title {
-        grid-column: 1/4;
+        grid-column: 1/6;
         text-align: end;
+        margin-left: VW(70);
+
+        @include forMobile {
+          grid-column: 1/5;
+          text-align: start;
+          margin-right: VW(12, $mobile);
+          margin-left: 0;
+        }
 
         &__to-left {
           text-align: start;
           width: 100%;
           display: inline-block;
+
+          @include forMobile {
+            text-align: end;
+          }
         }
       }
 
       .steps {
-        grid-column: 1/4;
+        grid-column: 1/6;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        
         row-gap: 2vw;
         position: relative;
         margin-top: 2vw;
 
+        @include forTablet {
+          margin-left: 4vw;
+        }
+        
+        @include forMobile {
+          grid-column: 1/7;
+          margin-top: VW(30, $mobile);
+        }
+
         &__image {
           width: 100%;
           grid-column: 2/4;
+
+          @include forTablet {
+            grid-column: 1/4;
+          }
+
+          @include forMobile {
+            grid-column: 1/7;
+          }  
         }
-        
+
         &__title {
-            margin-top: 0.6vw;
+          margin: 0.6vw 0 0 VW(70);
         }
 
         &__list {
           grid-column: 2/4;
+
+          @include forTablet {
+            grid-column: 1/4;
+          }
+          
+          @include forMobile {
+            grid-column: 1/7;
+            margin-top: VW(10, $mobile);
+          }  
         }
 
         &__item {
           display: flex;
+          align-items: center;
           justify-content: space-between;
+          gap: 0.5vw;
           padding: 0.6vw 0;
           border-top: 0.1vw solid;
+
+          @include forTablet {
+            padding: VW(10, $tablet) 0;
+            gap: 3vw;
+          }
+          
+          @include forMobile {
+            padding: VW(10, $mobile) 0;
+            gap: 3vw;
+          }  
 
           &:last-of-type {
             border-bottom: 0.1vw solid;
           }
         }
 
-        &__button {
-          margin-top: 3vw;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
+      }
+    }
+    .steps__button {
+      margin-top: 3vw;
+      flex-direction: column;
+      align-items: center;
+
+      @include forTablet {
+        margin-top: VW(50, $tablet);
+      }
+
+      &--mobile {
+        height: 70vh;
+        justify-content: center;
+        margin-top: VW(20, $mobile);
       }
     }
   }

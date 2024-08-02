@@ -5,15 +5,36 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5vw;
+  text-wrap: nowrap;
 
-  &:hover {
-    .arrow {
+  @include hover {
+    .arrow-wrapper {
       &:nth-of-type(1) {
-        left: 100%;
+        .arrow {
+          &:nth-of-type(2) {
+            position: absolute;
+            left: 0;
+          }
+          &:nth-of-type(1) {
+            position: absolute;
+            left: 100%;
+          }
+        }
       }
+
       &:nth-of-type(2) {
-        left: 0;
+        .arrow {
+          &:nth-of-type(1) {
+            position: absolute;
+            right: 0;
+          }
+          &:nth-of-type(2) {
+            position: absolute;
+            right: 100%;
+          }
+        }
       }
+
     }
 
     .text {
@@ -24,18 +45,23 @@
     }
   }
 
+  @include forMobile {
+    gap: VW(5, $mobile);
+  }
+
   .arrow {
     width: 1.6vw;
     height: 1.6vw;
     transition: $transition;
 
-    &:nth-of-type(1) {
-      position: absolute;
-      left: 0;
+    @include forTablet {
+      width: VW(28, $tablet);
+      height: VW(28, $tablet);
     }
-    &:nth-of-type(2) {
-      position: absolute;
-      left: -100%;
+    
+    @include forMobile {
+      width: VW(28, $mobile);
+      height: VW(28, $mobile);
     }
 
     &-wrapper {
@@ -46,8 +72,40 @@
 
       position: relative;
 
+      @include forTablet {
+        width: VW(28, $tablet);
+        height: VW(28, $tablet);
+      }
+
+      @include forMobile {
+        width: VW(28, $mobile);
+        height: VW(28, $mobile);
+      }
+
+      &:nth-of-type(1) {
+        .arrow {
+          &:nth-of-type(1) {
+            position: absolute;
+            left: 0;
+          }
+          &:nth-of-type(2) {
+            position: absolute;
+            left: -100%;
+          }
+        }
+      }
+
       &:nth-of-type(2) {
-        transform: rotate(-180deg);
+        .arrow {
+          &:nth-of-type(2) {
+            position: absolute;
+            right: 0;
+          }
+          &:nth-of-type(1) {
+            position: absolute;
+            right: -100%;
+          }
+        }
       }
     }
   }
@@ -73,19 +131,29 @@
     background-color: $c-white;
     padding: 1vw 1.8vw;
     border-radius: 0.4vw;
+    
+    @include forTablet {
+      font-size: VW(14, $tablet);
+    }
+    
+    @include forMobile {
+      font-size: 4.5vw;
+      padding: 1.8vw 2.8vw;
+      border-radius: 1vw;
+    }
 
-    &:hover {
+    @include hover {
       .arrow {
-        &-wrapper {  
+        &-wrapper {
           &:nth-of-type(2) {
             .arrow {
               &:nth-of-type(2) {
                 position: absolute;
-                left: -100%;
+                left: -100% !important;
               }
               &:nth-of-type(1) {
                 position: absolute;
-                left: 0;
+                left: 0 !important;
               }
             }
           }
@@ -94,9 +162,25 @@
     }
 
     .arrow {
+      @include forMobile {
+        width: auto;
+        height: auto;
+      }
+
       &-wrapper {
         line-height: 95%;
-
+        
+        @include forTablet {
+          width: VW(14, $tablet);
+          height: VW(14, $tablet);
+        }
+    
+        @include forMobile {
+          width: VW(14, $mobile);
+          height: VW(14, $mobile);
+          line-height: 100%;
+        }
+    
         &:nth-of-type(2) {
           transform: rotate(0);
 
@@ -116,38 +200,6 @@
   }
 }
 
-// .link {
-//   display: flex;
-//   flex-direction: column;
-//   overflow: hidden;
-//   height: 1vw;
-//   gap: 0.5vw;
-//   position: relative;
-
-//   &__text {
-//     position: absolute;
-//     transition: all 0.4s ease;
-
-//     &:nth-of-type(1) {
-//       transform: translateY(100%);
-//     }
-//     &:nth-of-type(2) {
-//       transform: translateY(-100%);
-//     }
-//   }
-
-//   &:hover {
-//     .link__text {
-//       &:nth-of-type(1) {
-//         top: 100%;
-//       }
-//       &:nth-of-type(2) {
-//         top: 0%;
-//       }
-//     }
-//   }
-// }
-
 .link {
   &-wrapper {
     display: flex;
@@ -155,13 +207,21 @@
     overflow-y: clip;
     height: inherit;
     font: inherit;
+    height: 1.1vw;
 
-    &:hover {
+    @include hover {
       .link-button {
         transform: translateY(-100%);
       }
     }
+    
+    @media (hover: none) {
+      .link-button--buttom {
+        display: none;
+      }
+    }
   }
+
 
   &-button {
     transition: $transition;

@@ -33,6 +33,10 @@
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.1vw;
+
+  @include forTablet() {
+    font-size: 9.2vw;
+  }
 }
 
 %h5 {
@@ -55,11 +59,19 @@
 
 %body-text {
   font-family: "HelveticaNeueCyr", sans-serif;
-  font-size: 1.7vw;
+  font-size: VW(33);
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: normal;
+  
+  @include forTablet {
+    font-size: VW(33, $tablet);
+  }
+
+  @include forMobile {
+    font-size: VW(14, $mobile);
+  }
 }
 
 %figure {
@@ -73,6 +85,14 @@
   letter-spacing: normal;
   font-size: 1.5vw;
   font-weight: bold;
+
+  @include forTablet {
+    font-size: VW(28, $tablet);
+  }
+  
+  @include forMobile {
+    font-size: VW(28, $mobile);
+  }
 }
 
 .bold {
@@ -116,8 +136,8 @@ h6 {
   &-of {
     background: url("../../../public/images/figure/Of.svg") no-repeat center;
     width: 5vw;
-    display: inline-block;
     height: 8vw;
+    display: inline-block;
     position: absolute;
     transform: translate(20%, -20%);
     background-size: contain;
@@ -130,36 +150,53 @@ h6 {
   &-for {
     background: url("../../../public/images/figure/for.svg") no-repeat center;
     width: 6.4vw;
-    display: inline-block;
     height: 8vw;
+    display: inline-block;
     position: absolute;
     transform: translate(-20%, -20%);
     background-size: contain;
 
+    @include forMobile {
+      width: 9.4vw;
+      height: 11vw;
+    }
+
     &__n {
       margin-left: 5.6vw;
+
+      @include forMobile {
+        margin-left: 7.5vw;
+      }
     }
   }
 }
 
 .light {
-  font-weight: 300;
+  font-weight: 300 !important;
+}
+
+.normal {
+  font-weight: 400 !important;
 }
 
 .italic {
   font-style: italic;
 }
 
-.book {
-  font-weight: 600;
+.semiBold {
+  font-weight: 500 !important;
 }
 
-.semiBold {
-  font-weight: 500;
+.book {
+  font-weight: 600 !important;
 }
 
 .body-text {
   @extend %body-text;
+  
+  &-1 {
+    @extend %body-text;
+  }
 
   &-2 {
     font-size: 1.3vw;
@@ -173,14 +210,31 @@ h6 {
     font-size: 0.9vw;
     letter-spacing: -0.02vw;
     line-height: 120%;
+    font-weight: 400;
+
+    @include forTablet() {
+      font-size: 2.4vw;
+    }
+
+    @include forMobile {
+      font-size: VW(14, $mobile);
+    }  
 
     &--first-line {
       line-height: 90%;
     }
   }
-
+  
   &-5 {
     font-size: 0.8vw;
+    
+    @include forTablet() {
+      font-size: 2.2vw;
+    }
+    
+    @include forMobile() {
+      font-size: VW(14, $mobile);
+    }
   }
 }
 
@@ -201,9 +255,14 @@ a {
   &-medium {
     font-weight: 400;
     line-height: 120%;
+
+    @include forMobile {
+      font-size: VW(14, $mobile);
+    }
   }
 }
 
 .qoute {
   margin-right: 4vw;
+  font-weight: 500 !important;
 }

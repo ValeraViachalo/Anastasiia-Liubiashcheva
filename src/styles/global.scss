@@ -2,10 +2,13 @@
 @import "./utils/fonts";
 @import "./utils/mixins";
 @import "./utils/variables";
+@import "./utils/adaptive-font";
+@import "./utils/responsive-data";
 
 body {
   @extend %body-text;
   color: $g-100;
+  background-color: $c-white;
   overflow-x: hidden;
   opacity: 1;
   position: relative;
@@ -21,6 +24,66 @@ body {
   display: none;
 }
 
+
 .container {
-  padding: 0 1.6vw;
+  // padding: 0 1.6vw;
+  padding-left: 1.6vw;
+  padding-right: 1.6vw;
+  
+  @include forTablet {
+    padding-left: VW(18, $tablet);
+    padding-right: VW(18, $tablet);
+  }
+  
+  @include forMobile {
+    padding-left: VW(16, $mobile);
+    padding-right: VW(16, $mobile);
+  }
+}
+
+body {
+  &:has(.main--loading) {
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+  }  
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none; /* Firefox 64+ */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Альтернативний спосіб для Firefox */
+html {
+  overflow: -moz-scrollbars-none;
+}
+html::-moz-scrollbar {
+  display: none; /* Firefox до версії 64 */
+}
+
+/* Приховування скроллбара в Edge */
+@supports (-ms-overflow-style: none) {
+  html {
+    -ms-overflow-style: none;
+  }
+}
+
+/* Приховування скроллбара в IE */
+@supports (-ms-overflow-style: none) {
+  html {
+    overflow: -ms-autohiding-scrollbar;
+  }
+}
+
+
+
+.white-space {
+  height: 100vh;
+  background-color:$g-10;
 }

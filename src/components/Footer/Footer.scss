@@ -5,15 +5,29 @@
   background-size: cover;
 
   width: 100vw;
-  height: 80lvh;
+  height: 48vw;
   color: $c-white;
   position: relative;
   z-index: 100;
   padding-top: 1vw;
 
+  @include forTablet {
+    height: VW(292, $tablet);
+  }
+  
+  @include forMobile {
+    height: VW(290, $mobile);
+  }
+
   &__wrapper {
     @include grid();
     padding: 16vw 1.6vw 0;
+
+    @include forMobile {
+      padding-left: VW(16, $mobile);
+      padding-right: VW(16, $mobile);
+      row-gap: VW(35, $mobile);
+    }
   }
 
   .contacts {
@@ -22,20 +36,56 @@
     flex-direction: column;
     gap: 4vw;
 
+    @include forMobile {
+      grid-column: 1 / 9;
+      grid-row: 2 / 2;
+      gap: VW(20, $mobile);
+    }
+
     &__title {
       grid-column: 1/3;
       padding-top: 3vw;
+
+      @include forMobile {
+        grid-column: 1/9;
+      }  
     }
 
     &__name {
       margin-bottom: 1.3vw;
       color: $g-70;
+      
+      @include forMobile {
+        margin-bottom: VW(5, $mobile);
+      }
+    }
+
+    &__item {
+      .link-wrapper {
+        height: 3.3vw;
+
+        @include forMobile {
+          height: 4.6vw;
+        }
+
+        .link-button {
+          padding-bottom: 0;
+        }
+      }
     }
   }
 
   .socials {
     grid-column: 10/12;
     
+    @include forTablet {
+      grid-column: 10/13;
+    }
+
+    @include forMobile {
+      grid-column: 9 / 12;
+      grid-row: 2 / 2;
+    }
 
     &__title {
       color: $g-70;
@@ -48,27 +98,62 @@
       column-gap: 2vw;
       row-gap: 1vw;
       margin-top: 1.5vw;
+
+      @include forMobile {
+        margin-top: 0;
+      }
     }
 
     &__item {
       font-weight: 300 !important;
+
+      @include forMobile {
+        padding: VW(5, $mobile) 0;
+      }
+      
+      .link-wrapper {
+        height: 1.4vw;
+
+        @include forTablet {
+          height: 2.3vw;
+        }
+
+        @include forMobile {
+          height: 4.6vw;
+        }
+      }
     }
   }
 
   .bottom {
+    @include grid();
     grid-row: 3/3;
     grid-column: 1/13;
-    @include grid();
     align-items: flex-end;
     position: absolute;
     bottom: 1vw;
     width: 97%;
+    
+    @include forMobile {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      width: 74%;
+
+      padding-bottom: VW(10, $mobile);
+    }
   }
 
   &__ukraine {
     grid-column: 1/3;
     display: flex;
+    align-items: center;
     gap: 0.4vw;
+    
+    @include forMobile {
+      gap: 1vw;
+    }
 
     &::before {
       content: "";
@@ -79,12 +164,24 @@
         rgb(14, 92, 178) 49%,
         rgb(243, 207, 14) 49%
       );
+
+      @include forTablet {
+        width: 3vw;
+        height: 1.6vw;
+      }
+      
+      @include forMobile {
+        width: 3vw;
+        height: 2vw;
+      }
     }
   }
 
   &__rights {
     grid-column: 4/7;
     display: flex;
+
+    font-size: VW(8, $tablet) !important;
 
     .link-ul {
       font: inherit;
@@ -95,5 +192,17 @@
     grid-column: 10/10;
     width: 3vw;
     height: 1.5vw;
+
+    font-size: 0;
+
+    @include forTablet {
+      width: VW(30, $tablet);
+      height: VW(14, $tablet);
+    }
+    
+    @include forMobile {
+      width: VW(25, $mobile);
+      height: VW(10, $mobile);
+    }
   }
 }

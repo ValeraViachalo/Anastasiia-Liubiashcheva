@@ -1,27 +1,46 @@
 @import "/src/styles/global.scss";
 
-.scrollBar {
+.progress-bar {
   position: fixed;
-  width: 1vw;
-  z-index: 20;
-  top: 0%;
-  bottom: 0%;
+  top: 0;
+  bottom: 0;
   right: 0;
-  margin: auto;
+  z-index: 10000;
+  width: 1vw;
   mix-blend-mode: difference;
 
-  @include mq() {
-    display: none;
+  @include hover {
+    .progress-bar__bar {
+      width: .6vw;
+    }
+  }
+  
+  &__bar {
+    position: absolute;
+    right: 0;
+    width: 0.2vw;
+    height: 5%;
+    background-color: $c-white;
+    // transform-origin: center;
+    transform: translateY(-100%);
+    transition: width .4s cubic-bezier(.08,.99,.37,1);
   }
 
-  .circle {
+  &__range {
     position: absolute;
-    bottom: 100%;
-    width: 0.5vw;
-    height: 70lvh;
-    border-radius: 5vw;
-    background-color: $c-black;
-    border: 0.1vw solid $c-white;
-    transform: translate(0, 100%);
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    rotate: 90deg;
+    width: 100vh;
+    height: 1vw;
+    transform: translate(-2%, -30%);
+    transform-origin: left;
+    opacity: 0;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
   }
 }

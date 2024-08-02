@@ -48,7 +48,7 @@ export const Button = ({ href, children, state }) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M4.49909 11.0001L16.0851 11.0001L11.5851 6.50006L12.9991 5.08606L19.9131 12.0001L12.9991 18.9141L11.5851 17.5001L16.0851 13.0001L4.49909 13.0001V11.0001Z"
+                d="M19.5 12.9998L7.91399 12.9998L12.414 17.4998L11 18.9138L4.08599 11.9998L11 5.08578L12.414 6.49978L7.91399 10.9998L19.5 10.9998L19.5 12.9998Z"
                 fill="black"
               />
             </svg>
@@ -62,7 +62,7 @@ export const Button = ({ href, children, state }) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M4.49909 11.0001L16.0851 11.0001L11.5851 6.50006L12.9991 5.08606L19.9131 12.0001L12.9991 18.9141L11.5851 17.5001L16.0851 13.0001L4.49909 13.0001V11.0001Z"
+                d="M19.5 12.9998L7.91399 12.9998L12.414 17.4998L11 18.9138L4.08599 11.9998L11 5.08578L12.414 6.49978L7.91399 10.9998L19.5 10.9998L19.5 12.9998Z"
                 fill="black"
               />
             </svg>
@@ -106,23 +106,12 @@ export const LinkBtn = ({
   const wrapperRef = useRef();
   const linkRef = useRef();
 
-  useEffect(() => {
-    if (wrapperRef.current && linkRef.current) {
-      const fontSize = parseFloat(window.getComputedStyle(linkRef.current).fontSize);
-      wrapperRef.current.style.height = `${fontSize * 1.2}px`;
-    }
-  });
-
-  useEffect(() => {
-    console.log(linkRef);
-  }, [linkRef])
-
   return (
     <Link to={href} ref={wrapperRef} className="link-wrapper" {...rest}>
       <span ref={linkRef} className={`${classes} link-button`}>
         {children}
       </span>
-      <span className={`${classes} link-button`}>
+      <span className={`${classes} link-button link-button--buttom`}>
         {children}
       </span>
     </Link>

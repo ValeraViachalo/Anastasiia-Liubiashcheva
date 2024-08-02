@@ -1,0 +1,85 @@
+@import "/src/styles/global.scss";
+
+.navigation {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 100vw;
+  // opacity: 0 !important;
+  background-color: $c-white;
+  height: calc(VW(609, $tablet) - VW(140, $tablet));
+  padding: VW(100, $tablet) 0 VW(40, $tablet);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform-origin: top right;
+
+  @include forMobile {
+    height: calc(VW(450, $mobile) - VW(84, $mobile));
+    padding: VW(70, $mobile) 0 VW(24, $mobile);  
+  }
+
+  @include forPortraitTablet() {
+    display: none;
+  }
+  
+  @include forDesktop() {
+    display: none;
+  }
+
+
+  &__top-link {
+    color: $c-light-blue;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+  }
+
+  &__link {
+    font: inherit;
+    text-transform: none;
+    display: block;
+    position: relative;
+
+    @include forMobile {
+      font-size: VW(24, $mobile);
+    }
+
+    .link-wrapper {
+      @include forTablet {
+        height: 4.7vw;
+      }
+    
+      @include forMobile {
+        height: VW(24, $mobile);
+      }
+    }
+  }
+  
+  &__background {
+    position: fixed;
+    inset: 0;
+    background: url('../../../../public/images/menu-light.png') no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    // mix-blend-mode: screen;
+    opacity: 0.3;
+    z-index: 8;
+
+    
+    &--blur {
+      position: fixed;
+      inset: 0;
+      z-index: 9;
+      -webkit-backdrop-filter: blur(0.5vw);
+      backdrop-filter: blur(0.5vw);
+      background-color: #8e8e8e2d;
+    }
+  }
+}
