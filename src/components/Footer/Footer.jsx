@@ -11,18 +11,18 @@ export default function Footer() {
 
         <ul className="contacts">
           <li className="contacts__item">
-            <p className="body-text-2 contacts__name">For collaboration</p>
-            <h6>
+            <p className="body-text-2 contacts__name fz--mobile-10">For collaboration</p>
+            <h6 className="fz--mobile-12">
               <LinkBtn classes="/" href="mailto:Loving.is.my.answer@gmail.com">
                 Loving.is.my.answer@gmail.com
               </LinkBtn>
             </h6>
           </li>
           <li className="contacts__item">
-            <p className="body-text-2 contacts__name">
+            <p className="body-text-2 contacts__name fz--mobile-10">
               Telegram / iMessage / WhatsApp
             </p>
-            <h6>
+            <h6 className="fz--mobile-12">
               <LinkBtn classes="/" href="tel:+380993724505">
                 +38 099 372 4505
               </LinkBtn>
@@ -31,7 +31,7 @@ export default function Footer() {
         </ul>
 
         <div className="socials">
-          <p className="body-text-2 socials__title">Socials</p>
+          <p className="body-text-2 socials__title fz--mobile-10  ">Socials</p>
           <ul className="socials__list">
             <li className="socials__item">
               <LinkBtn
@@ -61,10 +61,10 @@ export default function Footer() {
 
         <div className="bottom">
           <div className="footer__ukraine">
-            <p className="body-text-5 ">Ukraine</p>
+            <p className="body-text-5 fz--mobile-8">Ukraine</p>
           </div>
 
-          <p className="body-text-5 footer__rights">
+          <p className="body-text-5 footer__rights" data-hide-for-mobile--flex>
             ©2024.{" "}
             <LinkBtn
               href="https://www.behance.net/horskyir"

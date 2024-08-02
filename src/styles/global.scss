@@ -47,12 +47,41 @@ body {
     height: 100vh;
     position: fixed;
     top: 0;
-
-    &::-webkit-scrollbar {
-      opacity: 0;
-    }  
   }  
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none; /* Firefox 64+ */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Альтернативний спосіб для Firefox */
+html {
+  overflow: -moz-scrollbars-none;
+}
+html::-moz-scrollbar {
+  display: none; /* Firefox до версії 64 */
+}
+
+/* Приховування скроллбара в Edge */
+@supports (-ms-overflow-style: none) {
+  html {
+    -ms-overflow-style: none;
+  }
+}
+
+/* Приховування скроллбара в IE */
+@supports (-ms-overflow-style: none) {
+  html {
+    overflow: -ms-autohiding-scrollbar;
+  }
+}
+
+
 
 .white-space {
   height: 100vh;

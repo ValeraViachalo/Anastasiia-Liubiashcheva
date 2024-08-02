@@ -60,7 +60,7 @@
   display: flex;
 
   @include forMobile() {
-    display: none;
+    display: none !important;
   }
 }
 

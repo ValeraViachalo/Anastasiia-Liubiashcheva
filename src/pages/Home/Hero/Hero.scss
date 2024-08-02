@@ -133,22 +133,12 @@
     .button--seconadry {
       background-color: transparent;
 
-      font-size: VW(28, $tablet);
-
-      @include forMobile {
-        font-size: VW(28, $mobile);
-        gap: VW(5, $mobile);
-      }
+      font-size: VW(28, $tablet); 
 
       .arrow-wrapper {
         @include forTablet {
           width: VW(28, $tablet);
           height: VW(28, $tablet);
-        }
-
-        @include forMobile {
-          width: VW(28, $mobile);
-          height: VW(28, $mobile);
         }
       }
     }

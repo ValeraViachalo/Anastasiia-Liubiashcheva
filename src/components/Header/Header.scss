@@ -191,6 +191,13 @@
     padding: 1.4vw 0;
     position: relative;
     z-index: 11;
+    cursor: pointer;
+    transition: $transition;
+    transition-property: opacity;
+
+    @include hover {
+      opacity: 0.4;
+    }
   
     @include forMobile() {
       width: 12vw;
@@ -229,7 +236,7 @@
   mix-blend-mode: difference;
   z-index: 101;
   color: $c-white;
-
+  
   @include forMobile {
     display: none;
   }

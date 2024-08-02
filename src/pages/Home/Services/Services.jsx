@@ -86,22 +86,22 @@ export default function Services() {
         </BrowserView>
       </motion.div>
       <div className="titles">
-        <p className="body-text-2 uppercase description-title fz--tablet-14">
+        <p className="body-text-2 uppercase description-title fz--tablet-14" data-hide-for-mobile>
           Description
         </p>
-        <p className="body-text-2 uppercase feedback-title fz--tablet-14">
+        <p className="body-text-2 uppercase feedback-title fz--tablet-14" data-hide-for-mobile>
           Feedback
         </p>
-        <h5 className="services-title">I can help →</h5>
+        <h5 className="services-title fz--mobile-24">I can help →</h5>
       </div>
-      <div className="description">
+      <div className="description" data-hide-for-mobile>
         <p className="body-text-3 normal fz--tablet-14">
           Send inquiry/contact about personal and business growth coaching
           options and project support Apply for mentoring hours Send a
           professional inquiry
         </p>
       </div>
-      <div className="feedback">
+      <div className="feedback" data-hide-for-mobile>
         <p className="body-text-3 normal fz--tablet-14">
           <span className="qoute">“</span> you’re the first person I ever
           trusted with my vision
@@ -117,7 +117,7 @@ export default function Services() {
         >
           {sevicesList.map((currS, i) => (
             <li
-              className="services__item body-text-3 uppercase fz--tablet-12"
+              className="services__item body-text-3 uppercase fz--tablet-12 fz--mobile-10"
               key={`services-${i}`}
               onMouseEnter={() => setImageHover(currS.image)}
               onMouseLeave={() => setImageHover(null)}
@@ -132,6 +132,22 @@ export default function Services() {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="feedback__wrapper-mobile">
+      <div className="feedback">
+        <p className="body-text-3 normal fz--tablet-14 fz--mobile-14">
+          <span className="qoute fz--mobile-24">“</span> you’re the first person I ever
+          trusted with my vision
+        </p>
+      </div>
+      <div className="description">
+        <p className="body-text-3 normal fz--tablet-14 fz--mobile-14">
+          Send inquiry/contact about personal and business growth coaching
+          options and project support Apply for mentoring hours Send a
+          professional inquiry
+        </p>
+      </div>
+
       </div>
     </section>
   );

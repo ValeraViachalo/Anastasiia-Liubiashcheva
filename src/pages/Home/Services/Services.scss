@@ -5,9 +5,20 @@
   position: relative;
   z-index: 2;
   margin-top: 13vw;
+  
+  @include forMobile {
+    display: flex;
+    flex-direction: column;
+    margin-top: VW(80, $mobile);
+  }
 
   &-title {
     grid-column: 7/13;
+    
+    @include forMobile {
+      grid-column: 1/13;
+      margin-bottom: VW(2, $mobile);
+    }
   }
 
   .titles {
@@ -35,6 +46,11 @@
     grid-column: 7/13;
     margin-left: 0.3vw;
     position: relative;
+    
+    @include forMobile {
+      grid-column: 1/12;
+      grid-row: 2 / 2;
+    }
   }
 
   &__image {
@@ -47,6 +63,14 @@
     position: fixed;
     top: 50%;
     right: 8vw;
+
+    @include forTablet {
+      display: none;
+    }
+
+    @include forMobile {
+      display: none;
+    }
 
     &-item {
       width: 100%;
@@ -61,6 +85,10 @@
     cursor: default;
     position: relative;
     // border-bottom: 0.1vw solid $g-100;
+
+    @include forMobile {
+      padding: VW(8, $mobile) 0;
+    }
 
     &::after {
       content: "";
@@ -117,6 +145,37 @@
       
       @include forTablet {
         grid-column: 4/6;
+      }
+    }
+
+    &__wrapper-mobile {
+      display: none;
+      @include forMobile {
+        display: flex;
+        justify-content: space-between;
+        grid-row: 3 / 3;
+        margin-top: VW(55, $mobile);
+      }
+
+      
+      .feedback,
+      .description {
+        @include forMobile {
+          width: 43vw;
+        }  
+      }
+
+      .feedback {
+        & > p {
+          position: relative;
+
+          .qoute {
+            @include forMobile {
+              position: absolute;
+              top: -40%;
+            }
+          } 
+        }
       }
     }
   }

@@ -76,7 +76,7 @@ export const Button = ({ href, children, state }) => {
 export const ButtonSecondary = ({ href, children }) => {
   return (
     <Link to={href} className="button button--seconadry">
-      <div className="arrow-wrapper">
+      <div className="arrow-wrapper" data-hide-for-mobile--flex>
         <div className="arrow">
           <span>→</span>
         </div>
@@ -84,8 +84,14 @@ export const ButtonSecondary = ({ href, children }) => {
           <span>→</span>
         </div>
       </div>
+      <div className="arrow" data-only-mobile>
+        <span>→</span>
+      </div>
       <span className="link-medium text">{children}</span>
-      <div className="arrow-wrapper">
+      <div className="arrow" data-only-mobile>
+        <span>←</span>
+      </div>
+      <div className="arrow-wrapper" data-hide-for-mobile--flex>
         <div className="arrow">
           <span>←</span>
         </div>
@@ -111,7 +117,9 @@ export const LinkBtn = ({
       <span ref={linkRef} className={`${classes} link-button`}>
         {children}
       </span>
-      <span className={`${classes} link-button link-button--buttom`}>{children}</span>
+      <span className={`${classes} link-button link-button--buttom`}>
+        {children}
+      </span>
     </Link>
   );
 };
