@@ -84,22 +84,22 @@
     justify-content: space-between;
     cursor: default;
     position: relative;
-    // border-bottom: 0.1vw solid $g-100;
+    border-bottom: 0.1vw solid $g-100;
 
     @include forMobile {
       padding: VW(8, $mobile) 0;
     }
 
-    &::after {
-      content: "";
-      position: absolute;
-      height: 0.05vw;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: $g-100;
-      z-index: -2;
-    }
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   height: 0.05vw;
+    //   left: 0;
+    //   right: 0;
+    //   bottom: 0;
+    //   background-color: $g-100;
+    //   z-index: -2;
+    // }
 
     &-left {
       display: flex;

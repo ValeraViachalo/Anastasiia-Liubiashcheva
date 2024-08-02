@@ -144,16 +144,16 @@
 
     @include hover {
       .arrow {
-        &-wrapper {  
+        &-wrapper {
           &:nth-of-type(2) {
             .arrow {
               &:nth-of-type(2) {
                 position: absolute;
-                left: -100%;
+                left: -100% !important;
               }
               &:nth-of-type(1) {
                 position: absolute;
-                left: 0;
+                left: 0 !important;
               }
             }
           }
@@ -178,6 +178,7 @@
         @include forMobile {
           width: VW(14, $mobile);
           height: VW(14, $mobile);
+          line-height: 100%;
         }
     
         &:nth-of-type(2) {
