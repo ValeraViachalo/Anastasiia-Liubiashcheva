@@ -26,15 +26,43 @@ export const Header = () => {
   const isHomePage = pathname.split("/")[1];
 
   const [language, setLanguage] = useLocalStorage("language", "en");
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get("lang");
+
+    if (langParam && ["en", "ua"].includes(langParam)) {
+      setLanguage(langParam);
+      i18n.changeLanguage(langParam);
+    } else {
+      const pathSegments = window.location.pathname.split("/");
+      const lastSegment = pathSegments[pathSegments.length - 1];
+
+      if (lastSegment === "ua") {
+        setLanguage("ua");
+        i18n.changeLanguage("ua");
+      } else {
+        setLanguage("en");
+        i18n.changeLanguage("en");
+      }
+    }
+  }, []);
+
+  const updateUrl = (lang) => {
+    const baseUrl = window.location.origin;
+    const newUrl = `${baseUrl}/${lang}`;
+    window.history.replaceState(null, "", newUrl);
+  };
+
+  const handleLanguageChange = (selectedLanguage) => {
+    // Set language and save to local storage
+    i18n.changeLanguage(selectedLanguage);
+    setLanguage(selectedLanguage);
+    updateUrl(selectedLanguage);
+  };
+
   const [isShown, setShown] = useState(false);
   const [isShownBtn, setShownBtn] = useState(false);
   const [isActive, setIsActive] = useState(false);
-
-
-  const handleLanguageChange = (selectedLanguage) => {
-    i18n.changeLanguage(selectedLanguage);
-    setLanguage(selectedLanguage);
-  };
 
   const handleHeaderClass = (lang) => {
     return classNames(
@@ -67,7 +95,7 @@ export const Header = () => {
         onLeaveBack: () => setShownBtn(false),
         // markers: 1
       });
-      
+
       ScrollTrigger.create({
         trigger: ".footer",
         start: "-10% bottom",
@@ -85,18 +113,17 @@ export const Header = () => {
       const handleScroll = () => {
         setIsActive(false);
       };
-  
+
       const timeoutId = setTimeout(() => {
         window.addEventListener("scroll", handleScroll);
       }, 1000); // Затримка в мілісекундах
-  
+
       return () => {
         clearTimeout(timeoutId);
         window.removeEventListener("scroll", handleScroll);
       };
     }
   }, [isActive]);
-
 
   return (
     <>
@@ -165,7 +192,7 @@ export const Header = () => {
         </div>
 
         <div className="header__button-wrapper" data-not-desktop>
-          <HeaderButton isActive={isActive} setIsActive={setIsActive}/>
+          <HeaderButton isActive={isActive} setIsActive={setIsActive} />
         </div>
 
         <AnimatePresence mode="wait">
@@ -185,7 +212,6 @@ export const Header = () => {
           </Button>
         </motion.div>
       )}
-
     </>
   );
 };

@@ -13,7 +13,10 @@ import LogoAnim from "./components/Loader/LogoAnim/LogoAnim";
 import { ScrollBar } from "./components/ScrollBar/ScrollBar";
 import { ScrollProvider } from "./helpers/scrollProvider";
 import classNames from "classnames";
-import { LoaderContext, LoaderProvider } from "./components/Loader/LoaderContext";
+import {
+  LoaderContext,
+  LoaderProvider,
+} from "./components/Loader/LoaderContext";
 
 const queryC = new QueryClient();
 
@@ -43,6 +46,15 @@ const Root = () => {
           index: true,
           element: <Home />,
         },
+        {
+          path: "/ua/",
+          element: <Home />,
+        },
+        {
+          path: "/en/",
+          element: <Home />,
+        },
+
         {
           path: "contact",
           element: <Contact />,
